@@ -1,6 +1,6 @@
 import React, { ReactNode, CSSProperties } from 'react';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import { HeightVariant } from '../../types/slideSectionTypes';
+import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver';
+import { HeightVariant } from '../../../types/slideSectionTypes';
 
 interface SlideSectionProps {
   children: ReactNode;
@@ -14,12 +14,22 @@ interface SlideSectionProps {
   animationDelay?: number;
   animationDuration?: number;
 
-  onIntersect?: (isIntersecting: boolean) => void;
+  // TODO: deal with entry and isIntersecting about eslint
+  onIntersect?: (
+    // eslint-disable-next-line no-unused-vars
+    isIntersecting: boolean,
+    // eslint-disable-next-line no-unused-vars
+    entry?: IntersectionObserverEntry | null,
+    // eslint-disable-next-line no-unused-vars
+    slideIndex?: number,
+  ) => void;
 
   className?: string;
   style?: CSSProperties;
 
   id?: string;
+
+  slideIndex?: number;
 }
 
 export const SlideSection: React.FC<SlideSectionProps> = ({
@@ -34,14 +44,15 @@ export const SlideSection: React.FC<SlideSectionProps> = ({
   className = '',
   style = {},
   id,
+  slideIndex,
 }) => {
-  const { ref, isIntersecting } = useIntersectionObserver({
+  const { ref, isIntersecting, entry } = useIntersectionObserver({
     threshold,
     rootMargin,
   });
 
   React.useEffect(() => {
-    onIntersect?.(isIntersecting);
+    onIntersect?.(isIntersecting, entry, slideIndex);
   }, [isIntersecting, onIntersect]);
 
   const getHeightStyle = (): CSSProperties => {
