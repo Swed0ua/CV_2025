@@ -8,6 +8,15 @@ import { useScrollDirection } from '../hooks/useScrollDirection';
 const MainScreen: React.FC = () => {
   const scrollDirection = useScrollDirection();
 
+  const scrollToTargetElement = (targerElement: HTMLElement | Element) => {
+    if (targerElement) {
+      targerElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   const getTargetSection = useCallback(
     (slideIndex: number, direction: 'up' | 'down') => {
       return direction === 'down'
@@ -34,40 +43,22 @@ const MainScreen: React.FC = () => {
         const intersectionRatio = entry.intersectionRatio;
 
         if (intersectionRatio >= 0.001 && intersectionRatio <= 0.1) {
-          entry.target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          });
+          scrollToTargetElement(entry.target);
         } else {
           if (slideIndex !== undefined) {
-            if (scrollDirection === 'down') {
-              const nextSection = MAIN_SLIDE_DATA[slideIndex + 1];
-              if (nextSection && nextSection.type === 'simple') {
-                const nextElement = document.getElementById(nextSection.id);
-                if (nextElement) {
-                  nextElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                  });
-                }
-              }
-            } else if (scrollDirection === 'up') {
-              const previousSection = MAIN_SLIDE_DATA[slideIndex - 1];
-              if (previousSection && previousSection.type === 'simple') {
-                const prevElement = document.getElementById(previousSection.id);
-                if (prevElement) {
-                  prevElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                  });
-                }
+            const targetSection = getTargetSection(slideIndex, scrollDirection);
+
+            if (shouldSwitchToSimple(targetSection)) {
+              const targetElement = document.getElementById(targetSection.id);
+              if (targetElement) {
+                scrollToTargetElement(targetElement);
               }
             }
           }
         }
       }
     },
-    [scrollDirection],
+    [scrollDirection, getTargetSection, shouldSwitchToSimple],
   );
 
   const renderSection = useCallback(
