@@ -15,7 +15,7 @@ export interface BaseSectionItem {
 
 export interface SlideSectionItem extends BaseSectionItem {
   type: 'slide';
-  threshold?: number;
+  threshold?: number | number[];
   rootMargin?: string;
   animationDelay?: number;
   animationDuration?: number;

@@ -1,49 +1,29 @@
 import React, { ReactNode, CSSProperties } from 'react';
+import { BaseSection } from '../BaseSection/BaseSection';
 import { HeightVariant } from '../../../types/slideSectionTypes';
 
 interface SimpleSectionProps {
   children: ReactNode;
   id?: string;
   height?: HeightVariant;
-  customHeight?: number;
+  customHeight?: string | number;
   className?: string;
   style?: CSSProperties;
+
+  // Intersection Observer
+  threshold?: number;
+  rootMargin?: string;
+  onIntersect?: (
+    // eslint-disable-next-line no-unused-vars
+    isIntersecting: boolean,
+    // eslint-disable-next-line no-unused-vars
+    entry?: IntersectionObserverEntry | null,
+    // eslint-disable-next-line no-unused-vars
+    slideIndex?: number,
+  ) => void;
+  slideIndex?: number;
 }
 
-export const SimpleSection: React.FC<SimpleSectionProps> = ({
-  children,
-  id,
-  height = 'full',
-  customHeight,
-  className = '',
-  style = {},
-}) => {
-  const getHeightStyle = (): CSSProperties => {
-    switch (height) {
-      case 'full':
-        return { minHeight: '100vh' };
-      case 'auto':
-        return { minHeight: 'auto' };
-      case 'custom':
-        return {
-          minHeight:
-            typeof customHeight === 'number'
-              ? `${customHeight}px`
-              : customHeight || 'auto',
-        };
-      default:
-        return { minHeight: '100vh' };
-    }
-  };
-
-  const combinedStyle: CSSProperties = {
-    ...getHeightStyle(),
-    ...style,
-  };
-
-  return (
-    <div id={id} className={className} style={combinedStyle}>
-      {children}
-    </div>
-  );
+export const SimpleSection: React.FC<SimpleSectionProps> = (props) => {
+  return <BaseSection {...props} as="div" showAnimation={false} />;
 };

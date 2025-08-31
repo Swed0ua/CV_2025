@@ -8,7 +8,7 @@ export const MAIN_SLIDE_DATA: SectionItem[] = [
     height: 'custom',
     customHeight: 1000,
     type: 'slide',
-    threshold: 0.01,
+    threshold: [0.001, 0.8],
     rootMargin: '0px',
   },
   {
@@ -25,14 +25,14 @@ export const MAIN_SLIDE_DATA: SectionItem[] = [
     height: 'full',
     type: 'simple',
     className: 'bg-gray-100',
-    style: { padding: '2rem', backgroundColor: 'red' },
+    style: { padding: '2rem', backgroundColor: 'yellow' },
   },
   {
     id: 'projects',
     component: <HeroSlide />,
     height: 'full',
     type: 'slide',
-    threshold: 0.1,
+    threshold: [0.001, 0.8],
     rootMargin: '0px',
   },
 ];
