@@ -1,37 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { HeaderItem } from './HeaderItem';
+import { useNavigation } from './NavigationContext';
 
 interface HeaderProps {
   className?: string;
   style?: React.CSSProperties;
-  // eslint-disable-next-line no-unused-vars
-  onTabChange?: (tabId: string) => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({
-  className = '',
-  style = {},
-  onTabChange,
-}) => {
-  const [activeTab, setActiveTab] = useState('about');
+const Header: React.FC<HeaderProps> = ({ className = '', style = {} }) => {
+  const { activeSection, scrollToSection, navigateToPage, navigationItems } =
+    useNavigation();
 
-  const navigationItems = [
-    { id: 'about', label: 'Про мене' },
-    { id: 'skills', label: 'Навички' },
-    { id: 'works', label: 'Роботи' },
-    { id: 'experience', label: 'Досвід' },
-    { id: 'contact', label: 'Контакти' },
-  ];
-
-  const handleTabClick = (tabId: string) => {
-    setActiveTab(tabId);
-    if (onTabChange) {
-      onTabChange(tabId);
+  const handleTabClick = (item: {
+    id: string;
+    type: 'section' | 'page';
+    path?: string;
+  }) => {
+    if (item.type === 'section') {
+      scrollToSection(item.id);
+    } else if (item.type === 'page' && item.path) {
+      navigateToPage(item.path);
     }
   };
 
   const combinedStyles: React.CSSProperties = {
-    position: 'relative',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
     width: '100%',
     height: '80px',
     display: 'flex',
@@ -42,6 +38,7 @@ export const Header: React.FC<HeaderProps> = ({
     backdropFilter: 'blur(10px)',
     WebkitBackdropFilter: 'blur(10px)',
     borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+    zIndex: 1000,
     ...style,
   };
 
@@ -61,8 +58,8 @@ export const Header: React.FC<HeaderProps> = ({
           {navigationItems.map((item) => (
             <li key={item.id}>
               <HeaderItem
-                onClick={() => handleTabClick(item.id)}
-                isActive={activeTab === item.id}
+                onClick={() => handleTabClick(item)}
+                isActive={activeSection === item.id}
               >
                 {item.label}
               </HeaderItem>
@@ -73,3 +70,6 @@ export const Header: React.FC<HeaderProps> = ({
     </header>
   );
 };
+
+export default Header;
+export { Header };

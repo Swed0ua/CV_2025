@@ -1,12 +1,21 @@
 import React from 'react';
 import MainScreen from './screens/MainScreen';
+import { GlassHeader } from './components/Header/GlassHeader';
+import { NavigationProvider } from './components/Header/NavigationContext';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <MainScreen />
-      {/* <iframe src='https://my.spline.design/digitalpass-NaEnQ17JYfnR13DFAK3rCZAy/' frameborder='0' width='100%' height='100%'></iframe> */}
-    </div>
+    <BrowserRouter>
+      <NavigationProvider>
+        <div className="App">
+          <GlassHeader />
+          <Routes>
+            <Route path="/" element={<MainScreen />} />
+          </Routes>
+        </div>
+      </NavigationProvider>
+    </BrowserRouter>
   );
 }
 
