@@ -1,4 +1,5 @@
 import React from 'react';
+import { LiquidButton } from '../../LiquidButton/LiquidButton';
 
 export const HeroSlide: React.FC = () => {
   return (
@@ -23,9 +24,11 @@ export const HeroSlide: React.FC = () => {
         Professional developer with passion for creating amazing digital
         experiences
       </p>
-      <button className="mt-8 px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-        Get Started
-      </button>
+      <div style={{}} id="liquid-button-container">
+        <LiquidButton onClick={() => alert('Get Started clicked!')}>
+          Get Started
+        </LiquidButton>
+      </div>
     </div>
   );
 };

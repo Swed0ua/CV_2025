@@ -6,6 +6,7 @@ export const wrapperHeaderStyles: CSSProperties = {
   height: '80px',
   maxHeight: '80px',
   margin: '0 auto',
+  padding: '0',
   zIndex: 1000,
   position: 'fixed',
   top: '10px',
