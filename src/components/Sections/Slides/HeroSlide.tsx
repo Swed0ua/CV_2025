@@ -2,7 +2,20 @@ import React from 'react';
 
 export const HeroSlide: React.FC = () => {
   return (
-    <div className="text-center">
+    <div className="text-center" style={{ position: 'relative' }}>
+      <img
+        src={
+          'https://i0.wp.com/picjumbo.com/wp-content/uploads/crazy-iridescent-smoke-abstract-background-free-image.jpeg?w=600&quality=80'
+        }
+        alt="logo"
+        style={{
+          width: '100%',
+          height: '100vh',
+          position: 'absolute',
+          top: '0',
+          left: '0',
+        }}
+      />
       <h1 className="text-6xl font-bold text-gray-800 mb-6">
         Welcome to My Portfolio
       </h1>

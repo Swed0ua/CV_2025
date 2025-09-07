@@ -11,7 +11,9 @@ export interface GlassContainerStyles {
 }
 
 export const defaultGlassStyles: CSSProperties = {
-  backdropFilter: 'blur(10px) saturate(180%)',
+  backdropFilter:
+    // 'blur(10px) saturate(180%) contrast(120%) brightness(110%) hue-rotate(10deg)',
+    'blur(10px) saturate(180%)',
   backgroundColor: 'rgba(255, 255, 255, 0.1)',
   border: '1px solid rgba(255, 255, 255, 0.2)',
   boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.3)',

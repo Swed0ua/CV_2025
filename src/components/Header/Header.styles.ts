@@ -1,0 +1,16 @@
+import { CSSProperties } from 'react';
+
+export const wrapperHeaderStyles: CSSProperties = {
+  width: '90%',
+  maxWidth: '100%',
+  height: '80px',
+  maxHeight: '80px',
+  margin: '0 auto',
+  zIndex: 1000,
+  position: 'fixed',
+  top: '10px',
+  left: '50%',
+  transform: 'translateX(-50%) ',
+  borderRadius: '20px',
+  overflow: 'hidden',
+};
