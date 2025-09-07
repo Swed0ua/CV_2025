@@ -9,7 +9,7 @@ const MainScreen: React.FC = () => {
   const scrollDirection = useScrollDirection();
   const isScrollingRef = useRef(false);
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const scrollTimeMs = 100;
+  const scrollTimeMs = 50;
 
   const scrollToTargetElement = (targerElement: HTMLElement | Element) => {
     if (targerElement && !isScrollingRef.current) {
