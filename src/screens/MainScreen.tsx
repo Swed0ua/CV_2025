@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { MAIN_SLIDE_DATA } from '../constants/slideData';
 import { SlideSection } from '../components/Sections/SlideSection/SlideSection';
 import { SectionItem } from '../types/slideSectionTypes';
@@ -7,13 +7,21 @@ import { useScrollDirection } from '../hooks/useScrollDirection';
 
 const MainScreen: React.FC = () => {
   const scrollDirection = useScrollDirection();
+  const isScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const scrollTimeMs = 100;
 
   const scrollToTargetElement = (targerElement: HTMLElement | Element) => {
-    if (targerElement) {
+    if (targerElement && !isScrollingRef.current) {
+      isScrollingRef.current = true;
       targerElement.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
+
+      setTimeout(() => {
+        isScrollingRef.current = false;
+      }, scrollTimeMs);
     }
   };
 
@@ -39,23 +47,34 @@ const MainScreen: React.FC = () => {
       entry?: IntersectionObserverEntry | null,
       slideIndex?: number,
     ) => {
+      if (isScrollingRef.current) return;
+
       if (isIntersecting && entry) {
         const intersectionRatio = entry.intersectionRatio;
 
-        if (intersectionRatio >= 0.001 && intersectionRatio <= 0.1) {
-          scrollToTargetElement(entry.target);
-        } else {
-          if (slideIndex !== undefined) {
-            const targetSection = getTargetSection(slideIndex, scrollDirection);
+        if (scrollTimeoutRef.current) {
+          clearTimeout(scrollTimeoutRef.current);
+        }
 
-            if (shouldSwitchToSimple(targetSection)) {
-              const targetElement = document.getElementById(targetSection.id);
-              if (targetElement) {
-                scrollToTargetElement(targetElement);
+        scrollTimeoutRef.current = setTimeout(() => {
+          if (intersectionRatio >= 0.001 && intersectionRatio <= 0.1) {
+            scrollToTargetElement(entry.target);
+          } else {
+            if (slideIndex !== undefined) {
+              const targetSection = getTargetSection(
+                slideIndex,
+                scrollDirection,
+              );
+
+              if (shouldSwitchToSimple(targetSection)) {
+                const targetElement = document.getElementById(targetSection.id);
+                if (targetElement) {
+                  scrollToTargetElement(targetElement);
+                }
               }
             }
           }
-        }
+        }, scrollTimeMs);
       }
     },
     [scrollDirection, getTargetSection, shouldSwitchToSimple],
