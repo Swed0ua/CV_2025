@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Button.css';
 
 interface ButtonProps {
@@ -8,6 +8,7 @@ interface ButtonProps {
   style?: React.CSSProperties;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
+  pulsePeriodTime?: number | null;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -17,8 +18,34 @@ export const Button: React.FC<ButtonProps> = ({
   style = {},
   disabled = false,
   type = 'button',
+  pulsePeriodTime = null,
 }) => {
-  const combinedClassName = `btnDefault ${className}`.trim();
+  const [isPulsing, setIsPulsing] = useState(false);
+
+  useEffect(() => {
+    if (pulsePeriodTime && !disabled) {
+      let timeoutId: ReturnType<typeof setTimeout>;
+
+      const interval = setInterval(() => {
+        setIsPulsing(true);
+
+        timeoutId = setTimeout(() => {
+          setIsPulsing(false);
+        }, 1000);
+      }, pulsePeriodTime);
+
+      return () => {
+        clearInterval(interval);
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+      };
+    }
+  }, [pulsePeriodTime, disabled]);
+
+  const combinedClassName = `btnDefault ${className} ${
+    isPulsing ? 'btnPulse' : ''
+  }`.trim();
 
   return (
     <button

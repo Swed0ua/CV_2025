@@ -85,6 +85,7 @@ const WelcomeScreen: React.FC = () => {
               width: 'fit-content',
               padding: '16px 70px',
             }}
+            pulsePeriodTime={10000}
           >
             Contact me
           </Button>
