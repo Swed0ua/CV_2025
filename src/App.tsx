@@ -6,6 +6,7 @@ import {
   NavigationProvider,
   useNavigation,
 } from './contexts/NavigationContext';
+import { LocalizationProvider } from './i18n';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { getScreenType, ScreenType } from './constants/screenBreakpoints';
 
@@ -41,9 +42,11 @@ const AppContent: React.FC = () => {
 function App() {
   return (
     <BrowserRouter>
-      <NavigationProvider>
-        <AppContent />
-      </NavigationProvider>
+      <LocalizationProvider>
+        <NavigationProvider>
+          <AppContent />
+        </NavigationProvider>
+      </LocalizationProvider>
     </BrowserRouter>
   );
 }
