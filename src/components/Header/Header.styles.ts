@@ -17,21 +17,13 @@ export const wrapperHeaderStyles: CSSProperties = {
 };
 
 export const headerStyles: CSSProperties = {
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  right: 0,
+  position: 'relative',
   width: '100%',
-  height: '80px',
+  height: '100%',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
   padding: '0 20px',
-  background: 'rgba(0, 0, 0, 0.1)',
-  backdropFilter: 'blur(10px)',
-  WebkitBackdropFilter: 'blur(10px)',
-  borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-  zIndex: 1000,
 };
 
 export const logoStyles: CSSProperties = {
@@ -40,13 +32,45 @@ export const logoStyles: CSSProperties = {
   transition: 'opacity 0.3s ease',
 };
 
+export const navWrapperStyles: CSSProperties = {
+  flex: 1,
+  display: 'flex',
+  justifyContent: 'center',
+};
+
 export const navStyles: CSSProperties = {
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'center',
   gap: '16px',
   listStyle: 'none',
   margin: 0,
   padding: 0,
+};
+
+// Styles for medium screen (< 990px)
+export const mediumScreenNavStyles: CSSProperties = {
+  ...navStyles,
+  display: 'none',
+};
+
+export const burgerIconStyles: CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-around',
+  width: '30px',
+  height: '30px',
+  background: 'transparent',
+  border: 'none',
+  cursor: 'pointer',
+  padding: 0,
+};
+
+export const burgerLineStyles: CSSProperties = {
+  width: '100%',
+  height: '3px',
+  backgroundColor: 'white',
+  borderRadius: '2px',
 };
 
 export const spacerStyles: CSSProperties = {

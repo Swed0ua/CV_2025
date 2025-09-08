@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { HeaderItem } from './HeaderItem';
 import { useNavigation } from '../../contexts/NavigationContext';
+import { getScreenType, ScreenType } from '../../constants/screenBreakpoints';
 import {
   headerStyles,
   logoStyles,
   navStyles,
-  spacerStyles,
+  navWrapperStyles,
+  burgerIconStyles,
+  burgerLineStyles,
 } from './Header.styles';
 
 interface HeaderProps {
@@ -14,13 +17,21 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ className = '', style = {} }) => {
-  const {
-    // activeSection,
-    scrollToSection,
-    navigateToPage,
-    navigationItems,
-    getActiveItemId,
-  } = useNavigation();
+  const [screenType, setScreenType] = useState<ScreenType>('large');
+
+  const { scrollToSection, navigateToPage, navigationItems, getActiveItemId } =
+    useNavigation();
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setScreenType(getScreenType(window.innerWidth));
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   const handleTabClick = (item: {
     id: string;
@@ -36,6 +47,11 @@ const Header: React.FC<HeaderProps> = ({ className = '', style = {} }) => {
 
   const handleLogoClick = () => {
     navigateToPage('/');
+  };
+
+  const handleBurgerClick = () => {
+    // eslint-disable-next-line no-console
+    console.log(`Burger menu clicked for ${screenType} screen`);
   };
 
   const combinedStyles: React.CSSProperties = {
@@ -58,22 +74,30 @@ const Header: React.FC<HeaderProps> = ({ className = '', style = {} }) => {
         }}
       />
 
-      <nav>
-        <ul style={navStyles}>
-          {navigationItems.map((item) => (
-            <li key={item.id}>
-              <HeaderItem
-                onClick={() => handleTabClick(item)}
-                isActive={getActiveItemId() === item.id}
-              >
-                {item.label}
-              </HeaderItem>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      {screenType === 'large' && (
+        <nav style={navWrapperStyles}>
+          <ul style={navStyles}>
+            {navigationItems.map((item) => (
+              <li key={item.id}>
+                <HeaderItem
+                  onClick={() => handleTabClick(item)}
+                  isActive={getActiveItemId() === item.id}
+                >
+                  {item.label}
+                </HeaderItem>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
 
-      <div style={spacerStyles} />
+      {screenType !== 'large' && (
+        <button style={burgerIconStyles} onClick={handleBurgerClick}>
+          <span style={burgerLineStyles} />
+          <span style={burgerLineStyles} />
+          <span style={burgerLineStyles} />
+        </button>
+      )}
     </header>
   );
 };
