@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MainScreen from './screens/MainScreen';
+import MainScreen from './pages/MainScreen';
 import { GlassHeader } from './components/Header/GlassHeader';
 import { BurgerMenu } from './components/BurgerMenu/BurgerMenu';
 import {

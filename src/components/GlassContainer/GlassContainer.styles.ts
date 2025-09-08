@@ -14,7 +14,7 @@ export const defaultGlassStyles: CSSProperties = {
   backdropFilter: 'blur(10px) saturate(180%)',
   backgroundColor: 'rgba(255, 255, 255, 0.1)',
   border: '1px solid rgba(255, 255, 255, 0.2)',
-  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.3)',
+  boxShadow: '0 8px 32px 0 rgb(27 32 95 / 20%)',
 };
 
 export const createGlassStyles = (
