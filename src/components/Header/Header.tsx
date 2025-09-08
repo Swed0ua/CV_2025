@@ -1,6 +1,6 @@
 import React from 'react';
 import { HeaderItem } from './HeaderItem';
-import { useNavigation } from './NavigationContext';
+import { useNavigation } from '../../contexts/NavigationContext';
 
 interface HeaderProps {
   className?: string;
@@ -8,8 +8,13 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ className = '', style = {} }) => {
-  const { activeSection, scrollToSection, navigateToPage, navigationItems } =
-    useNavigation();
+  const {
+    // activeSection,
+    scrollToSection,
+    navigateToPage,
+    navigationItems,
+    getActiveItemId,
+  } = useNavigation();
 
   const handleTabClick = (item: {
     id: string;
@@ -59,7 +64,7 @@ const Header: React.FC<HeaderProps> = ({ className = '', style = {} }) => {
             <li key={item.id}>
               <HeaderItem
                 onClick={() => handleTabClick(item)}
-                isActive={activeSection === item.id}
+                isActive={getActiveItemId() === item.id}
               >
                 {item.label}
               </HeaderItem>

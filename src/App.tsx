@@ -1,7 +1,7 @@
 import React from 'react';
 import MainScreen from './screens/MainScreen';
 import { GlassHeader } from './components/Header/GlassHeader';
-import { NavigationProvider } from './components/Header/NavigationContext';
+import { NavigationProvider } from './contexts/NavigationContext';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {

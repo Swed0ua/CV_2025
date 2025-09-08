@@ -1,4 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import {
+  baseStyles,
+  getActiveStyles,
+  headerItemCSS,
+} from './HeaderItem.styles';
 
 interface HeaderItemProps {
   children: React.ReactNode;
@@ -15,67 +20,16 @@ export const HeaderItem: React.FC<HeaderItemProps> = ({
   className = '',
   style = {},
 }) => {
-  const baseStyles: React.CSSProperties = {
-    position: 'relative',
-    display: 'inline-block',
-    padding: '12px 24px',
-    borderRadius: '12px',
-    cursor: 'pointer',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
-    background: 'rgba(255, 255, 255, 0.05)',
-    backdropFilter: 'blur(10px)',
-    WebkitBackdropFilter: 'blur(10px)',
-    color: 'white',
-    fontSize: '16px',
-    fontWeight: '500',
-    textAlign: 'center',
-    transition: 'all 0.3s ease',
-    textDecoration: 'none',
-    outline: 'none',
-    ...style,
-  };
+  // Add CSS styles for hover
+  useEffect(() => {
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = headerItemCSS;
+    document.head.appendChild(styleSheet);
 
-  const activeStyles: React.CSSProperties = isActive
-    ? {
-        boxShadow: `
-      inset 0 2px 8px rgba(255, 255, 255, 0.3),
-      inset 0 -1px 2px rgba(0, 0, 0, 0.1),
-      0 4px 16px rgba(255, 255, 255, 0.1)
-    `,
-        border: '1px solid rgba(255, 255, 255, 0.4)',
-        background: 'rgba(255, 255, 255, 0.1)',
-      }
-    : {
-        boxShadow: `
-      inset 0 1px 3px rgba(255, 255, 255, 0.1),
-      inset 0 -1px 1px rgba(0, 0, 0, 0.05),
-      0 2px 8px rgba(0, 0, 0, 0.1)
-    `,
-      };
-
-  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isActive) {
-      e.currentTarget.style.boxShadow = `
-        inset 0 2px 6px rgba(255, 255, 255, 0.2),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.1),
-        0 4px 12px rgba(255, 255, 255, 0.15)
-      `;
-      e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.3)';
-      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-    }
-  };
-
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isActive) {
-      e.currentTarget.style.boxShadow = `
-        inset 0 1px 3px rgba(255, 255, 255, 0.1),
-        inset 0 -1px 1px rgba(0, 0, 0, 0.05),
-        0 2px 8px rgba(0, 0, 0, 0.1)
-      `;
-      e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.2)';
-      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-    }
-  };
+    return () => {
+      document.head.removeChild(styleSheet);
+    };
+  }, []);
 
   const handleClick = () => {
     if (onClick) {
@@ -85,14 +39,13 @@ export const HeaderItem: React.FC<HeaderItemProps> = ({
 
   return (
     <div
-      className={`header-item ${className}`}
+      className={`header-item ${isActive ? 'active' : ''} ${className}`}
       style={{
         ...baseStyles,
-        ...activeStyles,
+        ...getActiveStyles(isActive),
+        ...style,
       }}
       onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
