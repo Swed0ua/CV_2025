@@ -1,6 +1,12 @@
 import React from 'react';
 import { HeaderItem } from './HeaderItem';
 import { useNavigation } from '../../contexts/NavigationContext';
+import {
+  headerStyles,
+  logoStyles,
+  navStyles,
+  spacerStyles,
+} from './Header.styles';
 
 interface HeaderProps {
   className?: string;
@@ -28,36 +34,30 @@ const Header: React.FC<HeaderProps> = ({ className = '', style = {} }) => {
     }
   };
 
-  const combinedStyles: React.CSSProperties = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    width: '100%',
-    height: '80px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '0 20px',
-    background: 'rgba(0, 0, 0, 0.1)',
-    backdropFilter: 'blur(10px)',
-    WebkitBackdropFilter: 'blur(10px)',
-    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-    zIndex: 1000,
-    ...style,
+  const handleLogoClick = () => {
+    navigateToPage('/');
   };
 
-  const navStyles: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '16px',
-    listStyle: 'none',
-    margin: 0,
-    padding: 0,
+  const combinedStyles: React.CSSProperties = {
+    ...headerStyles,
+    ...style,
   };
 
   return (
     <header className={`header ${className}`} style={combinedStyles}>
+      <img
+        src="/images/My_logo_white.png"
+        alt="Logo"
+        style={logoStyles}
+        onClick={handleLogoClick}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.opacity = '0.8';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.opacity = '1';
+        }}
+      />
+
       <nav>
         <ul style={navStyles}>
           {navigationItems.map((item) => (
@@ -72,6 +72,8 @@ const Header: React.FC<HeaderProps> = ({ className = '', style = {} }) => {
           ))}
         </ul>
       </nav>
+
+      <div style={spacerStyles} />
     </header>
   );
 };
