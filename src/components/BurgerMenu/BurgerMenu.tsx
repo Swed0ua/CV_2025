@@ -1,7 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { GlassContainer } from '../GlassContainer/GlassContainer';
+import { HeaderItem } from '../Header/HeaderItem';
+import { useNavigation } from '../../contexts/NavigationContext';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { getScreenType, ScreenType } from '../../constants/screenBreakpoints';
+import {
+  burgerMenuOverlayStyles,
+  burgerMenuContainerStyles,
+  closeButtonStyles,
+  closeIconContainerStyles,
+  closeIconLineFirstStyles,
+  closeIconLineSecondStyles,
+  menuContentStyles,
+  menuNavStyles,
+  menuListStyles,
+  menuListItemStyles,
+  menuItemStyles,
+} from './BurgerMenu.styles';
 
 interface BurgerMenuProps {
   isOpen: boolean;
@@ -11,6 +26,9 @@ interface BurgerMenuProps {
 export const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [screenType, setScreenType] = useState<ScreenType>('large');
+
+  const { scrollToSection, navigateToPage, navigationItems, getActiveItemId } =
+    useNavigation();
 
   useEffect(() => {
     if (isOpen) {
@@ -42,32 +60,71 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
     }
   };
 
+  const handleTabClick = (item: {
+    id: string;
+    type: 'section' | 'page';
+    path?: string;
+  }) => {
+    if (item.type === 'section') {
+      scrollToSection(item.id);
+    } else if (item.type === 'page' && item.path) {
+      navigateToPage(item.path);
+    }
+    onClose();
+  };
+
   if (!isOpen && !isVisible) return null;
 
   return (
     <div
       style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh',
-        zIndex: 9999,
+        ...burgerMenuOverlayStyles,
         opacity: isVisible ? 1 : 0,
         transition: 'opacity 0.15s ease-in-out',
       }}
       onClick={handleOverlayClick}
     >
       <GlassContainer
-        style={{
-          width: '100%',
-          height: '100%',
-        }}
+        style={burgerMenuContainerStyles}
         glassStyles={{
           borderRadius: '0',
         }}
       >
-        <></>
+        <button
+          onClick={onClose}
+          style={closeButtonStyles}
+          onMouseEnter={(e) => {
+            Object.assign(e.currentTarget.style, closeButtonStyles, {
+              background: 'rgba(255, 255, 255, 0.2)',
+            });
+          }}
+          onMouseLeave={(e) => {
+            Object.assign(e.currentTarget.style, closeButtonStyles);
+          }}
+        >
+          <div style={closeIconContainerStyles}>
+            <span style={closeIconLineFirstStyles} />
+            <span style={closeIconLineSecondStyles} />
+          </div>
+        </button>
+
+        <div style={menuContentStyles}>
+          <nav style={menuNavStyles}>
+            <ul style={menuListStyles}>
+              {navigationItems.map((item) => (
+                <li key={item.id} style={menuListItemStyles}>
+                  <HeaderItem
+                    onClick={() => handleTabClick(item)}
+                    isActive={getActiveItemId() === item.id}
+                    style={menuItemStyles}
+                  >
+                    {item.label}
+                  </HeaderItem>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </GlassContainer>
     </div>
   );
