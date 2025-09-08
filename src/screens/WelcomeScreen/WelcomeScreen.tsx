@@ -12,6 +12,7 @@ import {
   textInfoBlockStyles,
 } from './WelcomeScreen.styles';
 import Button from '../../components/Button';
+import { useLocalization } from '../../i18n';
 import './WelcomeScreen.css';
 
 declare global {
@@ -23,6 +24,7 @@ declare global {
 
 const WelcomeScreen: React.FC = () => {
   const vantaRef = useRef<HTMLDivElement>(null);
+  const { t } = useLocalization();
 
   useEffect(() => {
     if (vantaRef.current && window.VANTA) {
@@ -63,20 +65,21 @@ const WelcomeScreen: React.FC = () => {
               marginBottom: '10px',
             }}
           >
-            Full-stack Developer
+            {t('welcome.title')}
           </p>
           <div className="nameText" style={nameTextStyles}>
-            SHMAGALA ANDRII
+            {t('welcome.name')}
           </div>
           <p
             className="textInfoBlock_desc"
             style={{ opacity: 0.4, marginTop: '30px' }}
           >
             <em style={{ fontStyle: 'italic', opacity: 0.8 }}>
-              2+ years experience
+              {t('welcome.experience')}
             </em>{' '}
-            in <strong>mobile apps</strong>, <strong>web dev</strong>,{' '}
-            <strong>Telegram bots</strong>, <strong>backend</strong> solutions.
+            <span
+              dangerouslySetInnerHTML={{ __html: t('welcome.description') }}
+            />
           </p>
           <Button
             style={{
@@ -87,7 +90,7 @@ const WelcomeScreen: React.FC = () => {
             pulsePeriodTime={10000}
             className="textInfoBlock__btnDefault"
           >
-            Contact me
+            {t('welcome.buttonText')}
           </Button>
         </div>
       </div>
@@ -101,20 +104,12 @@ const WelcomeScreen: React.FC = () => {
 
       <div className="bottomCornerBlock" style={bottomCornerBlockStyles}>
         <div style={leftSectionStyles}>
-          <div style={sectionTitleStyles}>EXPERTISE</div>
-          <div style={sectionTextStyles}>
-            Full-stack developer with extensive experience across multiple
-            technologies. Always ready to embrace new challenges and learn
-            cutting-edge solutions.
-          </div>
+          <div style={sectionTitleStyles}>{t('welcome.expertiseTitle')}</div>
+          <div style={sectionTextStyles}>{t('welcome.expertiseText')}</div>
         </div>
         <div style={rightSectionStyles}>
-          <div style={sectionTitleStyles}>PROJECTS</div>
-          <div style={sectionTextStyles}>
-            Diverse portfolio spanning web applications, mobile solutions, and
-            innovative tech implementations. Each project showcases unique
-            problem-solving approaches.
-          </div>
+          <div style={sectionTitleStyles}>{t('welcome.projectsTitle')}</div>
+          <div style={sectionTextStyles}>{t('welcome.projectsText')}</div>
         </div>
       </div>
     </div>
