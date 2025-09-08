@@ -12,6 +12,7 @@ import {
   textInfoBlockStyles,
 } from './WelcomeScreen.styles';
 import Button from '../../components/Button';
+import './WelcomeScreen.css';
 
 declare global {
   // eslint-disable-next-line no-unused-vars
@@ -64,20 +65,18 @@ const WelcomeScreen: React.FC = () => {
           >
             Full-stack Developer
           </p>
-          <div style={nameTextStyles}>SHMAGALA ANDRII</div>
+          <div className="nameText" style={nameTextStyles}>
+            SHMAGALA ANDRII
+          </div>
           <p
             className="textInfoBlock_desc"
             style={{ opacity: 0.4, marginTop: '30px' }}
           >
             <em style={{ fontStyle: 'italic', opacity: 0.8 }}>
-              Working in teams and independently for over 2 years
+              2+ years experience
             </em>{' '}
-            on various projects. Experienced in{' '}
-            <strong>mobile applications</strong>,{' '}
-            <strong>web development</strong>,{' '}
-            <strong>complex integrations</strong>,{' '}
-            <strong>Telegram bots</strong>, and developing{' '}
-            <strong>scalable backend solutions</strong>.
+            in <strong>mobile apps</strong>, <strong>web dev</strong>,{' '}
+            <strong>Telegram bots</strong>, <strong>backend</strong> solutions.
           </p>
           <Button
             style={{
@@ -86,6 +85,7 @@ const WelcomeScreen: React.FC = () => {
               padding: '16px 70px',
             }}
             pulsePeriodTime={10000}
+            className="textInfoBlock__btnDefault"
           >
             Contact me
           </Button>
@@ -94,13 +94,12 @@ const WelcomeScreen: React.FC = () => {
       <iframe
         src="https://my.spline.design/digitalpass-NaEnQ17JYfnR13DFAK3rCZAy/"
         frameBorder="0"
-        width="150%"
-        height="150%"
+        className="splineIframe"
         style={splineIframeStyles}
         title="Spline 3D Design"
       />
 
-      <div style={bottomCornerBlockStyles}>
+      <div className="bottomCornerBlock" style={bottomCornerBlockStyles}>
         <div style={leftSectionStyles}>
           <div style={sectionTitleStyles}>EXPERTISE</div>
           <div style={sectionTextStyles}>
