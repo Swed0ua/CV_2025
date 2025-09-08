@@ -11,6 +11,7 @@ import {
   textInfoBlockWrapperStyles,
   textInfoBlockStyles,
 } from './WelcomeScreen.styles';
+import Button from '../../components/Button';
 
 declare global {
   // eslint-disable-next-line no-unused-vars
@@ -53,17 +54,40 @@ const WelcomeScreen: React.FC = () => {
         style={textInfoBlockWrapperStyles}
       >
         <div className="WS__textInfoBlock" style={textInfoBlockStyles}>
-          <p>Full-stack developer</p>
+          <p
+            style={{
+              fontSize: '18px',
+              fontWeight: '600',
+              opacity: 0.8,
+              marginBottom: '10px',
+            }}
+          >
+            Full-stack Developer
+          </p>
           <div style={nameTextStyles}>SHMAGALA ANDRII</div>
           <p
             className="textInfoBlock_desc"
             style={{ opacity: 0.4, marginTop: '30px' }}
           >
-            Working in teams and independently for over 2 years on various
-            projects. Experienced in mobile applications, web development,
-            complex integrations, Telegram bots, and developing scalable backend
-            solutions.
+            <em style={{ fontStyle: 'italic', opacity: 0.8 }}>
+              Working in teams and independently for over 2 years
+            </em>{' '}
+            on various projects. Experienced in{' '}
+            <strong>mobile applications</strong>,{' '}
+            <strong>web development</strong>,{' '}
+            <strong>complex integrations</strong>,{' '}
+            <strong>Telegram bots</strong>, and developing{' '}
+            <strong>scalable backend solutions</strong>.
           </p>
+          <Button
+            style={{
+              marginTop: '30px',
+              width: 'fit-content',
+              padding: '16px 70px',
+            }}
+          >
+            Contact me
+          </Button>
         </div>
       </div>
       <iframe
@@ -75,7 +99,6 @@ const WelcomeScreen: React.FC = () => {
         title="Spline 3D Design"
       />
 
-      {/* <div style={nameTextStyles}>SHMAGALA ANDRII</div> */}
       <div style={bottomCornerBlockStyles}>
         <div style={leftSectionStyles}>
           <div style={sectionTitleStyles}>EXPERTISE</div>
