@@ -25,5 +25,5 @@ interface SimpleSectionProps {
 }
 
 export const SimpleSection: React.FC<SimpleSectionProps> = (props) => {
-  return <BaseSection {...props} as="div" showAnimation={false} />;
+  return <BaseSection {...props} as="div" />;
 };

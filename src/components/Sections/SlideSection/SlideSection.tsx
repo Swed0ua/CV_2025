@@ -29,5 +29,5 @@ interface SlideSectionProps {
 }
 
 export const SlideSection: React.FC<SlideSectionProps> = (props) => {
-  return <BaseSection {...props} as="section" showAnimation={true} />;
+  return <BaseSection {...props} as="section" />;
 };
