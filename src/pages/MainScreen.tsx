@@ -7,6 +7,7 @@ const MainScreen: React.FC = () => {
   const isScrollingRef = useRef(false);
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const scrollTimeMs = 50;
+  const lastScrollTimeRef = useRef(0);
 
   const scrollToTargetElement = (targetElement: HTMLElement | Element) => {
     if (targetElement && !isScrollingRef.current) {
@@ -30,6 +31,11 @@ const MainScreen: React.FC = () => {
 
     if (isIntersecting && entry) {
       const intersectionRatio = entry.intersectionRatio;
+      const now = Date.now();
+
+      if (now - lastScrollTimeRef.current < 200) {
+        return;
+      }
 
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
@@ -37,6 +43,7 @@ const MainScreen: React.FC = () => {
 
       scrollTimeoutRef.current = setTimeout(() => {
         if (intersectionRatio >= 0.01) {
+          lastScrollTimeRef.current = Date.now();
           scrollToTargetElement(entry.target);
         }
       }, scrollTimeMs);
@@ -51,7 +58,7 @@ const MainScreen: React.FC = () => {
         height={section.height}
         customHeight={section.customHeight}
         className={section.className}
-        threshold={0.01}
+        threshold={0.05}
         onIntersect={handleSectionIntersect}
       >
         {section.component}
