@@ -76,3 +76,17 @@ export const burgerLineStyles: CSSProperties = {
 export const spacerStyles: CSSProperties = {
   width: '40px',
 };
+
+export const cursorGlowStyles: CSSProperties = {
+  position: 'absolute',
+  width: '900px',
+  height: '900px',
+  borderRadius: '50%',
+  background:
+    'radial-gradient(circle, rgba(255, 255, 0, 0.1) 0%, rgba(255, 255, 0, 0.005) 30%, transparent 70%)',
+  pointerEvents: 'none',
+  zIndex: 1,
+  transition: 'opacity 0.2s ease-out, transform 0.005s ease-out',
+  transform: 'translate(-50%, -50%)',
+  opacity: 0,
+};

@@ -9,6 +9,7 @@ import {
   navWrapperStyles,
   burgerIconStyles,
   burgerLineStyles,
+  cursorGlowStyles,
 } from './Header.styles';
 
 interface HeaderProps {
@@ -18,6 +19,9 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ className = '', style = {} }) => {
   const [screenType, setScreenType] = useState<ScreenType>('large');
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [isMouseOver, setIsMouseOver] = useState(false);
+  const [lastUpdateTime, setLastUpdateTime] = useState(0);
 
   const {
     scrollToSection,
@@ -58,13 +62,58 @@ const Header: React.FC<HeaderProps> = ({ className = '', style = {} }) => {
     toggleBurgerMenu();
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const now = Date.now();
+    // Throttling - 16ms (60fps)
+    if (now - lastUpdateTime > 16) {
+      setLastUpdateTime(now);
+      const target = e.currentTarget;
+      const clientX = e.clientX;
+      const clientY = e.clientY;
+
+      requestAnimationFrame(() => {
+        if (target) {
+          const rect = target.getBoundingClientRect();
+          setCursorPosition({
+            x: clientX - rect.left,
+            y: clientY - rect.top,
+          });
+        }
+      });
+    }
+  };
+
+  const handleMouseEnter = () => {
+    setIsMouseOver(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsMouseOver(false);
+  };
+
   const combinedStyles: React.CSSProperties = {
     ...headerStyles,
     ...style,
   };
 
   return (
-    <header className={`header ${className}`} style={combinedStyles}>
+    <header
+      className={`header ${className}`}
+      style={combinedStyles}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Cursor glow effect */}
+      <div
+        style={{
+          ...cursorGlowStyles,
+          left: cursorPosition.x,
+          top: cursorPosition.y,
+          opacity: isMouseOver ? 1 : 0,
+        }}
+      />
+
       <img
         src="/images/My_logo_white.png"
         alt="Logo"
