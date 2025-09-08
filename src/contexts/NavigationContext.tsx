@@ -25,6 +25,14 @@ interface NavigationContextType {
   navigateToPage: (path: string) => void;
   navigationItems: NavigationItem[];
   getActiveItemId: () => string;
+  // Burger menu state
+  isBurgerMenuOpen: boolean;
+  // eslint-disable-next-line no-unused-vars
+  openBurgerMenu: () => void;
+  // eslint-disable-next-line no-unused-vars
+  closeBurgerMenu: () => void;
+  // eslint-disable-next-line no-unused-vars
+  toggleBurgerMenu: () => void;
 }
 
 const NavigationContext = createContext<NavigationContextType | undefined>(
@@ -40,6 +48,7 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({
 }) => {
   const [activeSection, setActiveSection] = useState('');
   const [hasActiveSection, setHasActiveSection] = useState(false);
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -137,6 +146,19 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({
     navigate(path);
   };
 
+  // Burger menu functions
+  const openBurgerMenu = () => {
+    setIsBurgerMenuOpen(true);
+  };
+
+  const closeBurgerMenu = () => {
+    setIsBurgerMenuOpen(false);
+  };
+
+  const toggleBurgerMenu = () => {
+    setIsBurgerMenuOpen(!isBurgerMenuOpen);
+  };
+
   useEffect(() => {
     const sections = navigationItems
       .filter((item) => item.type === 'section')
@@ -177,6 +199,7 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({
   useEffect(() => {
     setHasActiveSection(false);
     setActiveSection('');
+    setIsBurgerMenuOpen(false);
   }, [location.pathname]);
 
   const value: NavigationContextType = {
@@ -186,6 +209,10 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({
     navigateToPage,
     navigationItems,
     getActiveItemId,
+    isBurgerMenuOpen,
+    openBurgerMenu,
+    closeBurgerMenu,
+    toggleBurgerMenu,
   };
 
   return (

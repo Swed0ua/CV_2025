@@ -19,8 +19,13 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ className = '', style = {} }) => {
   const [screenType, setScreenType] = useState<ScreenType>('large');
 
-  const { scrollToSection, navigateToPage, navigationItems, getActiveItemId } =
-    useNavigation();
+  const {
+    scrollToSection,
+    navigateToPage,
+    navigationItems,
+    getActiveItemId,
+    toggleBurgerMenu,
+  } = useNavigation();
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -50,8 +55,7 @@ const Header: React.FC<HeaderProps> = ({ className = '', style = {} }) => {
   };
 
   const handleBurgerClick = () => {
-    // eslint-disable-next-line no-console
-    console.log(`Burger menu clicked for ${screenType} screen`);
+    toggleBurgerMenu();
   };
 
   const combinedStyles: React.CSSProperties = {
