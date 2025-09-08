@@ -83,7 +83,7 @@ export const cursorGlowStyles: CSSProperties = {
   height: '900px',
   borderRadius: '50%',
   background:
-    'radial-gradient(circle, rgba(255, 255, 0, 0.1) 0%, rgba(255, 255, 0, 0.005) 30%, transparent 70%)',
+    'radial-gradient(circle, rgba(104, 129, 255, 0.1) 0%, rgba(104, 129, 255, 0.005) 30%, transparent 70%)',
   pointerEvents: 'none',
   zIndex: 1,
   transition: 'opacity 0.2s ease-out, transform 0.005s ease-out',
