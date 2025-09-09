@@ -74,7 +74,7 @@ const AboutMe: React.FC = () => {
           className={`aboutMeText ${textAnimated ? 'textAnimated' : ''}`}
           style={aboutMeTextStyles}
         >
-          <p>
+          <p style={{ width: '80%' }}>
             Я –{' '}
             <strong style={{ color: '#A5B4FF' }}>Full Stack розробник</strong>{' '}
             із 2+ роками досвіду у створенні сучасних веб-додатків та мобільних
@@ -92,7 +92,7 @@ const AboutMe: React.FC = () => {
             <strong style={{ color: '#A5B4FF' }}>Flask</strong> та{' '}
             <strong style={{ color: '#A5B4FF' }}>Django</strong>.
           </p>
-          <p>
+          <p style={{ width: '80%' }}>
             Керую проектами від архітектурного планування до деплою та випуску в
             реліз. Досвідчений у інтеграції API, автоматизації процесів та
             роботі з різними базами даних.

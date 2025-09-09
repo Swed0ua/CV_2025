@@ -4,7 +4,7 @@ export const aboutMeContainerStyles: CSSProperties = {
   width: '100%',
   height: '100vh',
   background:
-    'linear-gradient(-45deg, #22201b,rgb(63, 34, 34),rgb(22, 14, 63), #181212)',
+    'linear-gradient(-45deg,rgb(29, 28, 25),rgb(35, 19, 19),rgb(9, 5, 29), #181212)',
   backgroundSize: '400% 400%',
   animation: 'gradientShift 35s ease infinite',
   display: 'flex',
@@ -41,7 +41,10 @@ export const aboutMeTextStyles: CSSProperties = {
   fontSize: '1.2rem',
   lineHeight: '1.6',
   opacity: 0.9,
-  maxWidth: '800px',
+  maxWidth: '1000px',
   position: 'relative',
   padding: '2rem',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
 };
