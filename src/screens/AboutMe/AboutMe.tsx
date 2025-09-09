@@ -102,6 +102,7 @@ const AboutMe: React.FC = () => {
       </InfoBlock>
       <div className="aboutMeContent" style={aboutMeContentStyles}>
         <TopographicLines
+          className="topographicLinesAnimated"
           style={{
             position: 'absolute',
             top: 0,

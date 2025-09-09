@@ -20,6 +20,29 @@
   }
 }
 
+@keyframes topographicScale {
+  0% {
+    transform: scale(1);
+  }
+  5% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2.5);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.topographicLinesAnimated {
+  animation: topographicScale 50s ease-in-out infinite;
+  transform-origin: center center;
+}
+
 .aboutMeTitle {
   opacity: 0 !important;
   transform: scale(0.8) !important;
