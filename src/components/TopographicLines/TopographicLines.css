@@ -1,0 +1,22 @@
+svg#topographic {
+  width: 100vw;
+}
+
+path {
+  fill: #1c1c1c;
+  stroke-width: 1;
+  stroke-miterlimit: 0;
+  stroke: #2a2a2a;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 1000;
+  animation: dash 10s linear alternate infinite;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
