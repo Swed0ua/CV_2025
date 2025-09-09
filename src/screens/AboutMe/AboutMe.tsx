@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+
 import './AboutMe.css';
 import {
   aboutMeContainerStyles,
@@ -62,6 +64,21 @@ const AboutMe: React.FC = () => {
             opacity: 0.2,
           }}
         />
+        <div
+          className="aboutMeContent__lottieAnim1"
+          style={{
+            width: '400px',
+            position: 'absolute',
+            top: '70px',
+            left: 'calc(50% - 70px)',
+          }}
+        >
+          <DotLottieReact
+            src="/animations/Animated_shapes.json"
+            loop
+            autoplay
+          />
+        </div>
         <h1
           ref={titleRef}
           className={`aboutMeTitle ${titleAnimated ? 'titleAnimated' : ''}`}
