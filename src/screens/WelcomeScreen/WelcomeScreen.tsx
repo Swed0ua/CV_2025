@@ -2,11 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import {
   welcomeScreenContainerStyles,
   splineIframeStyles,
-  bottomCornerBlockStyles,
-  leftSectionStyles,
-  rightSectionStyles,
-  sectionTitleStyles,
-  sectionTextStyles,
   nameTextStyles,
   textInfoBlockWrapperStyles,
   textInfoBlockStyles,
@@ -14,6 +9,12 @@ import {
 import Button from '../../components/Button';
 import { useLocalization } from '../../i18n';
 import './WelcomeScreen.css';
+import {
+  InfoBlock,
+  InfoBlockSection,
+  InfoDescription,
+  InfoTitle,
+} from '../../components/InfoBlock';
 
 declare global {
   // eslint-disable-next-line no-unused-vars
@@ -102,16 +103,26 @@ const WelcomeScreen: React.FC = () => {
         title="Spline 3D Design"
       />
 
-      <div className="bottomCornerBlock" style={bottomCornerBlockStyles}>
-        <div style={leftSectionStyles}>
-          <div style={sectionTitleStyles}>{t('welcome.expertiseTitle')}</div>
-          <div style={sectionTextStyles}>{t('welcome.expertiseText')}</div>
-        </div>
-        <div style={rightSectionStyles}>
-          <div style={sectionTitleStyles}>{t('welcome.projectsTitle')}</div>
-          <div style={sectionTextStyles}>{t('welcome.projectsText')}</div>
-        </div>
-      </div>
+      <InfoBlock
+        showDivider={false}
+        useResponsive={true}
+        className="WS__bottomCornerBlock"
+        style={{
+          position: 'absolute',
+          bottom: '0px',
+          left: '0px',
+        }}
+      >
+        <InfoBlockSection>
+          <InfoTitle>{t('welcome.expertiseTitle')}</InfoTitle>
+          <InfoDescription>{t('welcome.expertiseText')}</InfoDescription>
+        </InfoBlockSection>
+
+        <InfoBlockSection>
+          <InfoTitle>{t('welcome.projectsTitle')}</InfoTitle>
+          <InfoDescription>{t('welcome.projectsText')}</InfoDescription>
+        </InfoBlockSection>
+      </InfoBlock>
     </div>
   );
 };
