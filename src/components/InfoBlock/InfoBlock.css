@@ -16,12 +16,6 @@
   }
 }
 
-/* @media (max-width: 768px) {
-  .info-block {
-    display: none !important;
-  }
-} */
-
 .info-section:nth-child(1) {
   transition-delay: 0.1s;
 }

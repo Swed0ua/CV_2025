@@ -10,6 +10,11 @@ import {
   lottieAnimation1Styles,
 } from './AboutMe.styles';
 import TopographicLines from '../../components/TopographicLines';
+import InfoBlock, {
+  InfoBlockSection,
+  InfoDescription,
+  InfoTitle,
+} from '../../components/InfoBlock';
 
 const AboutMe: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -54,6 +59,45 @@ const AboutMe: React.FC = () => {
       className="aboutMeContainer"
       style={aboutMeContainerStyles}
     >
+      <InfoBlock
+        showDivider={false}
+        useResponsive={true}
+        className="AboutMe__bottomCornerBlock"
+        style={{
+          position: 'absolute',
+          bottom: '0px',
+          right: '0px',
+          maxWidth: '500px',
+        }}
+      >
+        <InfoBlockSection>
+          <InfoTitle>Персональна інформація</InfoTitle>
+          <InfoDescription>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                fontSize: '14px',
+                lineHeight: '1.6',
+              }}
+            >
+              <div>
+                <span style={{ color: '#A5B4FF', fontWeight: '600' }}>
+                  Дата народження:
+                </span>{' '}
+                25.02.2001
+              </div>
+              <div>
+                <span style={{ color: '#A5B4FF', fontWeight: '600' }}>
+                  Проживання:
+                </span>{' '}
+                Lviv, Ukraine
+              </div>
+            </div>
+          </InfoDescription>
+        </InfoBlockSection>
+      </InfoBlock>
       <div className="aboutMeContent" style={aboutMeContentStyles}>
         <TopographicLines
           style={{

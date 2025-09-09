@@ -111,6 +111,7 @@ const WelcomeScreen: React.FC = () => {
           position: 'absolute',
           bottom: '0px',
           left: '0px',
+          height: '200px',
         }}
       >
         <InfoBlockSection>
