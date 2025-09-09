@@ -9,6 +9,7 @@ import {
 import { LocalizationProvider } from './i18n';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { getScreenType, ScreenType } from './constants/screenBreakpoints';
+import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher';
 
 const AppContent: React.FC = () => {
   const [screenType, setScreenType] = useState<ScreenType>('large');
@@ -28,6 +29,9 @@ const AppContent: React.FC = () => {
   return (
     <div className="App">
       <GlassHeader />
+      <div className="language-switcher-container">
+        <LanguageSwitcher />
+      </div>
       <Routes>
         <Route path="/" element={<MainScreen />} />
       </Routes>
