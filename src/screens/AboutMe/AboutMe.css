@@ -42,6 +42,12 @@
   transform: translateY(0) scale(1) !important;
 }
 
+.aboutMeText .highlight-text {
+  color: #a5b4ff !important;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(165, 180, 255, 0.3);
+}
+
 /* Enhanced text styling */
 .aboutMeText p {
   position: relative;

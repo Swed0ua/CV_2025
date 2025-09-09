@@ -22,6 +22,23 @@ const ukTranslations: TranslationKeys = {
     projects: 'Проекти',
     contact: 'Контакти',
   },
+
+  aboutMe: {
+    title: 'Про мене',
+    personalInfoTitle: 'Персональна інформація',
+    birthDate: 'Дата народження:',
+    birthDateValue: '25.02.2001',
+    location: 'Проживання:',
+    locationValue: 'Lviv, Ukraine',
+    description1:
+      'Я – <span class="highlight-text">Full Stack розробник</span> із 2+ роками досвіду у створенні сучасних веб-додатків та мобільних платформ. Спеціалізуюся на повному циклі розробки – від концепції до релізу продукту.',
+    description2:
+      'У сфері <span class="highlight-text">frontend</span> працюю з <span class="highlight-text">React</span> для веб-додатків та <span class="highlight-text">React Native</span> для мобільних платформ. Backend розробку веду на <span class="highlight-text">Nest.js</span>, <span class="highlight-text">Express</span>, <span class="highlight-text">Flask</span> та <span class="highlight-text">Django</span>.',
+    description3:
+      'Керую проектами від архітектурного планування до деплою та випуску в реліз. Досвідчений у інтеграції API, автоматизації процесів та роботі з різними базами даних.',
+    description4:
+      'Працюю як в команді, так і самостійно над проектами різної складності. Постійно розвиваюся та готовий до вивчення нових технологій для вирішення складних бізнес-завдань.',
+  },
 };
 
 export default ukTranslations;
