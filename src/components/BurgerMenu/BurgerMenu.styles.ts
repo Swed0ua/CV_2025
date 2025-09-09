@@ -99,3 +99,11 @@ export const menuItemStyles: CSSProperties = {
   fontSize: '18px',
   padding: '16px 32px',
 };
+
+export const burgerMenuLanguageSwitcherContainerStyles: CSSProperties = {
+  position: 'absolute',
+  top: '20px',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  zIndex: 10000,
+};

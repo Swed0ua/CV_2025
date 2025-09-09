@@ -16,7 +16,9 @@ import {
   menuListStyles,
   menuListItemStyles,
   menuItemStyles,
+  burgerMenuLanguageSwitcherContainerStyles,
 } from './BurgerMenu.styles';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 interface BurgerMenuProps {
   isOpen: boolean;
@@ -123,6 +125,16 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
                 </li>
               ))}
             </ul>
+            <div
+              className="burgerMenu__language-switcher-container"
+              style={burgerMenuLanguageSwitcherContainerStyles}
+            >
+              <LanguageSwitcher
+                style={{
+                  width: '100px',
+                }}
+              />
+            </div>
           </nav>
         </div>
       </GlassContainer>

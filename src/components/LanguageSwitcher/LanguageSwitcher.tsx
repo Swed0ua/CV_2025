@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLocalization } from '../../contexts/LocalizationContext';
 import { GlassContainer } from '../GlassContainer/GlassContainer';
+import { GlassContainerStyles } from '../GlassContainer/GlassContainer.styles';
 import { SupportedLanguage } from '../../i18n/types/LocalizationTypes';
 import './LanguageSwitcher.css';
 
@@ -12,7 +13,20 @@ const LANGUAGE_OPTIONS: Record<
   uk: { name: 'УКРАЇНСЬКА', flag: '🇺🇦' },
 } as const;
 
-const LanguageSwitcher: React.FC = () => {
+interface LanguageSwitcherProps {
+  className?: string;
+  style?: React.CSSProperties;
+  glassStyles?: {
+    trigger?: GlassContainerStyles;
+    dropdown?: GlassContainerStyles;
+  };
+}
+
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
+  className = '',
+  style = {},
+  glassStyles = {},
+}) => {
   const { currentLanguage, setLanguage } = useLocalization();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -45,11 +59,16 @@ const LanguageSwitcher: React.FC = () => {
   }, []);
 
   return (
-    <div ref={dropdownRef} className="language-switcher">
+    <div
+      ref={dropdownRef}
+      className={`language-switcher ${className}`}
+      style={style}
+    >
       <GlassContainer
         className="language-switcher__trigger"
         glassStyles={{
           padding: '0',
+          ...glassStyles.trigger,
         }}
       >
         <button
@@ -71,6 +90,7 @@ const LanguageSwitcher: React.FC = () => {
           className="language-switcher__dropdown"
           glassStyles={{
             padding: '0',
+            ...glassStyles.dropdown,
           }}
         >
           {Object.entries(LANGUAGE_OPTIONS).map(([code, option]) => (
