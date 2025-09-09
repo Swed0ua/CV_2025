@@ -16,6 +16,7 @@ import InfoBlock, {
   InfoDescription,
   InfoTitle,
 } from '../../components/InfoBlock';
+import LanguageSwitcher from '../../components/LanguageSwitcher';
 
 const AboutMe: React.FC = () => {
   const { t } = useLocalization();
@@ -145,6 +146,9 @@ const AboutMe: React.FC = () => {
           </p>
           <p style={{ width: '80%' }}>{t('aboutMe.description3')}</p>
           <p>{t('aboutMe.description4')}</p>
+        </div>
+        <div style={{ position: 'relative' }}>
+          <LanguageSwitcher />
         </div>
       </div>
     </div>
