@@ -147,7 +147,7 @@ const AboutMe: React.FC = () => {
           <p style={{ width: '80%' }}>{t('aboutMe.description3')}</p>
           <p>{t('aboutMe.description4')}</p>
         </div>
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: 'absolute', top: '100px', right: '10px' }}>
           <LanguageSwitcher />
         </div>
       </div>
