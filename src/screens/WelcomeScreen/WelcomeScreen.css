@@ -49,6 +49,7 @@
 
   .splineIframe {
     width: 100% !important;
+    pointer-events: none !important;
   }
 
   .textInfoBlock__btnDefault {

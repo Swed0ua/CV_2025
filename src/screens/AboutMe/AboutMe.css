@@ -54,6 +54,33 @@
   text-shadow: 0 0 30px rgba(165, 180, 255, 0.4);
 }
 
+@media (max-width: 990px) {
+  .aboutMeText {
+    height: 70vh !important;
+    overflow-y: auto !important;
+    padding-right: 10px !important;
+    padding-bottom: 120px !important;
+  }
+
+  .aboutMeText::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  .aboutMeText::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+  }
+
+  .aboutMeText::-webkit-scrollbar-thumb {
+    background: rgba(165, 180, 255, 0.3);
+    border-radius: 3px;
+  }
+
+  .aboutMeText::-webkit-scrollbar-thumb:hover {
+    background: rgba(165, 180, 255, 0.4);
+  }
+}
+
 @media (max-width: 768px) {
   .aboutMeContainer {
     padding: 15px !important;
@@ -68,6 +95,7 @@
     font-size: 1rem !important;
     line-height: 1.5 !important;
     padding: 1.5rem !important;
+    padding-bottom: 120px !important;
   }
 
   .floatingElement {
