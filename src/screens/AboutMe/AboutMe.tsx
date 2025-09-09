@@ -7,6 +7,7 @@ import {
   aboutMeContentStyles,
   aboutMeTitleStyles,
   aboutMeTextStyles,
+  lottieAnimation1Styles,
 } from './AboutMe.styles';
 import TopographicLines from '../../components/TopographicLines';
 
@@ -66,12 +67,7 @@ const AboutMe: React.FC = () => {
         />
         <div
           className="aboutMeContent__lottieAnim1"
-          style={{
-            width: '400px',
-            position: 'absolute',
-            top: '70px',
-            left: 'calc(50% - 70px)',
-          }}
+          style={lottieAnimation1Styles}
         >
           <DotLottieReact
             src="/animations/Animated_shapes.json"

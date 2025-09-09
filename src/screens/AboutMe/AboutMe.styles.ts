@@ -48,3 +48,11 @@ export const aboutMeTextStyles: CSSProperties = {
   flexDirection: 'column',
   alignItems: 'center',
 };
+
+export const lottieAnimation1Styles: CSSProperties = {
+  width: '400px',
+  position: 'absolute',
+  top: '70px',
+  left: 'calc(50% - 70px)',
+  zIndex: 2,
+};
