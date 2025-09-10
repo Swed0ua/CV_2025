@@ -10,9 +10,12 @@ import { LocalizationProvider } from './i18n';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { getScreenType, ScreenType } from './constants/screenBreakpoints';
 import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher';
+import { Preloader } from './components/Preloader';
+import { useScrollLock } from './hooks/useScrollLock';
 
 const AppContent: React.FC = () => {
   const [screenType, setScreenType] = useState<ScreenType>('large');
+  const [isPreloaderVisible, setIsPreloaderVisible] = useState(true);
   const { isBurgerMenuOpen, closeBurgerMenu } = useNavigation();
 
   useEffect(() => {
@@ -25,6 +28,19 @@ const AppContent: React.FC = () => {
 
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPreloaderVisible(false);
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useScrollLock({
+    isLocked: isPreloaderVisible,
+    enabled: true,
+  });
 
   return (
     <div className="App">
@@ -39,6 +55,8 @@ const AppContent: React.FC = () => {
       {screenType !== 'large' && (
         <BurgerMenu isOpen={isBurgerMenuOpen} onClose={closeBurgerMenu} />
       )}
+
+      <Preloader isVisible={isPreloaderVisible} />
     </div>
   );
 };
