@@ -1,6 +1,6 @@
 .mainTitle {
   opacity: 0 !important;
-  transform: scale(0.8) !important;
+  transform: scale(0.8) translateY(70px) !important;
   transition: all 0.6s ease-out;
   font-family: 'Tektur', cursive !important;
   font-size: 4rem !important;
@@ -9,20 +9,22 @@
   text-transform: uppercase !important;
   background: linear-gradient(
     135deg,
-    #87ceeb 0%,
-    #4682b4 50%,
-    #1e90ff 100%
+    #00d4ff 0%,
+    #0099cc 25%,
+    #0066ff 50%,
+    #0044cc 75%,
+    #001a66 100%
   ) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
-  text-shadow: 0 0 40px rgba(135, 206, 235, 0.3) !important;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) !important;
+  text-shadow: 0 0 50px rgba(0, 212, 255, 0.4) !important;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4)) !important;
 }
 
 .titleAnimated {
   opacity: 1 !important;
-  transform: scale(1) !important;
+  transform: scale(1) translateY(0px) !important;
 }
 
 @media (max-width: 768px) {
