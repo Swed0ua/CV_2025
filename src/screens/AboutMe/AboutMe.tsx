@@ -6,11 +6,11 @@ import './AboutMe.css';
 import {
   aboutMeContainerStyles,
   aboutMeContentStyles,
-  aboutMeTitleStyles,
   aboutMeTextStyles,
   lottieAnimation1Styles,
 } from './AboutMe.styles';
 import TopographicLines from '../../components/TopographicLines';
+import MainTitle from '../../components/MainTitle';
 import InfoBlock, {
   InfoBlockSection,
   InfoDescription,
@@ -20,9 +20,7 @@ import InfoBlock, {
 const AboutMe: React.FC = () => {
   const { t } = useLocalization();
   const containerRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-  const [titleAnimated, setTitleAnimated] = useState(false);
   const [textAnimated, setTextAnimated] = useState(false);
 
   useEffect(() => {
@@ -30,10 +28,6 @@ const AboutMe: React.FC = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setTimeout(() => {
-              setTitleAnimated(true);
-            }, 200);
-
             setTimeout(() => {
               setTextAnimated(true);
             }, 500);
@@ -122,13 +116,7 @@ const AboutMe: React.FC = () => {
             autoplay
           />
         </div>
-        <h1
-          ref={titleRef}
-          className={`aboutMeTitle ${titleAnimated ? 'titleAnimated' : ''}`}
-          style={aboutMeTitleStyles}
-        >
-          {t('aboutMe.title')}
-        </h1>
+        <MainTitle>{t('aboutMe.title')}</MainTitle>
         <div
           ref={textRef}
           className={`aboutMeText ${textAnimated ? 'textAnimated' : ''}`}

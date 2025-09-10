@@ -43,17 +43,6 @@
   transform-origin: center center;
 }
 
-.aboutMeTitle {
-  opacity: 0 !important;
-  transform: scale(0.8) !important;
-  transition: all 0.6s ease-out;
-}
-
-.titleAnimated {
-  opacity: 1 !important;
-  transform: scale(1) !important;
-}
-
 .aboutMeText {
   opacity: 0 !important;
   transform: translateY(170px) scale(0.8) !important;
@@ -115,11 +104,6 @@
     padding: 15px !important;
   }
 
-  .aboutMeTitle {
-    font-size: 2.5rem !important;
-    margin-bottom: 1.5rem !important;
-  }
-
   .aboutMeText {
     font-size: 1rem !important;
     line-height: 1.5 !important;
@@ -140,10 +124,6 @@
 }
 
 @media (max-width: 480px) {
-  .aboutMeTitle {
-    font-size: 2rem !important;
-  }
-
   .aboutMeText {
     font-size: 0.9rem !important;
   }

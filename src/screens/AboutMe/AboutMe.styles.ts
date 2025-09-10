@@ -27,16 +27,6 @@ export const aboutMeContentStyles: CSSProperties = {
   paddingTop: '100px',
 };
 
-export const aboutMeTitleStyles: CSSProperties = {
-  fontSize: '3rem',
-  fontWeight: 'bold',
-  marginBottom: '2rem',
-  color: '#A5B4FF',
-  textShadow: '0 0 30px rgba(165, 180, 255, 0.2)',
-  position: 'relative',
-  zIndex: 3,
-};
-
 export const aboutMeTextStyles: CSSProperties = {
   fontSize: '1.2rem',
   lineHeight: '1.6',
