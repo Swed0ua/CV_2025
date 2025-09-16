@@ -2,23 +2,54 @@ import React from 'react';
 
 import './ColorBlobs.css';
 import { colorBlobsContainerStyles } from './ColorBlobs.styles';
+import { DEFAULT_COLOR_BLOBS } from '../../constants/colorBlobsData';
+
+export interface ColorBlobConfig {
+  id: string;
+  colorClass: string;
+  shapeClass: string;
+  positionClass: string;
+  customStyle?: React.CSSProperties;
+}
+
+interface ColorBlobProps {
+  config: ColorBlobConfig;
+}
+
+export const ColorBlob: React.FC<ColorBlobProps> = ({ config }) => {
+  const { colorClass, shapeClass, positionClass, customStyle } = config;
+
+  return (
+    <div
+      className={`colorBlob ${colorClass} ${shapeClass} ${positionClass}`}
+      style={customStyle}
+    />
+  );
+};
 
 interface ColorBlobsProps {
   className?: string;
   style?: React.CSSProperties;
+  blobs?: ColorBlobConfig[];
 }
 
-const ColorBlobs: React.FC<ColorBlobsProps> = ({ className = '', style }) => {
+const ColorBlobs: React.FC<ColorBlobsProps> = ({
+  className = '',
+  style,
+  blobs,
+}) => {
+  const blobsToRender = blobs || DEFAULT_COLOR_BLOBS;
+
+  const containerStyle = {
+    ...colorBlobsContainerStyles,
+    ...style,
+  };
+
   return (
-    <div
-      className={`colorBlobsContainer ${className}`}
-      style={{ ...colorBlobsContainerStyles, ...style }}
-    >
-      <div className="colorBlob colorBlob--purple colorBlob--shape1 colorBlob--pos1" />
-      <div className="colorBlob colorBlob--green colorBlob--shape2 colorBlob--pos2" />
-      <div className="colorBlob colorBlob--blue colorBlob--shape3 colorBlob--pos3" />
-      <div className="colorBlob colorBlob--orange colorBlob--shape4 colorBlob--pos4" />
-      <div className="colorBlob colorBlob--pink colorBlob--shape5 colorBlob--pos5" />
+    <div className={`colorBlobsContainer ${className}`} style={containerStyle}>
+      {blobsToRender.map((blob) => (
+        <ColorBlob key={blob.id} config={blob} />
+      ))}
     </div>
   );
 };
