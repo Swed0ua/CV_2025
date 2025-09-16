@@ -1,5 +1,6 @@
 import { HeroSlide } from '../components/Sections/Slides/HeroSlide';
 import AboutMe from '../screens/AboutMe';
+import MainContent from '../screens/MainContent';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import { SectionItem } from '../types/slideSectionTypes';
 
@@ -22,8 +23,8 @@ export const MAIN_SLIDE_DATA: SectionItem[] = [
   },
   {
     id: 'projects',
-    component: <HeroSlide />,
-    height: 'full',
+    component: <MainContent />,
+    height: 'auto',
     type: 'slide',
     threshold: [0.1],
     rootMargin: '0px',

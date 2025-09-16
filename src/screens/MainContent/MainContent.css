@@ -1,0 +1,23 @@
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContentText {
+    font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContentText {
+    font-size: 1.5rem !important;
+  }
+}
