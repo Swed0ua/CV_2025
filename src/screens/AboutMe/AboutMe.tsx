@@ -16,6 +16,7 @@ import InfoBlock, {
   InfoDescription,
   InfoTitle,
 } from '../../components/InfoBlock';
+import ColorBlobs from '../../components/ColorBlobs/ColorBlobs';
 
 const AboutMe: React.FC = () => {
   const { t } = useLocalization();
@@ -95,6 +96,16 @@ const AboutMe: React.FC = () => {
         </InfoBlockSection>
       </InfoBlock>
       <div className="aboutMeContent" style={aboutMeContentStyles}>
+        <ColorBlobs
+          className="colorBlobsAnimated"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+          }}
+        />
         <TopographicLines
           className="topographicLinesAnimated"
           style={{
@@ -104,6 +115,7 @@ const AboutMe: React.FC = () => {
             width: '100%',
             height: '100%',
             opacity: 0.2,
+            zIndex: 2,
           }}
         />
         <div

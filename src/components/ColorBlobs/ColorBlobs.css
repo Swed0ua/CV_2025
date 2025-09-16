@@ -1,0 +1,271 @@
+.colorBlobsContainer {
+  overflow: hidden;
+}
+
+.colorBlob {
+  position: absolute;
+  filter: blur(60px);
+  opacity: 0.4;
+  animation: floatBlob 55s ease-in-out infinite;
+}
+
+/* Різні форми та розміри */
+.colorBlob--shape1 {
+  border-radius: 50%;
+  width: 500px;
+  height: 600px;
+}
+
+.colorBlob--shape2 {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  width: 550px;
+  height: 450px;
+}
+
+.colorBlob--shape3 {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  width: 450px;
+  height: 380px;
+}
+
+.colorBlob--shape4 {
+  border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+  width: 320px;
+  height: 400px;
+}
+
+.colorBlob--shape5 {
+  border-radius: 50% 20% 80% 50% / 20% 80% 20% 80%;
+  width: 380px;
+  height: 340px;
+}
+
+/* Кольори */
+.colorBlob--purple {
+  background: linear-gradient(135deg, #8b5cf6, #a855f7, #c084fc);
+}
+
+.colorBlob--green {
+  background: linear-gradient(135deg, #10b981, #34d399, #6ee7b7);
+}
+
+.colorBlob--blue {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa, #93c5fd);
+}
+
+.colorBlob--orange {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24, #fcd34d);
+}
+
+.colorBlob--pink {
+  background: linear-gradient(135deg, #ec4899, #f472b6, #fbb6ce);
+}
+
+.colorBlob--cyan {
+  background: linear-gradient(135deg, #06b6d4, #22d3ee, #67e8f9);
+}
+
+.colorBlob--yellow {
+  background: linear-gradient(135deg, #eab308, #facc15, #fde047);
+}
+
+.colorBlob--red {
+  background: linear-gradient(135deg, #ef4444, #f87171, #fca5a5);
+}
+
+/* Позиції по краях екрану */
+.colorBlob--pos1 {
+  top: -100px;
+  left: -300px;
+  animation-delay: 0s;
+  opacity: 0.2;
+}
+
+.colorBlob--pos2 {
+  top: -400px;
+  right: -100px;
+  animation-delay: 3s;
+}
+
+.colorBlob--pos3 {
+  bottom: -300px;
+  left: 100px;
+  animation-delay: 6s;
+}
+
+.colorBlob--pos4 {
+  bottom: -200px;
+  right: -200px;
+  animation-delay: 9s;
+}
+
+.colorBlob--pos5 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.1;
+}
+
+@keyframes floatBlob {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate(15px, -20px) scale(1.05) rotate(90deg);
+  }
+  50% {
+    transform: translate(-10px, 15px) scale(0.95) rotate(180deg);
+  }
+  75% {
+    transform: translate(20px, 8px) scale(1.02) rotate(270deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .colorBlob {
+    filter: blur(50px);
+    opacity: 0.35;
+  }
+
+  .colorBlob--shape1 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .colorBlob--shape2 {
+    width: 220px;
+    height: 190px;
+  }
+
+  .colorBlob--shape3 {
+    width: 280px;
+    height: 240px;
+  }
+
+  .colorBlob--shape4 {
+    width: 200px;
+    height: 250px;
+  }
+
+  .colorBlob--shape5 {
+    width: 240px;
+    height: 210px;
+  }
+
+  .colorBlob--shape6 {
+    width: 260px;
+    height: 190px;
+  }
+
+  .colorBlob--shape7 {
+    width: 210px;
+    height: 230px;
+  }
+
+  .colorBlob--shape8 {
+    width: 250px;
+    height: 200px;
+  }
+
+  /* Адаптуємо позиції для планшетів */
+  .colorBlob--pos1 {
+    top: -125px;
+    left: -125px;
+  }
+
+  .colorBlob--pos2 {
+    top: -125px;
+    right: -125px;
+  }
+
+  .colorBlob--pos3 {
+    bottom: -125px;
+    left: -125px;
+  }
+
+  .colorBlob--pos4 {
+    bottom: -125px;
+    right: -125px;
+  }
+
+  .colorBlob--pos5 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .colorBlob {
+    filter: blur(40px);
+    opacity: 0.3;
+  }
+
+  .colorBlob--shape1 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .colorBlob--shape2 {
+    width: 160px;
+    height: 140px;
+  }
+
+  .colorBlob--shape3 {
+    width: 200px;
+    height: 170px;
+  }
+
+  .colorBlob--shape4 {
+    width: 150px;
+    height: 180px;
+  }
+
+  .colorBlob--shape5 {
+    width: 170px;
+    height: 150px;
+  }
+
+  .colorBlob--shape6 {
+    width: 190px;
+    height: 140px;
+  }
+
+  .colorBlob--shape7 {
+    width: 160px;
+    height: 170px;
+  }
+
+  .colorBlob--shape8 {
+    width: 180px;
+    height: 150px;
+  }
+
+  /* Адаптуємо позиції для мобільних */
+  .colorBlob--pos1 {
+    top: -90px;
+    left: -90px;
+  }
+
+  .colorBlob--pos2 {
+    top: -90px;
+    right: -90px;
+  }
+
+  .colorBlob--pos3 {
+    bottom: -90px;
+    left: -90px;
+  }
+
+  .colorBlob--pos4 {
+    bottom: -90px;
+    right: -90px;
+  }
+
+  .colorBlob--pos5 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
