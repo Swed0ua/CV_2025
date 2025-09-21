@@ -6,6 +6,7 @@ import {
   NavigationProvider,
   useNavigation,
 } from './contexts/NavigationContext';
+import { AppStateProvider, useAppState } from './contexts/AppStateContext';
 import { LocalizationProvider } from './i18n';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { getScreenType, ScreenType } from './constants/screenBreakpoints';
@@ -16,7 +17,7 @@ import AboutMe from './screens/AboutMe';
 
 const AppContent: React.FC = () => {
   const [screenType, setScreenType] = useState<ScreenType>('large');
-  const [isPreloaderVisible, setIsPreloaderVisible] = useState(true);
+  const { isPreloaderVisible } = useAppState();
   const { isBurgerMenuOpen, closeBurgerMenu } = useNavigation();
 
   useEffect(() => {
@@ -28,14 +29,6 @@ const AppContent: React.FC = () => {
     window.addEventListener('resize', checkScreenSize);
 
     return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsPreloaderVisible(false);
-    }, 4000);
-
-    return () => clearTimeout(timer);
   }, []);
 
   useScrollLock({
@@ -66,11 +59,13 @@ const AppContent: React.FC = () => {
 function App() {
   return (
     <BrowserRouter>
-      <LocalizationProvider>
-        <NavigationProvider>
-          <AppContent />
-        </NavigationProvider>
-      </LocalizationProvider>
+      <AppStateProvider>
+        <LocalizationProvider>
+          <NavigationProvider>
+            <AppContent />
+          </NavigationProvider>
+        </LocalizationProvider>
+      </AppStateProvider>
     </BrowserRouter>
   );
 }
