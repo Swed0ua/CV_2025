@@ -1,13 +1,25 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   welcomeScreenContainerStyles,
   splineIframeStyles,
   nameTextStyles,
   textInfoBlockWrapperStyles,
   textInfoBlockStyles,
+  textInfoBlockAnimationVariants,
+  textInfoBlockTransition,
+  titleTextAnimationVariants,
+  titleTextTransition,
+  nameTextAnimationVariants,
+  nameTextTransition,
+  descriptionTextAnimationVariants,
+  descriptionTextTransition,
+  buttonAnimationVariants,
+  buttonTransition,
 } from './WelcomeScreen.styles';
 import Button from '../../components/Button';
 import { useLocalization } from '../../i18n';
+import { useAppState } from '../../contexts/AppStateContext';
 import './WelcomeScreen.css';
 import {
   InfoBlock,
@@ -26,6 +38,8 @@ declare global {
 const WelcomeScreen: React.FC = () => {
   const vantaRef = useRef<HTMLDivElement>(null);
   const { t } = useLocalization();
+  const { isPreloaderVisible } = useAppState();
+  const [shouldAnimate, setShouldAnimate] = useState(false);
 
   useEffect(() => {
     if (vantaRef.current && window.VANTA) {
@@ -51,14 +65,32 @@ const WelcomeScreen: React.FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (!isPreloaderVisible) {
+      const timer = setTimeout(() => {
+        setShouldAnimate(true);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [isPreloaderVisible]);
+
   return (
     <div ref={vantaRef} style={welcomeScreenContainerStyles}>
       <div
         className="WS__textInfoBlockWrapper"
         style={textInfoBlockWrapperStyles}
       >
-        <div className="WS__textInfoBlock" style={textInfoBlockStyles}>
-          <p
+        <motion.div
+          className="WS__textInfoBlock"
+          style={textInfoBlockStyles}
+          variants={textInfoBlockAnimationVariants}
+          transition={textInfoBlockTransition}
+          initial="hidden"
+          animate={shouldAnimate ? 'visible' : 'hidden'}
+        >
+          <motion.p
+            variants={titleTextAnimationVariants}
+            transition={titleTextTransition}
             style={{
               fontSize: '18px',
               fontWeight: '600',
@@ -67,12 +99,19 @@ const WelcomeScreen: React.FC = () => {
             }}
           >
             {t('welcome.title')}
-          </p>
-          <div className="nameText" style={nameTextStyles}>
+          </motion.p>
+          <motion.div
+            className="nameText"
+            style={nameTextStyles}
+            variants={nameTextAnimationVariants}
+            transition={nameTextTransition}
+          >
             {t('welcome.name')}
-          </div>
-          <p
+          </motion.div>
+          <motion.p
             className="textInfoBlock_desc"
+            variants={descriptionTextAnimationVariants}
+            transition={descriptionTextTransition}
             style={{ opacity: 0.4, marginTop: '30px' }}
           >
             <em style={{ fontStyle: 'italic', opacity: 0.8 }}>
@@ -81,19 +120,24 @@ const WelcomeScreen: React.FC = () => {
             <span
               dangerouslySetInnerHTML={{ __html: t('welcome.description') }}
             />
-          </p>
-          <Button
-            style={{
-              marginTop: '30px',
-              width: 'fit-content',
-              padding: '16px 70px',
-            }}
-            pulsePeriodTime={10000}
-            className="textInfoBlock__btnDefault"
+          </motion.p>
+          <motion.div
+            variants={buttonAnimationVariants}
+            transition={buttonTransition}
           >
-            {t('welcome.buttonText')}
-          </Button>
-        </div>
+            <Button
+              style={{
+                marginTop: '30px',
+                width: 'fit-content',
+                padding: '16px 70px',
+              }}
+              pulsePeriodTime={10000}
+              className="textInfoBlock__btnDefault"
+            >
+              {t('welcome.buttonText')}
+            </Button>
+          </motion.div>
+        </motion.div>
       </div>
       <iframe
         src="https://my.spline.design/digitalpass-NaEnQ17JYfnR13DFAK3rCZAy/"

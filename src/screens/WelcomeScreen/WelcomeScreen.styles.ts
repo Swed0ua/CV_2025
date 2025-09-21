@@ -98,3 +98,103 @@ export const nameTextStyles: CSSProperties = {
   color: 'white',
   textShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
 };
+
+// Animation variants for Framer Motion
+export const textInfoBlockAnimationVariants = {
+  hidden: {
+    opacity: 0,
+    y: 50,
+    x: -500,
+    scale: 0.9,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    x: 0,
+    scale: 1,
+  },
+};
+
+export const textInfoBlockTransition = {
+  duration: 0.8,
+  ease: 'easeOut' as const,
+  staggerChildren: 0.2,
+};
+
+export const titleTextAnimationVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    scale: 0.8,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+  },
+};
+
+export const titleTextTransition = {
+  duration: 0.5,
+  ease: 'easeOut' as const,
+};
+
+export const nameTextAnimationVariants = {
+  hidden: {
+    opacity: 0,
+    x: -1500,
+    scale: 0.8,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+  },
+};
+
+export const nameTextTransition = {
+  duration: 2.3,
+  ease: 'easeOut' as const,
+  delay: 1,
+};
+
+export const descriptionTextAnimationVariants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+    filter: 'blur(10px)',
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+  },
+};
+
+export const descriptionTextTransition = {
+  duration: 0.7,
+  ease: 'easeOut' as const,
+  delay: 1.2,
+};
+
+export const buttonAnimationVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    scale: 0.8,
+    rotate: -5,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    rotate: 0,
+  },
+};
+
+export const buttonTransition = {
+  delay: 0.8,
+  type: 'spring' as const,
+  stiffness: 70,
+  damping: 10,
+};
