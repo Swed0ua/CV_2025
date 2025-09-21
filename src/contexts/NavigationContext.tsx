@@ -55,7 +55,12 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({
   const navigationConfigs = useMemo(
     () => ({
       '/': [
-        { id: 'aboutMe', label: 'Про мене', type: 'section' as const },
+        {
+          id: 'aboutMe',
+          label: 'Про мене ↗',
+          type: 'page' as const,
+          path: '/about-me',
+        },
         { id: 'skills', label: 'Навички', type: 'section' as const },
         { id: 'works', label: 'Роботи', type: 'section' as const },
         {

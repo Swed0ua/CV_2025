@@ -12,6 +12,7 @@ import { getScreenType, ScreenType } from './constants/screenBreakpoints';
 import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher';
 import { Preloader } from './components/Preloader';
 import { useScrollLock } from './hooks/useScrollLock';
+import AboutMe from './screens/AboutMe';
 
 const AppContent: React.FC = () => {
   const [screenType, setScreenType] = useState<ScreenType>('large');
@@ -50,6 +51,7 @@ const AppContent: React.FC = () => {
       </div>
       <Routes>
         <Route path="/" element={<MainScreen />} />
+        <Route path="/about-me" element={<AboutMe />} />
       </Routes>
 
       {screenType !== 'large' && (
