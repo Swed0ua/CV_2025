@@ -1,0 +1,196 @@
+.animated-background {
+  --animBack-color-bg1: rgb(0, 0, 0);
+  --animBack-color-bg2: rgb(2, 5, 15);
+  --animBack-color1: 18, 113, 255;
+  --animBack-color2: 221, 74, 255;
+  --animBack-color3: 100, 220, 255;
+  --animBack-color4: 200, 50, 50;
+  --animBack-color5: 180, 180, 50;
+  --animBack-color-interactive: 140, 100, 255;
+  --animBack-circle-size: 80%;
+  --animBack-blending: hard-light;
+}
+
+@keyframes animBack-moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animBack-moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes animBack-moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+
+.animated-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.animated-background .gradient-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: linear-gradient(
+    40deg,
+    var(--animBack-color-bg1),
+    var(--animBack-color-bg2)
+  );
+}
+
+.animated-background .gradient-bg svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+
+.animated-background .gradients-container {
+  filter: url(#goo) blur(40px);
+  width: 100%;
+  height: 100%;
+}
+
+.animated-background .g1 {
+  position: absolute;
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--animBack-color1), 0.8) 0,
+      rgba(var(--animBack-color1), 0) 50%
+    )
+    no-repeat;
+  mix-blend-mode: var(--animBack-blending);
+  width: var(--animBack-circle-size);
+  height: var(--animBack-circle-size);
+  top: calc(50% - var(--animBack-circle-size) / 2);
+  left: calc(50% - var(--animBack-circle-size) / 2);
+  transform-origin: center center;
+  animation: animBack-moveVertical 30s ease infinite;
+  opacity: 1;
+}
+
+.animated-background .g2 {
+  position: absolute;
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--animBack-color2), 0.8) 0,
+      rgba(var(--animBack-color2), 0) 50%
+    )
+    no-repeat;
+  mix-blend-mode: var(--animBack-blending);
+  width: var(--animBack-circle-size);
+  height: var(--animBack-circle-size);
+  top: calc(50% - var(--animBack-circle-size) / 2);
+  left: calc(50% - var(--animBack-circle-size) / 2);
+  transform-origin: calc(50% - 400px);
+  animation: animBack-moveInCircle 20s reverse infinite;
+  opacity: 1;
+}
+
+.animated-background .g3 {
+  position: absolute;
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--animBack-color3), 0.8) 0,
+      rgba(var(--animBack-color3), 0) 50%
+    )
+    no-repeat;
+  mix-blend-mode: var(--animBack-blending);
+  width: var(--animBack-circle-size);
+  height: var(--animBack-circle-size);
+  top: calc(50% - var(--animBack-circle-size) / 2 + 200px);
+  left: calc(50% - var(--animBack-circle-size) / 2 - 500px);
+  transform-origin: calc(50% + 400px);
+  animation: animBack-moveInCircle 40s linear infinite;
+  opacity: 1;
+}
+
+.animated-background .g4 {
+  position: absolute;
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--animBack-color4), 0.8) 0,
+      rgba(var(--animBack-color4), 0) 50%
+    )
+    no-repeat;
+  mix-blend-mode: var(--animBack-blending);
+  width: var(--animBack-circle-size);
+  height: var(--animBack-circle-size);
+  top: calc(50% - var(--animBack-circle-size) / 2);
+  left: calc(50% - var(--animBack-circle-size) / 2);
+  transform-origin: calc(50% - 200px);
+  animation: animBack-moveHorizontal 40s ease infinite;
+  opacity: 0.7;
+}
+
+.animated-background .g5 {
+  position: absolute;
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--animBack-color5), 0.8) 0,
+      rgba(var(--animBack-color5), 0) 50%
+    )
+    no-repeat;
+  mix-blend-mode: var(--animBack-blending);
+  width: calc(var(--animBack-circle-size) * 2);
+  height: calc(var(--animBack-circle-size) * 2);
+  top: calc(50% - var(--animBack-circle-size));
+  left: calc(50% - var(--animBack-circle-size));
+  transform-origin: calc(50% - 800px) calc(50% + 200px);
+  animation: animBack-moveInCircle 20s ease infinite;
+  opacity: 1;
+}
+
+.animated-background .interactive {
+  position: absolute;
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--animBack-color-interactive), 0.8) 0,
+      rgba(var(--animBack-color-interactive), 0) 50%
+    )
+    no-repeat;
+  mix-blend-mode: var(--animBack-blending);
+  width: 100%;
+  height: 100%;
+  top: -50%;
+  left: -50%;
+  opacity: 0.7;
+}
+
+.animated-background .content-overlay {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
