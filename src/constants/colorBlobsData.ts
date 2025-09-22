@@ -33,6 +33,7 @@ export const DEFAULT_COLOR_BLOBS: ColorBlobConfig[] = [
   },
 ];
 
+// TODO: delete this
 export const MAIN_CONTENT_BLOBS: ColorBlobConfig[] = [
   {
     id: 'mc1',
@@ -106,7 +107,7 @@ export const MAIN_CONTENT_BLOBS: ColorBlobConfig[] = [
     shapeClass: 'colorBlob--shape1',
     positionClass: 'colorBlob--pos1',
     customStyle: {
-      top: '75%',
+      bottom: '75%',
       left: '-5%',
       width: '450px',
       height: '380px',
@@ -119,11 +120,11 @@ export const MAIN_CONTENT_BLOBS: ColorBlobConfig[] = [
     shapeClass: 'colorBlob--shape2',
     positionClass: 'colorBlob--pos2',
     customStyle: {
-      top: '45%',
-      right: '-8%',
-      width: '320px',
-      height: '420px',
-      opacity: 0.3,
+      top: '-600px',
+      right: '15%',
+      width: '720px',
+      height: '820px',
+      opacity: 0.15,
     },
   },
   {
@@ -132,7 +133,7 @@ export const MAIN_CONTENT_BLOBS: ColorBlobConfig[] = [
     shapeClass: 'colorBlob--shape3',
     positionClass: 'colorBlob--pos3',
     customStyle: {
-      bottom: '5%',
+      bottom: '55%',
       left: '45%',
       width: '280px',
       height: '320px',

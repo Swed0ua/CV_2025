@@ -103,9 +103,9 @@ export const nameTextStyles: CSSProperties = {
 export const textInfoBlockAnimationVariants = {
   hidden: {
     opacity: 0,
-    y: 50,
-    x: -500,
-    scale: 0.9,
+    y: 0,
+    x: -0,
+    scale: 1,
   },
   visible: {
     opacity: 1,
@@ -124,13 +124,13 @@ export const textInfoBlockTransition = {
 export const titleTextAnimationVariants = {
   hidden: {
     opacity: 0,
-    y: 30,
-    scale: 0.8,
+    y: 40,
+    filter: 'blur(10px)',
   },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
+    filter: 'blur(0px)',
   },
 };
 
@@ -153,9 +153,9 @@ export const nameTextAnimationVariants = {
 };
 
 export const nameTextTransition = {
-  duration: 2.3,
+  duration: 2,
   ease: 'easeOut' as const,
-  delay: 1,
+  delay: 0.6,
 };
 
 export const descriptionTextAnimationVariants = {
@@ -174,7 +174,7 @@ export const descriptionTextAnimationVariants = {
 export const descriptionTextTransition = {
   duration: 0.7,
   ease: 'easeOut' as const,
-  delay: 1.2,
+  delay: 0.7,
 };
 
 export const buttonAnimationVariants = {
@@ -193,7 +193,7 @@ export const buttonAnimationVariants = {
 };
 
 export const buttonTransition = {
-  delay: 0.8,
+  delay: 0.3,
   type: 'spring' as const,
   stiffness: 70,
   damping: 10,
