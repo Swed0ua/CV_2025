@@ -159,6 +159,25 @@ const skillsData: Skill[] = [
     description:
       'Робота з різними типами баз даних та оптимізація запитів для продуктивності.',
   },
+  // DevOps & General Skills
+  {
+    id: '15',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+    backgroundImage:
+      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop',
+    name: 'DevOps',
+    description:
+      'Автоматизація розгортання, CI/CD пайплайни та управління інфраструктурою.',
+  },
+  {
+    id: '16',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',
+    backgroundImage:
+      'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=300&fit=crop',
+    name: 'Adaptive Learning',
+    description:
+      'Швидко освоюю нові технології та сервіси. Без проблем розбираюся, імплементую та використовую їх у проектах.',
+  },
 ];
 
 export const Skills: React.FC<SkillsProps> = ({
