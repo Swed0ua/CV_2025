@@ -5,7 +5,6 @@ export const mainContentContainerStyles: CSSProperties = {
   height: '2000px',
   backgroundColor: '#000000',
   display: 'flex',
-  alignItems: 'center',
   justifyContent: 'center',
   color: 'white',
   fontFamily: 'Roboto Mono, monospace',

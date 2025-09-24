@@ -16,6 +16,11 @@ code {
     source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+.contentContainer {
+  width: 100%;
+  max-width: 1400px;
+}
+
 /* language-switcher-container */
 .language-switcher-container {
   position: fixed;

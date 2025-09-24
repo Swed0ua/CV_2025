@@ -3,8 +3,9 @@ import AnimatedBackground from '../../components/AnimatedBackground';
 import './MainContent.css';
 import {
   mainContentContainerStyles,
-  mainContentTextStyles,
+  // mainContentTextStyles,
 } from './MainContent.styles';
+import { Skills } from '../../components/Skills';
 
 const MainContent: React.FC = () => {
   return (
@@ -20,9 +21,10 @@ const MainContent: React.FC = () => {
           opacity: 0.6,
         }}
       />
-      <div className="mainContentText" style={mainContentTextStyles}>
+      <Skills className="contentContainer" />
+      {/* <div className="mainContentText" style={mainContentTextStyles}>
         Hello World
-      </div>
+      </div> */}
     </div>
   );
 };
