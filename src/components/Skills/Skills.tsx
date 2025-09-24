@@ -1,6 +1,8 @@
 import React from 'react';
 import { SkillItem } from './SkillItem';
+import MainTitle from '../MainTitle';
 import './Skills.css';
+import { GlassContainer } from '../GlassContainer';
 
 interface Skill {
   id: string;
@@ -60,18 +62,23 @@ export const Skills: React.FC<SkillsProps> = ({
 }) => {
   return (
     <div className={`skills ${className}`.trim()} style={style}>
-      <h2 className="skills-title">Skills & Technologies</h2>
-      <div className="skills-grid">
-        {skillsData.map((skill) => (
-          <SkillItem
-            key={skill.id}
-            logo={skill.logo}
-            backgroundImage={skill.backgroundImage}
-            name={skill.name}
-            description={skill.description}
-          />
-        ))}
-      </div>
+      <MainTitle>Skills & Technologies</MainTitle>
+
+      <GlassContainer
+        style={{ padding: '20px', paddingBottom: '30px', borderRadius: '20px' }}
+      >
+        <div className="skills-grid">
+          {skillsData.map((skill) => (
+            <SkillItem
+              key={skill.id}
+              logo={skill.logo}
+              backgroundImage={skill.backgroundImage}
+              name={skill.name}
+              description={skill.description}
+            />
+          ))}
+        </div>
+      </GlassContainer>
     </div>
   );
 };
