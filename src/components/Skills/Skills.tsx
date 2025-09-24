@@ -25,6 +25,7 @@ interface SkillsProps {
 
 // Mock data
 const skillsData: Skill[] = [
+  // Frontend Technologies
   {
     id: '1',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
@@ -32,7 +33,7 @@ const skillsData: Skill[] = [
       'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop',
     name: 'JavaScript',
     description:
-      'Мова програмування для створення інтерактивних веб-додатків та серверних рішень.',
+      'Основа сучасного веб-розробки. Створення інтерактивних додатків та серверних рішень.',
   },
   {
     id: '2',
@@ -41,7 +42,7 @@ const skillsData: Skill[] = [
       'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=300&fit=crop',
     name: 'TypeScript',
     description:
-      'Типізована надмножина JavaScript, що забезпечує кращу розробку та підтримку коду.',
+      'Типізована надмножина JavaScript для масштабних проектів з кращою підтримкою коду.',
   },
   {
     id: '3',
@@ -54,11 +55,109 @@ const skillsData: Skill[] = [
   },
   {
     id: '4',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+    backgroundImage:
+      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop',
+    name: 'React Native',
+    description:
+      'Крос-платформна розробка мобільних додатків з використанням React.',
+  },
+
+  // Backend Technologies
+  {
+    id: '5',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
     backgroundImage:
       'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&h=300&fit=crop',
     name: 'Node.js',
     description: 'JavaScript runtime для створення серверних додатків та API.',
+  },
+  {
+    id: '6',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
+    backgroundImage:
+      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop',
+    name: 'Express.js',
+    description:
+      'Мінімалістичний веб-фреймворк для Node.js для швидкої розробки API.',
+  },
+  {
+    id: '7',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg',
+    backgroundImage:
+      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop',
+    name: 'Nest.js',
+    description:
+      'Прогресивний Node.js фреймворк для створення ефективних серверних додатків.',
+  },
+  {
+    id: '8',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+    backgroundImage:
+      'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=300&fit=crop',
+    name: 'Python',
+    description:
+      'Універсальна мова програмування для веб-розробки, аналітики та автоматизації.',
+  },
+
+  // Cloud & DevOps
+  {
+    id: '9',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+    backgroundImage:
+      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop',
+    name: 'AWS',
+    description:
+      'Хмарна платформа Amazon для розгортання та масштабування додатків.',
+  },
+  {
+    id: '10',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    backgroundImage:
+      'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop',
+    name: 'Google Cloud',
+    description:
+      'Хмарні сервіси Google для розробки, розгортання та управління додатками.',
+  },
+
+  // APIs & Integration
+  {
+    id: '11',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg',
+    backgroundImage:
+      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop',
+    name: 'REST API',
+    description:
+      'Архітектурний стиль для створення веб-сервісів та інтеграції систем.',
+  },
+  {
+    id: '12',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg',
+    backgroundImage:
+      'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop',
+    name: 'AI Integration',
+    description:
+      'Інтеграція штучного інтелекту в проекти та автоматизація бізнес-процесів.',
+  },
+
+  // Development Tools
+  {
+    id: '13',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
+    backgroundImage:
+      'https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=400&h=300&fit=crop',
+    name: 'Git',
+    description:
+      'Система контролю версій для ефективної роботи в команді та управління кодом.',
+  },
+  {
+    id: '14',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+    backgroundImage:
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
+    name: 'Databases',
+    description:
+      'Робота з різними типами баз даних та оптимізація запитів для продуктивності.',
   },
 ];
 
