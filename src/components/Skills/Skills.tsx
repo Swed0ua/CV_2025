@@ -23,7 +23,7 @@ interface SkillsProps {
   style?: React.CSSProperties;
 }
 
-// Mock data - замініть на реальні дані
+// Mock data
 const skillsData: Skill[] = [
   {
     id: '1',
