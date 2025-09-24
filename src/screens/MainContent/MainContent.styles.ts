@@ -4,8 +4,6 @@ export const mainContentContainerStyles: CSSProperties = {
   width: '100%',
   height: '2000px',
   backgroundColor: '#000000',
-  display: 'flex',
-  justifyContent: 'center',
   color: 'white',
   fontFamily: 'Roboto Mono, monospace',
   padding: '20px',

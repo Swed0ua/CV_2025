@@ -5,6 +5,15 @@
   position: relative;
   z-index: 2;
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.skills-grid-container {
+  width: 100%;
+  position: relative;
 }
 
 .skills-grid {

@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { SkillItem } from './SkillItem';
 import MainTitle from '../MainTitle';
 import './Skills.css';
 import { GlassContainer } from '../GlassContainer';
+import {
+  glassContainerStyles,
+  skillsGridAnimationVariants,
+  skillItemAnimationVariants,
+} from './Skills.styles';
 
 interface Skill {
   id: string;
@@ -60,25 +66,64 @@ export const Skills: React.FC<SkillsProps> = ({
   className = '',
   style = {},
 }) => {
-  return (
-    <div className={`skills ${className}`.trim()} style={style}>
-      <MainTitle>Skills & Technologies</MainTitle>
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const skillsRef = useRef<HTMLDivElement>(null);
 
-      <GlassContainer
-        style={{ padding: '20px', paddingBottom: '30px', borderRadius: '20px' }}
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShouldAnimate(true);
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '0px 0px -10px 0px',
+      },
+    );
+
+    const currentRef = skillsRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
+  return (
+    <div ref={skillsRef} className={`skills ${className}`.trim()} style={style}>
+      <MainTitle>Skills & Technologies</MainTitle>
+      <motion.div
+        variants={skillsGridAnimationVariants}
+        initial="hidden"
+        animate={shouldAnimate ? 'visible' : 'hidden'}
+        className="skills-grid-container"
       >
-        <div className="skills-grid">
-          {skillsData.map((skill) => (
-            <SkillItem
-              key={skill.id}
-              logo={skill.logo}
-              backgroundImage={skill.backgroundImage}
-              name={skill.name}
-              description={skill.description}
-            />
-          ))}
-        </div>
-      </GlassContainer>
+        <GlassContainer style={glassContainerStyles}>
+          <motion.div className="skills-grid">
+            {skillsData.map((skill, index) => (
+              <motion.div
+                key={skill.id}
+                variants={skillItemAnimationVariants}
+                custom={index}
+              >
+                <SkillItem
+                  logo={skill.logo}
+                  backgroundImage={skill.backgroundImage}
+                  name={skill.name}
+                  description={skill.description}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </GlassContainer>
+      </motion.div>
     </div>
   );
 };
