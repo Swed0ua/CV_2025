@@ -20,6 +20,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin-top: 60px;
+  overflow: hidden;
+  border-radius: 20px;
 }
 
 /* Responsive Design */

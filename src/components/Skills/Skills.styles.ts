@@ -16,14 +16,14 @@ export const skillsGridContainerAnimationVariants = {
     transition: {
       duration: 0.3,
       ease: 'easeOut' as const,
-      delay: 3.8,
+      delay: 4,
     },
   },
 };
 
 export const skillsGridAnimationVariants = {
   hidden: {
-    width: '30%',
+    width: '40%',
     opacity: 0,
     transform: 'scale(0)',
     transformOrigin: 'top',
@@ -34,8 +34,11 @@ export const skillsGridAnimationVariants = {
     transformOrigin: 'top',
     opacity: 1,
     transition: {
-      width: { duration: 1, ease: 'easeOut' as const, delay: 0.8 },
-      transform: { duration: 1.4, ease: 'easeOut' as const },
+      width: { duration: 1, ease: 'easeOut' as const, delay: 1.2 },
+      transform: {
+        duration: 1.2,
+        ease: [0.65, 0.13, 0.22, 0.9] as [number, number, number, number],
+      },
       opacity: { duration: 0.3, ease: 'easeOut' as const, delay: 0 },
     },
   },
@@ -54,7 +57,7 @@ export const skillItemAnimationVariants = {
     transition: {
       duration: 0.6,
       ease: 'easeOut' as const,
-      delay: 1.2 + index * 0.15, // Random-ish delay based on index
+      delay: 1.4 + index * 0.15, // Random-ish delay based on index
     },
   }),
 };
