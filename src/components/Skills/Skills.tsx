@@ -8,6 +8,7 @@ import {
   glassContainerStyles,
   skillsGridAnimationVariants,
   skillItemAnimationVariants,
+  skillsGridContainerAnimationVariants,
 } from './Skills.styles';
 
 interface Skill {
@@ -224,7 +225,12 @@ export const Skills: React.FC<SkillsProps> = ({
         className="skills-grid-container"
       >
         <GlassContainer style={glassContainerStyles}>
-          <motion.div className="skills-grid">
+          <motion.div
+            className="skills-grid"
+            variants={skillsGridContainerAnimationVariants}
+            initial="hidden"
+            animate={shouldAnimate ? 'visible' : 'hidden'}
+          >
             {skillsData.map((skill, index) => (
               <motion.div
                 key={skill.id}
