@@ -53,6 +53,8 @@ const AppContent: React.FC = () => {
 
       <Preloader isVisible={isPreloaderVisible} />
     </div>
+
+    
   );
 };
 
