@@ -110,7 +110,7 @@ export const skillsDescriptionTextMainAnimationVariants = {
     transform: 'translateX(0%)',
     transformOrigin: 'left',
     transition: {
-      duration: 1.5,
+      duration: 0.5,
       ease: 'easeOut' as const,
       delay: delaySkillsDescription + delaySkillsDescriptionTextMain,
     },
