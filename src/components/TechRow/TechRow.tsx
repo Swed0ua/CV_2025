@@ -66,8 +66,7 @@ export const TechRow: React.FC<TechRowProps> = ({
           const chunkWidth =
             (TECH_ROW_CSS_DIMENSIONS.ICON_WIDTH +
               TECH_ROW_CSS_DIMENSIONS.ICON_GAP) *
-              TECH_ICONS.length -
-            TECH_ROW_CSS_DIMENSIONS.ICON_GAP;
+            TECH_ICONS.length;
           const screenWidth = window.innerWidth;
 
           if (positionRef.current <= -chunkWidth - screenWidth) {
