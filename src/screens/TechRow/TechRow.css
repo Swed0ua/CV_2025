@@ -1,0 +1,155 @@
+.tech-row {
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(135deg, #fff3cd 0%, #ffe066 50%, #fdbc08 100%);
+  border-top: 3px solid #ffd700;
+  border-bottom: 3px solid #ffd700;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.tech-row-track {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.tech-row-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  animation: scroll-left 50s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.tech-row-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-right: 40px;
+  white-space: nowrap;
+  min-width: 200px;
+  position: absolute;
+  left: 40px;
+  z-index: 2;
+  background: transparent;
+}
+
+.tech-row-icons {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tech-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.tech-icon:hover {
+  transform: scale(1.1);
+}
+
+.tech-icon-text {
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .tech-row-title {
+    left: 20px;
+    font-size: 16px;
+    min-width: 160px;
+  }
+
+  .tech-row-icons {
+    gap: 40px;
+  }
+
+  .tech-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tech-icon-text {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-row {
+    height: 100px;
+  }
+
+  .tech-row-title {
+    left: 15px;
+    font-size: 14px;
+    min-width: 140px;
+  }
+
+  .tech-row-icons {
+    gap: 30px;
+  }
+
+  .tech-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .tech-icon-text {
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-row {
+    height: 80px;
+  }
+
+  .tech-row-title {
+    left: 10px;
+    font-size: 12px;
+    min-width: 120px;
+  }
+
+  .tech-row-icons {
+    gap: 25px;
+  }
+
+  .tech-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .tech-icon-text {
+    font-size: 6px;
+  }
+}
