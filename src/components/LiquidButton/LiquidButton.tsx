@@ -36,6 +36,12 @@ export const LiquidButton: React.FC<LiquidButtonProps> = ({
       ? parseInt(paddingValues[1]) * 2
       : parseInt(paddingValues[0]) * 2;
 
+  // Розраховуємо вертикальний padding
+  const verticalPadding =
+    paddingValues.length > 1
+      ? parseInt(paddingValues[0]) * 2
+      : parseInt(paddingValues[0]);
+
   // Приблизна ширина тексту (можна налаштувати)
   const textWidth = typeof children === 'string' ? children.length * 10 : 100;
   const totalWidth = horizontalPadding + textWidth;
@@ -52,27 +58,47 @@ export const LiquidButton: React.FC<LiquidButtonProps> = ({
     ...style,
   };
 
+  const textHeight = typeof children === 'string' ? 20 : 20; // Приблизна висота тексту
+  const totalHeight = verticalPadding + textHeight;
+
   return (
-    <div style={{ position: 'relative' }}>
-      <LiquidGlass
-        className={className}
-        displacementScale={displacementScale}
-        blurAmount={blurAmount}
-        saturation={saturation}
-        aberrationIntensity={aberrationIntensity}
-        elasticity={elasticity}
-        cornerRadius={cornerRadius}
-        padding={padding}
-        onClick={onClick}
+    <div
+      style={{
+        position: 'relative',
+        width: `${totalWidth + 30}px`,
+        height: `${totalHeight + 20}px`,
+      }}
+    >
+      <div
         style={{
-          ...buttonStyles,
           position: 'absolute',
-          left: `${totalWidth / 2}px`,
+          top: `50%`,
+          left: `5px`,
           width: `${totalWidth}px`,
         }}
       >
-        {children}
-      </LiquidGlass>
+        <LiquidGlass
+          className={className}
+          displacementScale={displacementScale}
+          blurAmount={blurAmount}
+          saturation={saturation}
+          aberrationIntensity={aberrationIntensity}
+          elasticity={elasticity}
+          cornerRadius={cornerRadius}
+          padding={padding}
+          onClick={onClick}
+          style={{
+            ...buttonStyles,
+            position: 'absolute',
+            left: `${totalWidth / 2}px`,
+            width: `${totalWidth}px`,
+            textAlign: 'center',
+            textTransform: 'uppercase',
+          }}
+        >
+          {children}
+        </LiquidGlass>
+      </div>
     </div>
   );
 };

@@ -16,6 +16,7 @@ import {
   skillsDescriptionTextTitleAnimationVariants,
   skillsDescriptionTextMainAnimationVariants,
 } from './Skills.styles';
+import { LiquidButton } from '../LiquidButton/LiquidButton';
 
 interface Skill {
   id: string;
@@ -302,6 +303,11 @@ export const Skills: React.FC<SkillsProps> = ({
           </motion.div>
         </GlassContainer>
       </motion.div>
+      <div style={{}} className="skills-liquid-button-container">
+        <LiquidButton onClick={() => alert('Get Started clicked!')}>
+          Звязатись зі мною
+        </LiquidButton>
+      </div>
     </div>
   );
 };
