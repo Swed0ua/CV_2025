@@ -1,0 +1,86 @@
+.divider {
+  flex-shrink: 0;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+.divider-horizontal {
+  width: var(--divider-length, 100%);
+  height: var(--divider-thickness, 1px);
+}
+
+.divider-vertical {
+  height: var(--divider-length, 60px);
+  width: var(--divider-thickness, 1px);
+}
+
+.divider-auto {
+  width: var(--divider-length, 100%);
+  height: var(--divider-thickness, 1px);
+}
+
+/* Responsive behavior for auto orientation */
+@media (max-width: 768px) {
+  .divider-auto {
+    width: 60px;
+    height: var(--divider-thickness, 1px);
+  }
+}
+
+@media (min-width: 769px) {
+  .divider-auto {
+    height: 60px;
+    width: var(--divider-thickness, 1px);
+  }
+}
+
+/* Responsive behavior for vertical orientation */
+@media (max-width: 768px) {
+  .divider-vertical {
+    width: 60px;
+    height: var(--divider-thickness, 1px);
+  }
+}
+
+/* Hover effects */
+.divider:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* Animation variants */
+.divider-animated {
+  animation: dividerPulse 2s ease-in-out infinite;
+}
+
+@keyframes dividerPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Custom thickness variants */
+.divider-thick {
+  --divider-thickness: 2px;
+}
+
+.divider-thin {
+  --divider-thickness: 0.5px;
+}
+
+/* Custom color variants */
+.divider-primary {
+  --divider-color: rgba(59, 130, 246, 0.5);
+}
+
+.divider-secondary {
+  --divider-color: rgba(156, 163, 175, 0.5);
+}
+
+.divider-accent {
+  --divider-color: rgba(168, 85, 247, 0.5);
+}

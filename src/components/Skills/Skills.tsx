@@ -4,6 +4,7 @@ import { SkillItem } from './SkillItem';
 import MainTitle from '../MainTitle';
 import './Skills.css';
 import { GlassContainer } from '../GlassContainer';
+import { Divider } from '../Divider';
 import {
   glassContainerStyles,
   skillsGridAnimationVariants,
@@ -237,7 +238,13 @@ export const Skills: React.FC<SkillsProps> = ({
                 вперед
               </p>
             </div>
-            <div className="divider"></div>
+            <Divider
+              orientation="vertical"
+              color="rgba(255, 255, 255, 0.3)"
+              thickness={1}
+              gradient={true}
+              length="80px"
+            />
             <div className="description-text">
               <p>
                 Працюю з найсучаснішими інструментами розробки, які дозволяють

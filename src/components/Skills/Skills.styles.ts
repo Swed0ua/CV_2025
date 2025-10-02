@@ -12,7 +12,7 @@ export const skillsGridContainerAnimationVariants = {
     backgroundColor: 'rgba(0, 0, 0, 0)',
   },
   visible: {
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
     transition: {
       duration: 0.3,
       ease: 'easeOut' as const,

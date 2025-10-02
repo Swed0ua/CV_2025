@@ -20,12 +20,11 @@
   display: flex;
   align-items: center;
   margin-bottom: 40px;
-  padding: 0 20px;
-  gap: 30px;
+  gap: 2%;
 }
 
 .wisdom-text {
-  flex: 0 0 40%;
+  flex: 0 0 28%;
   text-align: right;
 }
 
@@ -38,20 +37,8 @@
   margin: 0;
 }
 
-.divider {
-  width: 1px;
-  height: 60px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  flex-shrink: 0;
-}
-
 .description-text {
-  flex: 0 0 60%;
+  flex: 0 0 68%;
   text-align: left;
 }
 
@@ -92,6 +79,7 @@
     flex-direction: column;
     gap: 20px;
     text-align: center;
+    position: relative;
   }
 
   .wisdom-text {
@@ -101,17 +89,6 @@
 
   .wisdom-text p {
     font-size: 18px;
-  }
-
-  .divider {
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(255, 255, 255, 0.3),
-      transparent
-    );
   }
 
   .description-text {
