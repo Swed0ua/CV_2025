@@ -19,6 +19,7 @@
 .skills-description {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 40px;
   gap: 2%;
 }
@@ -29,16 +30,16 @@
 }
 
 .wisdom-text p {
-  font-size: 20px;
+  font-size: 1.2rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.4);
   font-weight: 400;
   font-style: italic;
   margin: 0;
 }
 
 .description-text {
-  flex: 0 0 68%;
+  flex: 0 0 48%;
   text-align: left;
 }
 
@@ -62,17 +63,6 @@
 @media (max-width: 1200px) {
   .skills-grid {
     grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0 10px;
-  }
-
-  .skills {
-    padding: 40px 10px;
   }
 
   .skills-description {
@@ -98,6 +88,17 @@
 
   .description-text p {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 10px;
+  }
+
+  .skills {
+    padding: 40px 10px;
   }
 }
 

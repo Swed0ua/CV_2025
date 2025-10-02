@@ -187,6 +187,7 @@ export const Skills: React.FC<SkillsProps> = ({
   style = {},
 }) => {
   const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const skillsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -216,6 +217,17 @@ export const Skills: React.FC<SkillsProps> = ({
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1200);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div ref={skillsRef} className={`skills ${className}`.trim()} style={style}>
       <MainTitle>Skills & Technologies</MainTitle>
@@ -234,16 +246,17 @@ export const Skills: React.FC<SkillsProps> = ({
           >
             <div className="wisdom-text">
               <p>
-                Нові технологічні прийоми та архітектурні рішення рухають ринок
-                вперед
+                Нові технологічні прийоми та архітектурні рішення рухають
+                індустрію вперед, створюючи можливості для революційних змін у
+                підходах до розробки.
               </p>
             </div>
             <Divider
-              orientation="vertical"
+              orientation={isMobile ? 'horizontal' : 'vertical'}
               color="rgba(255, 255, 255, 0.3)"
               thickness={1}
               gradient={true}
-              length="80px"
+              length={isMobile ? '80%' : '80px'}
             />
             <div className="description-text">
               <p>
