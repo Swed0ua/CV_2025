@@ -39,6 +39,14 @@ const enTranslations: TranslationKeys = {
     description4:
       'I work both in a team and independently on projects of varying complexity. I am constantly developing and ready to learn new technologies to solve complex business problems.',
   },
+
+  skills: {
+    title: 'Skills & Technologies',
+    wisdomText:
+      'Innovative technological approaches and architectural solutions drive the industry forward.',
+    descriptionText:
+      'I work with cutting-edge development tools that enable creating fast, scalable, and secure solutions. Constantly tracking industry trends and ready to integrate new technologies to enhance efficiency and product quality.',
+  },
 };
 
 export default enTranslations;

@@ -5,6 +5,7 @@ import MainTitle from '../MainTitle';
 import './Skills.css';
 import { GlassContainer } from '../GlassContainer';
 import { Divider } from '../Divider';
+import { useLocalization } from '../../contexts/LocalizationContext';
 import {
   glassContainerStyles,
   skillsGridAnimationVariants,
@@ -189,6 +190,7 @@ export const Skills: React.FC<SkillsProps> = ({
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const skillsRef = useRef<HTMLDivElement>(null);
+  const { t } = useLocalization();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -230,7 +232,7 @@ export const Skills: React.FC<SkillsProps> = ({
 
   return (
     <div ref={skillsRef} className={`skills ${className}`.trim()} style={style}>
-      <MainTitle>Skills & Technologies</MainTitle>
+      <MainTitle>{t('skills.title')}</MainTitle>
       <motion.div
         variants={skillsGridAnimationVariants}
         initial="hidden"
@@ -245,11 +247,7 @@ export const Skills: React.FC<SkillsProps> = ({
             animate={shouldAnimate ? 'visible' : 'hidden'}
           >
             <div className="wisdom-text">
-              <p>
-                Нові технологічні прийоми та архітектурні рішення рухають
-                індустрію вперед, створюючи можливості для революційних змін у
-                підходах до розробки.
-              </p>
+              <p>{t('skills.wisdomText')}</p>
             </div>
             <Divider
               orientation={isMobile ? 'horizontal' : 'vertical'}
@@ -259,12 +257,7 @@ export const Skills: React.FC<SkillsProps> = ({
               length={isMobile ? '80%' : '80px'}
             />
             <div className="description-text">
-              <p>
-                Працюю з найсучаснішими інструментами розробки, які дозволяють
-                створювати швидкі, масштабовані та безпечні рішення. Постійно
-                відстежую тренди індустрії та готовий інтегрувати нові
-                технології для підвищення ефективності та якості продукту.
-              </p>
+              <p>{t('skills.descriptionText')}</p>
             </div>
           </motion.div>
           <motion.div

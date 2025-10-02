@@ -35,6 +35,13 @@ export interface TranslationKeys {
     description3: string;
     description4: string;
   };
+
+  // Skills
+  skills: {
+    title: string;
+    wisdomText: string;
+    descriptionText: string;
+  };
 }
 
 export interface LocalizationContextType {
