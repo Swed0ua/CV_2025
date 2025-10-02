@@ -2,7 +2,6 @@ import { CSSProperties } from 'react';
 
 export const mainContentContainerStyles: CSSProperties = {
   width: '100%',
-  height: '2000px',
   backgroundColor: '#000000',
   color: 'white',
   fontFamily: 'Roboto Mono, monospace',
