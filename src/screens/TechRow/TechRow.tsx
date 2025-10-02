@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { motion } from 'framer-motion';
 import './TechRow.css';
-import { techRowAnimationVariants } from './TechRow.styles';
 
 interface TechIcon {
   id: string;
@@ -34,9 +32,12 @@ export const TechRow: React.FC<TechRowProps> = ({
   className = '',
   style = {},
 }) => {
-  const [shouldAnimate, setShouldAnimate] = useState(false);
   const [chunksCount, setChunksCount] = useState(8);
   const containerRef = useRef<HTMLDivElement>(null);
+  const positionRef = useRef(0);
+  const animationRef = useRef<number | null>(null);
+  const intervalRef = useRef<number | null>(null);
+  const speedRef = useRef(-0.4);
 
   useEffect(() => {
     // Calculate chunks count based on screen width
@@ -56,59 +57,70 @@ export const TechRow: React.FC<TechRowProps> = ({
     };
 
     calculateChunks();
-    setTimeout(() => setShouldAnimate(true), 100);
+  }, []);
 
-    // Infinite loop logic
-    const interval = setInterval(() => {
-      if (containerRef.current) {
-        const firstChunk =
-          containerRef.current.querySelector('.tech-row-icons');
+  useEffect(() => {
+    const startAnimation = () => {
+      // Pure animation function - only moves position
+      const animate = () => {
+        if (!containerRef.current) return;
+        positionRef.current += speedRef.current;
+        containerRef.current.style.transform = `translateX(${positionRef.current}px)`;
+        animationRef.current = requestAnimationFrame(animate);
+      };
+
+      // Check loop logic - runs every 1 second
+      const checkLoop = () => {
+        if (!containerRef.current) return;
+
+        const firstChunk = containerRef.current.querySelector(
+          '.tech-row-icons',
+        ) as HTMLElement;
         if (firstChunk) {
-          const rect = firstChunk.getBoundingClientRect();
+          const chunkWidth = (50 + 60) * techIcons.length - 60;
           const screenWidth = window.innerWidth;
 
-          // If first chunk completely exits screen, move it to end
-          if (rect.right < -screenWidth) {
-            const chunks =
-              containerRef.current.querySelectorAll('.tech-row-icons');
-            const firstMainChunk = chunks[0];
-
-            // Remove first chunk
-            firstMainChunk.remove();
-
-            // Clone first chunk and add to end
-            const clonedChunk = firstMainChunk.cloneNode(true) as HTMLElement;
+          if (positionRef.current <= -chunkWidth - screenWidth) {
+            console.log('Moving first chunk to end');
+            firstChunk.remove();
+            const clonedChunk = firstChunk.cloneNode(true) as HTMLElement;
             containerRef.current.appendChild(clonedChunk);
+            positionRef.current += chunkWidth;
+            containerRef.current.style.transform = `translateX(${positionRef.current}px)`;
           }
         }
-      }
-    }, 1000); // Check every second
+      };
 
-    return () => clearInterval(interval);
-  }, []);
+      // Start animation
+      animationRef.current = requestAnimationFrame(animate);
+      console.log('Animation started!');
+
+      // Start interval for checking loop
+      intervalRef.current = window.setInterval(checkLoop, 1000);
+    };
+
+    setTimeout(startAnimation, 500);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [chunksCount]);
 
   return (
     <div className={`tech-row ${className}`.trim()} style={style}>
-      <motion.div
-        className="tech-row-track"
-        variants={techRowAnimationVariants}
-        initial="hidden"
-        animate={shouldAnimate ? 'visible' : 'hidden'}
-      >
-        <div
-          ref={containerRef}
-          className="tech-row-content"
-          style={{ gap: '60px' }}
-        >
+      <div className="tech-row-track">
+        <div ref={containerRef} className="tech-row-content">
           {Array(chunksCount)
             .fill(0)
             .map((_, chunkIndex) => (
-              <div
-                key={`chunk-${chunkIndex}`}
-                className={`tech-row-icons tech-row-icons-${chunkIndex}`}
-              >
+              <div key={`chunk-${chunkIndex}`} className="tech-row-icons">
                 {techIcons.map((icon) => (
-                  <motion.div
+                  <div
                     key={`${chunkIndex}-${icon.id}`}
                     className="tech-icon"
                     style={{
@@ -116,12 +128,12 @@ export const TechRow: React.FC<TechRowProps> = ({
                     }}
                   >
                     <span className="tech-icon-text">{icon.name}</span>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             ))}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

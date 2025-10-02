@@ -3,7 +3,7 @@
   height: 120px;
   background: linear-gradient(135deg, #fff3cd 0%, #ffe066 50%, #fdbc08 100%);
   border-top: 3px solid #ffd700;
-  border-bottom: 3px solid #ffd700;
+  border-bottom: 3px solid #ffd750;
   overflow: hidden;
   position: relative;
   margin: 0;
@@ -22,31 +22,7 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  animation: scroll-left 50s linear infinite;
-}
-
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.tech-row-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-right: 40px;
-  white-space: nowrap;
-  min-width: 200px;
-  position: absolute;
-  left: 40px;
-  z-index: 2;
-  background: transparent;
+  /* Removed CSS animation - now handled by JS */
 }
 
 .tech-row-icons {
@@ -84,12 +60,6 @@
 
 /* Responsive Design */
 @media (max-width: 1200px) {
-  .tech-row-title {
-    left: 20px;
-    font-size: 16px;
-    min-width: 160px;
-  }
-
   .tech-row-icons {
     gap: 40px;
   }
@@ -109,12 +79,6 @@
     height: 100px;
   }
 
-  .tech-row-title {
-    left: 15px;
-    font-size: 14px;
-    min-width: 140px;
-  }
-
   .tech-row-icons {
     gap: 30px;
   }
@@ -132,12 +96,6 @@
 @media (max-width: 480px) {
   .tech-row {
     height: 80px;
-  }
-
-  .tech-row-title {
-    left: 10px;
-    font-size: 12px;
-    min-width: 120px;
   }
 
   .tech-row-icons {
