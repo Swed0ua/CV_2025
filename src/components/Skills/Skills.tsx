@@ -11,6 +11,10 @@ import {
   skillsGridAnimationVariants,
   skillItemAnimationVariants,
   skillsGridContainerAnimationVariants,
+  delaySkillsDescription,
+  skillsDescriptionAnimationVariants,
+  skillsDescriptionTextTitleAnimationVariants,
+  skillsDescriptionTextMainAnimationVariants,
 } from './Skills.styles';
 
 interface Skill {
@@ -242,22 +246,37 @@ export const Skills: React.FC<SkillsProps> = ({
         <GlassContainer style={glassContainerStyles}>
           <motion.div
             className="skills-description"
-            variants={skillsGridContainerAnimationVariants}
+            variants={skillsDescriptionAnimationVariants}
             initial="hidden"
             animate={shouldAnimate ? 'visible' : 'hidden'}
           >
             <div className="wisdom-text">
-              <p>{t('skills.wisdomText')}</p>
+              <motion.p
+                variants={skillsDescriptionTextTitleAnimationVariants}
+                initial="hidden"
+                animate={shouldAnimate ? 'visible' : 'hidden'}
+              >
+                {t('skills.wisdomText')}
+              </motion.p>
             </div>
             <Divider
               orientation={isMobile ? 'horizontal' : 'vertical'}
               color="rgba(255, 255, 255, 0.3)"
               thickness={1}
               gradient={true}
-              length={isMobile ? '80%' : '80px'}
+              length={isMobile ? '80%' : '130px'}
+              animate={shouldAnimate ? 'visible' : 'hidden'}
+              duration={0.4}
+              delay={delaySkillsDescription}
             />
             <div className="description-text">
-              <p>{t('skills.descriptionText')}</p>
+              <motion.p
+                variants={skillsDescriptionTextMainAnimationVariants}
+                initial="hidden"
+                animate={shouldAnimate ? 'visible' : 'hidden'}
+              >
+                {t('skills.descriptionText')}
+              </motion.p>
             </div>
           </motion.div>
           <motion.div

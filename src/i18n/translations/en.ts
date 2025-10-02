@@ -43,7 +43,7 @@ const enTranslations: TranslationKeys = {
   skills: {
     title: 'Skills & Technologies',
     wisdomText:
-      'Innovative technological approaches and architectural solutions drive the industry forward.',
+      'Innovative technological approaches and architectural solutions drive the industry forward',
     descriptionText:
       'I work with cutting-edge development tools that enable creating fast, scalable, and secure solutions. Constantly tracking industry trends and ready to integrate new technologies to enhance efficiency and product quality.',
   },

@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './Divider.css';
 
 export type DividerOrientation = 'horizontal' | 'vertical' | 'auto';
@@ -11,6 +12,11 @@ export interface DividerProps {
   thickness?: number;
   length?: string;
   gradient?: boolean;
+  variants?: any;
+  initial?: any;
+  animate?: any;
+  delay?: number;
+  duration?: number;
 }
 
 export const Divider: React.FC<DividerProps> = ({
@@ -21,6 +27,11 @@ export const Divider: React.FC<DividerProps> = ({
   thickness = 1,
   length = '100%',
   gradient = true,
+  variants,
+  initial = 'hidden',
+  animate = 'visible',
+  delay = 0,
+  duration = 0.8,
 }) => {
   const getOrientationClass = () => {
     if (orientation === 'auto') {
@@ -73,13 +84,40 @@ export const Divider: React.FC<DividerProps> = ({
     };
   };
 
+  const getDefaultVariants = () => {
+    if (variants) return variants;
+
+    const isHorizontal = orientation === 'horizontal' || orientation === 'auto';
+
+    return {
+      hidden: {
+        opacity: 0,
+        scaleX: isHorizontal ? 0 : 1,
+        scaleY: isHorizontal ? 1 : 0,
+      },
+      visible: {
+        opacity: 1,
+        scaleX: 1,
+        scaleY: 1,
+        transition: {
+          duration,
+          delay,
+          ease: 'easeOut',
+        },
+      },
+    };
+  };
+
   return (
-    <div
+    <motion.div
       className={`divider ${getOrientationClass()} ${className}`.trim()}
       style={{
         ...getDividerStyle(),
         ...getBackgroundStyle(),
       }}
+      variants={getDefaultVariants()}
+      initial={initial}
+      animate={animate}
     />
   );
 };

@@ -1,5 +1,10 @@
 import { CSSProperties } from 'react';
 
+// Delays variables
+export const delaySkillsDescription = 3;
+export const delaySkillsDescriptionTextTitle = 0.5;
+export const delaySkillsDescriptionTextMain = 1.2;
+
 export const glassContainerStyles: CSSProperties = {
   padding: '2em',
   paddingBottom: '2em',
@@ -12,7 +17,7 @@ export const skillsGridContainerAnimationVariants = {
     backgroundColor: 'rgba(0, 0, 0, 0)',
   },
   visible: {
-    backgroundColor: 'rgba(0, 0, 0, 0)',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
     transition: {
       duration: 0.3,
       ease: 'easeOut' as const,
@@ -60,6 +65,56 @@ export const skillItemAnimationVariants = {
       delay: 1.4 + index * 0.15, // Random-ish delay based on index
     },
   }),
+};
+
+// Description
+
+export const skillsDescriptionAnimationVariants = {
+  hidden: {
+    transform: 'scaleY(0%)',
+  },
+  visible: {
+    transform: 'scaleY(100%)',
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut' as const,
+      delay: delaySkillsDescription,
+    },
+  },
+};
+
+export const skillsDescriptionTextTitleAnimationVariants = {
+  hidden: {
+    transform: 'translateX(100%)',
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transform: 'translateX(0%)',
+    transformOrigin: 'right',
+    transition: {
+      duration: 1.3,
+      ease: 'easeOut' as const,
+      delay: delaySkillsDescription + delaySkillsDescriptionTextTitle,
+    },
+  },
+};
+
+export const skillsDescriptionTextMainAnimationVariants = {
+  hidden: {
+    transform: 'translateX(-100%)',
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transform: 'translateX(0%)',
+    transformOrigin: 'left',
+    transition: {
+      duration: 1.5,
+      ease: 'easeOut' as const,
+      delay: delaySkillsDescription + delaySkillsDescriptionTextMain,
+    },
+  },
 };
 
 export const skillsVariants = {

@@ -50,9 +50,61 @@
 
 /* Animation variants */
 .divider-animated {
-  animation: dividerPulse 2s ease-in-out infinite;
+  opacity: 0;
 }
 
+.divider-custom-animation {
+  /* Custom animation styles will be applied via inline styles */
+}
+
+/* Slide animations */
+@keyframes dividerSlideHorizontal {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes dividerSlideVertical {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: center;
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* Fade in animation */
+@keyframes dividerFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Scale in animation */
+@keyframes dividerScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Pulse animation (legacy) */
 @keyframes dividerPulse {
   0%,
   100% {
