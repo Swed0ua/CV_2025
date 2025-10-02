@@ -16,6 +16,53 @@
   position: relative;
 }
 
+.skills-description {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 0 20px;
+  gap: 30px;
+}
+
+.wisdom-text {
+  flex: 0 0 40%;
+  text-align: right;
+}
+
+.wisdom-text p {
+  font-size: 20px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+  font-style: italic;
+  margin: 0;
+}
+
+.divider {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  flex-shrink: 0;
+}
+
+.description-text {
+  flex: 0 0 60%;
+  text-align: left;
+}
+
+.description-text p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  font-weight: 300;
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -40,6 +87,41 @@
   .skills {
     padding: 40px 10px;
   }
+
+  .skills-description {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .wisdom-text {
+    flex: none;
+    text-align: center;
+  }
+
+  .wisdom-text p {
+    font-size: 18px;
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+  }
+
+  .description-text {
+    flex: none;
+    text-align: center;
+  }
+
+  .description-text p {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -49,5 +131,13 @@
 
   .skills {
     padding: 30px 10px;
+  }
+
+  .wisdom-text p {
+    font-size: 16px;
+  }
+
+  .description-text p {
+    font-size: 14px;
   }
 }

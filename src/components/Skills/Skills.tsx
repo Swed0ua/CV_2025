@@ -226,6 +226,28 @@ export const Skills: React.FC<SkillsProps> = ({
       >
         <GlassContainer style={glassContainerStyles}>
           <motion.div
+            className="skills-description"
+            variants={skillsGridContainerAnimationVariants}
+            initial="hidden"
+            animate={shouldAnimate ? 'visible' : 'hidden'}
+          >
+            <div className="wisdom-text">
+              <p>
+                Нові технологічні прийоми та архітектурні рішення рухають ринок
+                вперед
+              </p>
+            </div>
+            <div className="divider"></div>
+            <div className="description-text">
+              <p>
+                Працюю з найсучаснішими інструментами розробки, які дозволяють
+                створювати швидкі, масштабовані та безпечні рішення. Постійно
+                відстежую тренди індустрії та готовий інтегрувати нові
+                технології для підвищення ефективності та якості продукту.
+              </p>
+            </div>
+          </motion.div>
+          <motion.div
             className="skills-grid"
             variants={skillsGridContainerAnimationVariants}
             initial="hidden"
