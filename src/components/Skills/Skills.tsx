@@ -17,7 +17,7 @@ import {
   skillsDescriptionTextMainAnimationVariants,
 } from './Skills.styles';
 import { LiquidButton } from '../LiquidButton/LiquidButton';
-import TechRow from '../../screens/TechRow';
+import TechRow from '../TechRow';
 
 interface Skill {
   id: string;

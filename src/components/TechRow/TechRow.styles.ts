@@ -10,3 +10,10 @@ export const techRowAnimationVariants = {
     },
   },
 };
+
+export const TECH_ROW_CSS_DIMENSIONS = {
+  ICON_WIDTH: 50,
+  ICON_HEIGHT: 50,
+  ICON_GAP: 60,
+  CONTAINER_HEIGHT: 120,
+} as const;
