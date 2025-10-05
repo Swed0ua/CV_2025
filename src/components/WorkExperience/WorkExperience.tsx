@@ -21,25 +21,28 @@ const workExperienceData: WorkExperienceData[] = [
     description:
       'Розробка та підтримка веб-додатків для системи управління касовими операціями. Використання React, TypeScript та сучасних інструментів розробки.',
   },
-  {
-    id: '2',
-    companyName: 'MonoBank',
-    role: 'Full Stack Developer',
-    description:
-      'Розробка фінансових додатків та інтеграція з банківськими системами. Робота з Node.js, React та різними API для обробки платежів.',
-  },
-  {
-    id: '3',
-    companyName: 'FreelanceHunt',
-    role: 'React Developer',
-    description:
-      'Створення інтерактивних інтерфейсів для платформи фрілансу. Оптимізація продуктивності та покращення користувацького досвіду.',
-  },
+  // {
+  //   id: '2',
+  //   companyName: 'MonoBank',
+  //   role: 'Full Stack Developer',
+  //   description:
+  //     'Розробка фінансових додатків та інтеграція з банківськими системами. Робота з Node.js, React та різними API для обробки платежів.',
+  // },
+  // {
+  //   id: '3',
+  //   companyName: 'FreelanceHunt',
+  //   role: 'React Developer',
+  //   description:
+  //     'Створення інтерактивних інтерфейсів для платформи фрілансу. Оптимізація продуктивності та покращення користувацького досвіду.',
+  // },
 ];
 
 const WorkExperience: React.FC<WorkExperienceProps> = ({ className }) => {
   return (
-    <div className={`work-experience-container ${className || ''}`}>
+    <div
+      className={`work-experience-container ${className || ''}`}
+      style={{ paddingBottom: '1000px' }}
+    >
       <h2>Work Experience</h2>
       {workExperienceData.map((item) => (
         <WorkExperienceItem
