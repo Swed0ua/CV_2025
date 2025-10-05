@@ -20,7 +20,14 @@ const MainContent: React.FC = () => {
         }}
       />
       <Skills className="contentContainer" />
-      <TechRow style={{ position: 'relative', zIndex: 2 }} />
+      <TechRow
+        style={{
+          position: 'relative',
+          zIndex: 2,
+          marginLeft: '-20px',
+          width: 'calc(100% + 40px)',
+        }}
+      />
     </div>
   );
 };

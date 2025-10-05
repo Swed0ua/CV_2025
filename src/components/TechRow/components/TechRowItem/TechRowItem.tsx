@@ -20,7 +20,12 @@ export function TechRowItem({ itemIndex, icon, size }: TechRowItemProps) {
         height: size.height,
       }}
     >
-      <span className="tech-icon-text">{icon.name}</span>
+      <img
+        src={icon.imagePath}
+        alt={icon.name || 'Tech icon'}
+        className="tech-icon-image"
+      />
+      {icon.name && <span className="tech-icon-text">{icon.name}</span>}
     </div>
   );
 }
