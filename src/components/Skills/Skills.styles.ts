@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 
 // Delays variables
-export const delaySkillsDescription = 3;
+export const delaySkillsDescription = 3.5;
 export const delaySkillsDescriptionTextTitle = 0.5;
 export const delaySkillsDescriptionTextMain = 1.2;
 
@@ -15,13 +15,14 @@ export const glassContainerStyles: CSSProperties = {
 export const skillsGridContainerAnimationVariants = {
   hidden: {
     backgroundColor: 'rgba(0, 0, 0, 0)',
+    transform: 'translateY(-100px)',
   },
   visible: {
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    transform: 'translateY(0px)',
     transition: {
-      duration: 0.3,
-      ease: 'easeOut' as const,
-      delay: 4,
+      backgroundColor: { duration: 0.3, ease: 'easeOut' as const, delay: 4 },
+      transform: { duration: 1, ease: 'easeOut' as const, delay: 3 },
     },
   },
 };
