@@ -51,6 +51,7 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ className }) => {
           companyName={item.companyName}
           role={item.role}
           description={item.description}
+          endpoint={0.35 + index * 0.05}
           maxShift={70 + index * 10}
         />
       ))}

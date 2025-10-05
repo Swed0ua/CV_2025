@@ -17,6 +17,21 @@
   align-items: flex-end;
 }
 
+.work-experience-left .company-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.work-experience-left .role {
+  font-size: 0.6rem;
+  color: #cccccc;
+  margin: 0;
+  font-weight: 500;
+}
+
 .work-experience-right {
   flex: 1;
   padding-left: 30px;
@@ -31,22 +46,7 @@
   margin: 0 20px;
 }
 
-.company-name {
-  font-size: 24px;
-  font-weight: bold;
-  color: #ffffff;
-  margin: 0 0 8px 0;
-  line-height: 1.2;
-}
-
-.role {
-  font-size: 16px;
-  color: #cccccc;
-  margin: 0;
-  font-weight: 500;
-}
-
-.description {
+.work-experience-right .description {
   font-size: 16px;
   color: #ffffff;
   margin: 0;

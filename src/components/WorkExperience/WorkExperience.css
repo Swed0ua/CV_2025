@@ -1,6 +1,8 @@
 .work-experience-container {
   padding: 40px 20px;
   margin: 20px 0;
+  position: relative;
+  z-index: 2;
 }
 
 .work-experience-container h2 {
