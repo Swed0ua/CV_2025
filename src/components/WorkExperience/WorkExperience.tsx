@@ -39,10 +39,7 @@ const workExperienceData: WorkExperienceData[] = [
 
 const WorkExperience: React.FC<WorkExperienceProps> = ({ className }) => {
   return (
-    <div
-      className={`work-experience-container ${className || ''}`}
-      style={{ paddingBottom: '1000px' }}
-    >
+    <div className={`work-experience-container ${className || ''}`}>
       <h2>Work Experience</h2>
       {workExperienceData.map((item, index) => (
         <WorkExperienceItem
