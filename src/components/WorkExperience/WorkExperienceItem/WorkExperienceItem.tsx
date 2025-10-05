@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import './WorkExperienceItem.css';
 import { Divider } from '../../Divider';
+import { mapValue } from '../../../utils/math';
 
 interface WorkExperienceItemProps {
   id: string;
   companyName: string;
   role: string;
   description: string;
+  endpoint?: number;
+  maxShift?: number;
 }
 
 export const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
@@ -15,6 +18,8 @@ export const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
   companyName,
   role,
   description,
+  endpoint = 0.6,
+  maxShift = 50,
 }) => {
   const [translateX, setTranslateX] = useState(0);
   const elementRef = useRef<HTMLDivElement>(null);
@@ -27,13 +32,9 @@ export const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
       const rect = element.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      // Розраховуємо відсоток видимості елемента
-      // 0% = елемент на початку viewport (top = viewportHeight)
-      // 100% = елемент в кінці viewport (top = -elementHeight)
       const elementTop = rect.top;
       const elementHeight = rect.height;
 
-      // Відсоток видимості від 0 до 1
       const visibilityPercentage = Math.max(
         0,
         Math.min(
@@ -42,26 +43,22 @@ export const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
         ),
       );
 
-      console.log('visibilityPercentage', visibilityPercentage);
-
-      // Мапуємо відсоток на translateX
-      // 50% видимості = 0vh (на своєму місці)
-      // 90% видимості = 100vh (максимально вправо)
       let translateXValue = 0;
-      if (visibilityPercentage >= 0.5) {
-        // Від 50% до 100% мапуємо на 0vh до 100vh
-        // translateXValue = ((visibilityPercentage - 0.5) / 0.5) * 100;
-      } else {
-        // Від 0% до 50% мапуємо на -50vh до 0vh
-        translateXValue = 100 - visibilityPercentage * 2 * 100;
+      if (visibilityPercentage <= endpoint) {
+        const shiftValue = mapValue({
+          value: visibilityPercentage,
+          fromMin: endpoint,
+          fromMax: 0,
+          toMin: 0,
+          toMax: maxShift,
+        });
+        translateXValue = shiftValue;
       }
-      console.log('translateXValue', translateXValue);
-
       setTranslateX(translateXValue);
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Викликаємо одразу для поточної позиції
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -86,8 +83,8 @@ export const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
         }}
         transition={{
           type: 'spring',
-          stiffness: 100,
-          damping: 20,
+          stiffness: 1000,
+          damping: 100,
         }}
       >
         <p className="description">{description}</p>
