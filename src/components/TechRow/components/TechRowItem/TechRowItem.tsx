@@ -14,6 +14,7 @@ export function TechRowItem({ itemIndex, icon, size }: TechRowItemProps) {
     <div
       key={`${itemIndex}-${icon.id}`}
       className="tech-icon"
+      title={icon.name || 'Tech icon'}
       style={{
         backgroundColor: icon.color,
         width: size.width,
@@ -24,6 +25,7 @@ export function TechRowItem({ itemIndex, icon, size }: TechRowItemProps) {
         src={icon.imagePath}
         alt={icon.name || 'Tech icon'}
         className="tech-icon-image"
+        title={icon.name || 'Tech icon'}
       />
       {icon.name && <span className="tech-icon-text">{icon.name}</span>}
     </div>
