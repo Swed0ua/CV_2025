@@ -18,8 +18,8 @@ export const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
   companyName,
   role,
   description,
-  endpoint = 0.6,
-  maxShift = 50,
+  endpoint = 0.55,
+  maxShift = 70,
 }) => {
   const [translateX, setTranslateX] = useState(0);
   const elementRef = useRef<HTMLDivElement>(null);
