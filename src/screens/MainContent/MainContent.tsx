@@ -4,6 +4,7 @@ import './MainContent.css';
 import { mainContentContainerStyles } from './MainContent.styles';
 import { Skills } from '../../components/Skills';
 import TechRow from '../../components/TechRow';
+import WorkExperience from '../../components/WorkExperience';
 
 const MainContent: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const MainContent: React.FC = () => {
       />
       <Skills className="contentContainer" />
       <TechRow
+        idName="techRow"
         style={{
           position: 'relative',
           zIndex: 2,
@@ -28,6 +30,7 @@ const MainContent: React.FC = () => {
           width: 'calc(100% + 40px)',
         }}
       />
+      <WorkExperience />
     </div>
   );
 };

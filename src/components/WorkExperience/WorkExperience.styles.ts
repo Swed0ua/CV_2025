@@ -1,0 +1,4 @@
+export const workExperienceContainerStyles = {
+  padding: '20px',
+  margin: '20px 0',
+};

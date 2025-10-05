@@ -9,11 +9,13 @@ import TechRowItem from './components/TechRowItem/TechRowItem';
 
 interface TechRowProps {
   className?: string;
+  idName?: string | null;
   style: React.CSSProperties;
 }
 
 export const TechRow: React.FC<TechRowProps> = ({
   className = '',
+  idName = null,
   style = {},
 }) => {
   const [chunksCount, setChunksCount] = useState<number>(
@@ -95,7 +97,11 @@ export const TechRow: React.FC<TechRowProps> = ({
   }, [chunksCount]);
 
   return (
-    <div className={`tech-row ${className}`.trim()} style={style}>
+    <div
+      className={`tech-row ${className}`.trim()}
+      style={style}
+      id={idName || undefined}
+    >
       <div className="tech-row-track">
         <div
           ref={containerRef}
