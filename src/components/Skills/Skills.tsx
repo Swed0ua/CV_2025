@@ -17,7 +17,6 @@ import {
   skillsDescriptionTextMainAnimationVariants,
 } from './Skills.styles';
 import { LiquidButton } from '../LiquidButton/LiquidButton';
-import TechRow from '../TechRow';
 
 interface Skill {
   id: string;
@@ -309,7 +308,6 @@ export const Skills: React.FC<SkillsProps> = ({
           {t('welcome.buttonText')}
         </LiquidButton>
       </div>
-      <TechRow style={{}} />
     </div>
   );
 };

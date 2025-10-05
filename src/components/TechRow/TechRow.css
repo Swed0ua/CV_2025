@@ -1,9 +1,7 @@
 .tech-row {
   width: 100%;
-  height: 120px;
-  background: linear-gradient(135deg, #fff3cd 0%, #ffe066 50%, #fdbc08 100%);
-  border-top: 3px solid #ffd700;
-  border-bottom: 3px solid #ffd750;
+  height: 80px;
+  background: rgba(240, 229, 0, 1);
   overflow: hidden;
   position: relative;
   margin: 0;

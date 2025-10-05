@@ -1,11 +1,9 @@
 import React from 'react';
 import AnimatedBackground from '../../components/AnimatedBackground';
 import './MainContent.css';
-import {
-  mainContentContainerStyles,
-  // mainContentTextStyles,
-} from './MainContent.styles';
+import { mainContentContainerStyles } from './MainContent.styles';
 import { Skills } from '../../components/Skills';
+import TechRow from '../../components/TechRow';
 
 const MainContent: React.FC = () => {
   return (
@@ -22,9 +20,7 @@ const MainContent: React.FC = () => {
         }}
       />
       <Skills className="contentContainer" />
-      {/* <div className="mainContentText" style={mainContentTextStyles}>
-        Hello World
-      </div> */}
+      <TechRow style={{ position: 'relative', zIndex: 2 }} />
     </div>
   );
 };

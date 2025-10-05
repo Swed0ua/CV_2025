@@ -20,20 +20,4 @@ export const MAIN_SLIDE_DATA: SectionItem[] = [
     threshold: [0.1],
     rootMargin: '0px',
   },
-  // {
-  //   id: 'projects',
-  //   component: <HeroSlide />,
-  //   height: 'full',
-  //   type: 'slide',
-  //   threshold: [0.1],
-  //   rootMargin: '0px',
-  // },
-  // {
-  //   id: 'projects',
-  //   component: <HeroSlide />,
-  //   height: 'full',
-  //   type: 'slide',
-  //   threshold: [0.1],
-  //   rootMargin: '0px',
-  // },
 ];
