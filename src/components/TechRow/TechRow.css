@@ -48,6 +48,15 @@
   transform: scale(1.1);
 }
 
+.tech-icon-clickable {
+  cursor: pointer;
+}
+
+.tech-icon-clickable:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
 .tech-icon[title]:hover::after {
   content: attr(title);
   position: absolute;
@@ -82,8 +91,11 @@
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  cursor: pointer;
   transition: opacity 0.3s ease;
+}
+
+.tech-icon-clickable .tech-icon-image {
+  cursor: pointer;
 }
 
 .tech-icon-image:hover {

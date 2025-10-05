@@ -3,4 +3,5 @@ export interface TechIcon {
   color: string;
   name: string | null;
   imagePath: string;
+  url?: string;
 }
