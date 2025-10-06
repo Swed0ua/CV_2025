@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import './Preloader.css';
+import { motion } from 'framer-motion';
+import { preloaderLottieContainerStyles } from './Preloader.styles';
 
 interface PreloaderProps {
   children?: React.ReactNode;
@@ -42,9 +44,14 @@ export const Preloader: React.FC<PreloaderProps> = ({
       className={`preloader ${isFadingOut ? 'preloader--fade-out' : ''} ${className}`.trim()}
       style={style}
     >
-      <div className="preloader-lottie-container">
+      <motion.div
+        className="preloader-lottie-container"
+        variants={preloaderLottieContainerStyles}
+        initial="hidden"
+        animate="scaled"
+      >
         <DotLottieReact src="/animations/Welcome.json" autoplay />
-      </div>
+      </motion.div>
       {children}
     </div>
   );
