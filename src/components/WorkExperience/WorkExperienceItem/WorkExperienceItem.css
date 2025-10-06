@@ -48,7 +48,8 @@
 }
 
 .work-experience-right .description {
-  font-size: 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
   color: #ffffff;
   margin: 0;
   line-height: 1.6;

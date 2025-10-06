@@ -63,7 +63,7 @@ export const skillItemAnimationVariants = {
     transition: {
       duration: 0.6,
       ease: 'easeOut' as const,
-      delay: 1.4 + index * 0.15, // Random-ish delay based on index
+      delay: 1.3 + index * 0.15, // Random-ish delay based on index
     },
   }),
 };
