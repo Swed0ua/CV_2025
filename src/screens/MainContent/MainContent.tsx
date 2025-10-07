@@ -5,6 +5,7 @@ import { mainContentContainerStyles } from './MainContent.styles';
 import { Skills } from '../../components/Skills';
 import TechRow from '../../components/TechRow';
 import WorkExperience from '../../components/WorkExperience';
+import MyServices from '../../components/MyServices';
 
 const MainContent: React.FC = () => {
   return (
@@ -31,6 +32,7 @@ const MainContent: React.FC = () => {
         }}
       />
       <WorkExperience />
+      <MyServices />
     </div>
   );
 };
