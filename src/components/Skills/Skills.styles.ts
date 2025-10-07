@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 
 // Delays variables
-export const delaySkillsDescription = 3.5;
+export const delaySkillsDescription = 4;
 export const delaySkillsDescriptionTextTitle = 0.5;
 export const delaySkillsDescriptionTextMain = 1.2;
 export const delaySkillsExpandableArrow =
@@ -20,14 +20,17 @@ export const skillsGridContainerAnimationVariants = (
 ) => ({
   hidden: {
     height: 0,
+    transform: 'translateY(-160px)',
     overflow: 'hidden',
   },
   visible: {
     height: isExpanded ? height : 0,
     overflow: 'hidden',
+    transform: 'translateY(0px)',
     transition: {
       height: { duration: 1, ease: 'easeInOut' as const },
       opacity: { duration: 0.3, ease: 'easeOut' as const },
+      transform: { duration: 1, ease: 'easeOut' as const, delay: 3 },
     },
   },
 });

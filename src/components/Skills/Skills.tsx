@@ -203,6 +203,17 @@ export const Skills: React.FC<SkillsProps> = ({
   const { t } = useLocalization();
 
   useEffect(() => {
+    // Animation for expandable block
+    let timeoutAnimExpandable: ReturnType<typeof setTimeout>;
+    if (shouldAnimate) {
+      timeoutAnimExpandable = setTimeout(() => {
+        setIsExpanded(true);
+      }, 1000);
+    }
+    return () => clearTimeout(timeoutAnimExpandable);
+  }, [shouldAnimate]);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
