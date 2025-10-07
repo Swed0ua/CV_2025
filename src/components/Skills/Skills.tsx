@@ -194,7 +194,10 @@ export const Skills: React.FC<SkillsProps> = ({
 }) => {
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [contentHeight, setContentHeight] = useState(0);
   const skillsRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const { t } = useLocalization();
 
   useEffect(() => {
@@ -234,6 +237,25 @@ export const Skills: React.FC<SkillsProps> = ({
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    const measureContentHeight = () => {
+      if (contentRef.current) {
+        const height = contentRef.current.scrollHeight;
+        setContentHeight(height);
+      }
+    };
+
+    measureContentHeight();
+    window.addEventListener('resize', measureContentHeight);
+
+    return () => window.removeEventListener('resize', measureContentHeight);
+  }, []);
+
+  // eslint-disable-next-line no-unused-vars
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   return (
     <div ref={skillsRef} className={`skills ${className}`.trim()} style={style}>
@@ -282,24 +304,29 @@ export const Skills: React.FC<SkillsProps> = ({
           </motion.div>
           <motion.div
             className="skills-grid"
-            variants={skillsGridContainerAnimationVariants}
+            variants={skillsGridContainerAnimationVariants(
+              contentHeight,
+              isExpanded,
+            )}
             initial="hidden"
             animate={shouldAnimate ? 'visible' : 'hidden'}
           >
-            {skillsData.map((skill, index) => (
-              <motion.div
-                key={skill.id}
-                variants={skillItemAnimationVariants}
-                custom={index}
-              >
-                <SkillItem
-                  logo={skill.logo}
-                  backgroundImage={skill.backgroundImage}
-                  name={skill.name}
-                  description={skill.description}
-                />
-              </motion.div>
-            ))}
+            <div ref={contentRef} className="skills-content">
+              {skillsData.map((skill, index) => (
+                <motion.div
+                  key={skill.id}
+                  variants={skillItemAnimationVariants}
+                  custom={index}
+                >
+                  <SkillItem
+                    logo={skill.logo}
+                    backgroundImage={skill.backgroundImage}
+                    name={skill.name}
+                    description={skill.description}
+                  />
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </GlassContainer>
       </motion.div>

@@ -12,20 +12,25 @@ export const glassContainerStyles: CSSProperties = {
 };
 
 // Animation variants for Skills Grid
-export const skillsGridContainerAnimationVariants = {
+export const skillsGridContainerAnimationVariants = (
+  height: number,
+  isExpanded: boolean,
+) => ({
   hidden: {
-    backgroundColor: 'rgba(0, 0, 0, 0)',
-    transform: 'translateY(-100px)',
+    height: 0,
+    opacity: 0,
+    overflow: 'hidden',
   },
   visible: {
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    transform: 'translateY(0px)',
+    height: isExpanded ? height : 0,
+    opacity: isExpanded ? 1 : 0,
+    overflow: 'hidden',
     transition: {
-      backgroundColor: { duration: 0.3, ease: 'easeOut' as const, delay: 4 },
-      transform: { duration: 1, ease: 'easeOut' as const, delay: 3 },
+      height: { duration: 1, ease: 'easeInOut' as const },
+      opacity: { duration: 0.3, ease: 'easeOut' as const },
     },
   },
-};
+});
 
 export const skillsGridAnimationVariants = {
   hidden: {

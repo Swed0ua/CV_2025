@@ -55,14 +55,16 @@
 }
 
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
   margin-top: 2rem;
   overflow: hidden;
   border-radius: 20px;
 }
 
-/* Liquid Button */
+.skills-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .skills-liquid-button-container {
   width: 100%;
   position: relative;
@@ -72,15 +74,9 @@
   padding: 40px 0;
 }
 
-.skills-liquid-button {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-}
-
 /* Responsive Design */
 @media (max-width: 1200px) {
-  .skills-grid {
+  .skills-content {
     grid-template-columns: repeat(3, 1fr);
   }
 
@@ -114,7 +110,7 @@
 }
 
 @media (max-width: 768px) {
-  .skills-grid {
+  .skills-content {
     grid-template-columns: repeat(2, 1fr);
     padding: 0 10px;
   }
@@ -133,7 +129,7 @@
 }
 
 @media (max-width: 480px) {
-  .skills-grid {
+  .skills-content {
     grid-template-columns: 1fr;
   }
 
