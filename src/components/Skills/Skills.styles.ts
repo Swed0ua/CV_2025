@@ -18,12 +18,10 @@ export const skillsGridContainerAnimationVariants = (
 ) => ({
   hidden: {
     height: 0,
-    opacity: 0,
     overflow: 'hidden',
   },
   visible: {
     height: isExpanded ? height : 0,
-    opacity: isExpanded ? 1 : 0,
     overflow: 'hidden',
     transition: {
       height: { duration: 1, ease: 'easeInOut' as const },

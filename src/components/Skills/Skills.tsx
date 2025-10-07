@@ -267,7 +267,10 @@ export const Skills: React.FC<SkillsProps> = ({
         animate={shouldAnimate ? 'visible' : 'hidden'}
         className="skills-grid-container"
       >
-        <GlassContainer style={glassContainerStyles}>
+        <GlassContainer
+          style={glassContainerStyles}
+          className="skills-glass-container"
+        >
           <motion.div
             className="skills-description"
             variants={skillsDescriptionAnimationVariants}
@@ -313,20 +316,22 @@ export const Skills: React.FC<SkillsProps> = ({
             animate={shouldAnimate ? 'visible' : 'hidden'}
           >
             <div ref={contentRef} className="skills-content">
-              {skillsData.map((skill, index) => (
-                <motion.div
-                  key={skill.id}
-                  variants={skillItemAnimationVariants}
-                  custom={index}
-                >
-                  <SkillItem
-                    logo={skill.logo}
-                    backgroundImage={skill.backgroundImage}
-                    name={skill.name}
-                    description={skill.description}
-                  />
-                </motion.div>
-              ))}
+              <div className="skills-content-data-wrapper">
+                {skillsData.map((skill, index) => (
+                  <motion.div
+                    key={skill.id}
+                    variants={skillItemAnimationVariants}
+                    custom={index}
+                  >
+                    <SkillItem
+                      logo={skill.logo}
+                      backgroundImage={skill.backgroundImage}
+                      name={skill.name}
+                      description={skill.description}
+                    />
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
 
