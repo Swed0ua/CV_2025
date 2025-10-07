@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import './ExpandableArrow.css';
+import { expandableArrowSizes } from './ExpandableArrow.styles';
+import { ExpandableArrowSize } from './ExpandableArrowTypes';
 
 export interface ExpandableArrowProps {
   isExpanded?: boolean;
@@ -8,7 +10,7 @@ export interface ExpandableArrowProps {
   onToggle?: (isExpanded: boolean) => void;
   className?: string;
   style?: React.CSSProperties;
-  size?: 'small' | 'medium' | 'large';
+  size?: ExpandableArrowSize;
   color?: string;
   disabled?: boolean;
   direction?: 'up' | 'down';
@@ -19,7 +21,7 @@ export const ExpandableArrow: React.FC<ExpandableArrowProps> = ({
   onToggle: externalOnToggle,
   className = '',
   style = {},
-  size = 'medium',
+  size = ExpandableArrowSize.Medium,
   color = '#ffffff',
   disabled = false,
   direction = 'down',
@@ -43,7 +45,6 @@ export const ExpandableArrow: React.FC<ExpandableArrowProps> = ({
 
   const arrowClasses = [
     'expandable-arrow',
-    `expandable-arrow--${size}`,
     `expandable-arrow--${direction}`,
     isExpanded ? 'expandable-arrow--expanded' : 'expandable-arrow--collapsed',
     disabled ? 'expandable-arrow--disabled' : '',
@@ -52,10 +53,14 @@ export const ExpandableArrow: React.FC<ExpandableArrowProps> = ({
     .filter(Boolean)
     .join(' ');
 
+  const sizeStyles =
+    expandableArrowSizes[size] ||
+    expandableArrowSizes[ExpandableArrowSize.Medium];
+
   return (
     <motion.button
       className={arrowClasses}
-      style={{ ...style, color }}
+      style={{ ...style, ...sizeStyles, color }}
       onClick={handleToggle}
       disabled={disabled}
       whileHover={disabled ? {} : { scale: 1.1 }}

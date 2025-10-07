@@ -37,25 +37,15 @@
   transition: transform 0.3s ease-in-out;
 }
 
-/* Size variants */
-.expandable-arrow--small {
-  width: 16px;
-  height: 16px;
-}
-
-.expandable-arrow--medium {
-  width: 24px;
-  height: 24px;
-}
-
-.expandable-arrow--large {
-  width: 32px;
-  height: 32px;
-}
-
 .expandable-arrow__icon {
   width: 100%;
   height: 100%;
+}
+
+/* Size variants */
+.expandable-arrow--veryLarge {
+  width: 42px;
+  height: 42px;
 }
 
 /* Accessibility */
