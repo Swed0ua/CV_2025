@@ -4,6 +4,8 @@ import { CSSProperties } from 'react';
 export const delaySkillsDescription = 3.5;
 export const delaySkillsDescriptionTextTitle = 0.5;
 export const delaySkillsDescriptionTextMain = 1.2;
+export const delaySkillsExpandableArrow =
+  delaySkillsDescription + delaySkillsDescriptionTextMain + 1;
 
 export const glassContainerStyles: CSSProperties = {
   padding: '2em',

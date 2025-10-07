@@ -15,6 +15,7 @@ import {
   skillsDescriptionAnimationVariants,
   skillsDescriptionTextTitleAnimationVariants,
   skillsDescriptionTextMainAnimationVariants,
+  delaySkillsExpandableArrow,
 } from './Skills.styles';
 import { LiquidButton } from '../LiquidButton/LiquidButton';
 import ExpandableArrow, { ExpandableArrowSize } from '../ExpandableArrow';
@@ -340,6 +341,8 @@ export const Skills: React.FC<SkillsProps> = ({
             onToggle={toggleExpanded}
             style={{ position: 'absolute', top: 12, right: 12 }}
             size={ExpandableArrowSize.VeryLarge}
+            isVisible={shouldAnimate}
+            delay={delaySkillsExpandableArrow}
           />
         </GlassContainer>
       </motion.div>

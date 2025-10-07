@@ -14,6 +14,8 @@ export interface ExpandableArrowProps {
   color?: string;
   disabled?: boolean;
   direction?: 'up' | 'down';
+  isVisible?: boolean;
+  delay?: number;
 }
 
 export const ExpandableArrow: React.FC<ExpandableArrowProps> = ({
@@ -25,6 +27,8 @@ export const ExpandableArrow: React.FC<ExpandableArrowProps> = ({
   color = '#ffffff',
   disabled = false,
   direction = 'down',
+  isVisible = true,
+  delay = 0,
 }) => {
   const [internalIsExpanded, setInternalIsExpanded] = useState(false);
 
@@ -68,6 +72,9 @@ export const ExpandableArrow: React.FC<ExpandableArrowProps> = ({
       aria-label={isExpanded ? 'Collapse' : 'Expand'}
       role="button"
       tabIndex={disabled ? -1 : 0}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 1, ease: 'easeOut', delay: delay }}
     >
       <motion.svg
         width="100%"
