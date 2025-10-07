@@ -1,6 +1,6 @@
 .work-experience-item {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   padding: 30px 0;
   margin: 20px 0;
   min-height: 120px;
@@ -78,9 +78,6 @@
 }
 
 @media (max-width: 460px) {
-  .work-experience-divider {
-    margin: 0 8px;
-  }
   .work-experience-left .company-name {
     font-size: 0.7rem;
   }
