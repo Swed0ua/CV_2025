@@ -17,6 +17,7 @@ import {
   skillsDescriptionTextMainAnimationVariants,
 } from './Skills.styles';
 import { LiquidButton } from '../LiquidButton/LiquidButton';
+import ExpandableArrow from '../ExpandableArrow';
 
 interface Skill {
   id: string;
@@ -328,6 +329,12 @@ export const Skills: React.FC<SkillsProps> = ({
               ))}
             </div>
           </motion.div>
+
+          <ExpandableArrow
+            isExpanded={isExpanded}
+            onToggle={toggleExpanded}
+            style={{ position: 'absolute', top: 10, right: 10 }}
+          />
         </GlassContainer>
       </motion.div>
       <div style={{}} className="skills-liquid-button-container">
