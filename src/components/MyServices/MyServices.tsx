@@ -13,7 +13,9 @@ export const MyServices: React.FC<MyServicesProps> = ({
 }) => {
   return (
     <div className={`my-services ${className}`.trim()} style={style}>
-      <h1>Hello World - My Services</h1>
+      <div className="mobile-service-card">
+        <h1>Hello World - My Services</h1>
+      </div>
     </div>
   );
 };

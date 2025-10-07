@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import './WorkExperienceItem.css';
 import { Divider } from '../../Divider';
-import { mapValue } from '../../../utils/math';
+import { calculateScrollTransform } from '../../../utils/math';
 
 interface WorkExperienceItemProps {
   id: string;
@@ -28,32 +28,12 @@ export const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
     const handleScroll = () => {
       if (!elementRef.current) return;
 
-      const element = elementRef.current;
-      const rect = element.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
+      const translateXValue = calculateScrollTransform({
+        element: elementRef.current,
+        endpoint: endpoint,
+        maxShift: maxShift,
+      });
 
-      const elementTop = rect.top;
-      const elementHeight = rect.height;
-
-      const visibilityPercentage = Math.max(
-        0,
-        Math.min(
-          1,
-          (viewportHeight - elementTop) / (viewportHeight + elementHeight),
-        ),
-      );
-
-      let translateXValue = 0;
-      if (visibilityPercentage <= endpoint) {
-        const shiftValue = mapValue({
-          value: visibilityPercentage,
-          fromMin: endpoint,
-          fromMax: 0,
-          toMin: 0,
-          toMax: maxShift,
-        });
-        translateXValue = shiftValue;
-      }
       setTranslateX(translateXValue);
     };
 
