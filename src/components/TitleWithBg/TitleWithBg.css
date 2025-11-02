@@ -1,22 +1,58 @@
 .title-with-bg-wrapper {
   position: relative;
   display: inline-block;
-  background-color: red;
   z-index: 2;
 }
 
+.title-with-bg-background {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: -1;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+}
+
+.title-with-bg-wrapper:has(.title-with-bg-animated) .title-with-bg-background,
+.title-with-bg-wrapper:has(.titleAnimated) .title-with-bg-background {
+  animation: slideInFromLeft 600ms ease forwards;
+}
+
+.title-with-bg-wrapper:has(.title-with-bg-animated),
+.title-with-bg-wrapper:has(.titleAnimated) {
+  animation: titleWithBgBackgroundAnimation 600ms ease forwards;
+  animation-delay: 2200ms;
+}
+
 .title-with-bg {
-  /* TODO: not bug its feature =) */
   transform: scale(1) translateY(0px) !important;
   opacity: 1 !important;
   margin: 0 !important;
-  /* ---------------------------- */
-
   position: relative;
   z-index: 1;
+  padding: 0.25em 0.1em;
   -webkit-text-fill-color: #ffffff !important;
   -webkit-background-clip: initial !important;
   background-clip: initial !important;
   background: none !important;
   color: #ffffff !important;
+}
+
+/* Animation */
+@keyframes slideInFromLeft {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes titleWithBgBackgroundAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(10deg);
+  }
 }
