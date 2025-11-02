@@ -66,13 +66,16 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       style={cardStyle}
     >
       {backgroundImage && (
-        <div className="service-card-image-wrapper">
-          <img
-            src={backgroundImage}
-            alt={title}
-            className="service-card-image"
-          />
-        </div>
+        <>
+          <div className="service-card-image-wrapper">
+            <img
+              src={backgroundImage}
+              alt={title}
+              className="service-card-image"
+            />
+          </div>
+          <div className="service-card-vertical-divider" />
+        </>
       )}
       <div className="service-card-content">
         <h3 className="service-card-title">{title}</h3>
