@@ -20,6 +20,7 @@ const TitleWithBg: React.FC<TitleWithBgProps> = ({
   return (
     <div className={`title-with-bg-wrapper ${className}`.trim()} style={style}>
       <MainTitle
+        animationName="title-with-bg-animated"
         animationDelay={animationDelay}
         threshold={threshold}
         className="title-with-bg"

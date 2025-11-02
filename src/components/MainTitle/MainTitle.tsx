@@ -9,6 +9,7 @@ interface MainTitleProps {
   style?: React.CSSProperties;
   animationDelay?: number;
   threshold?: number;
+  animationName?: string;
 }
 
 const MainTitle: React.FC<MainTitleProps> = ({
@@ -17,6 +18,7 @@ const MainTitle: React.FC<MainTitleProps> = ({
   style,
   animationDelay = 200,
   threshold = 0.3,
+  animationName = 'titleAnimated',
 }) => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const [isAnimated, setIsAnimated] = useState(false);
@@ -50,7 +52,7 @@ const MainTitle: React.FC<MainTitleProps> = ({
   return (
     <h1
       ref={titleRef}
-      className={`mainTitle ${isAnimated ? 'titleAnimated' : ''} ${className}`}
+      className={`mainTitle ${isAnimated ? animationName : ''} ${className}`}
       style={{ ...mainTitleStyles, ...style }}
     >
       {children}

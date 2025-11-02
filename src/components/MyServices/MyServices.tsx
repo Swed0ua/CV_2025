@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import './MyServices.css';
 import { calculateScrollTransform } from '../../utils/math';
+import TitleWithBg from '../TitleWithBg';
 
 export interface MyServicesProps {
   className?: string;
@@ -43,6 +44,7 @@ export const MyServices: React.FC<MyServicesProps> = ({
       className={`my-services ${className}`.trim()}
       style={{ ...style, paddingBottom: 2000 }}
     >
+      <TitleWithBg>My Services</TitleWithBg>
       <div
         className="mobile-service-card"
         ref={elementRef}

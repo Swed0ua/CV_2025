@@ -1,32 +1,22 @@
 .title-with-bg-wrapper {
   position: relative;
   display: inline-block;
+  background-color: red;
+  z-index: 2;
 }
 
 .title-with-bg {
+  /* TODO: not bug its feature =) */
+  transform: scale(1) translateY(0px) !important;
+  opacity: 1 !important;
+  margin: 0 !important;
+  /* ---------------------------- */
+
   position: relative;
   z-index: 1;
-  padding: 0.25em 0.6em;
   -webkit-text-fill-color: #ffffff !important;
   -webkit-background-clip: initial !important;
   background-clip: initial !important;
   background: none !important;
   color: #ffffff !important;
-}
-
-.title-with-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #0b0f1a 0%, #10192b 100%);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 600ms ease;
-  z-index: -1;
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
-}
-
-.titleAnimated.title-with-bg::before {
-  transform: scaleX(1);
 }
