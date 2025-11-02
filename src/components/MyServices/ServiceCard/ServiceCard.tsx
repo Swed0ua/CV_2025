@@ -76,6 +76,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       )}
       <div className="service-card-content">
         <h3 className="service-card-title">{title}</h3>
+        <div className="service-card-divider" />
         <p className="service-card-description">{description}</p>
       </div>
     </div>
