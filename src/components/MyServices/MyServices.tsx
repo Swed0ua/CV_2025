@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 import './MyServices.css';
-import { calculateScrollTransform } from '../../utils/math';
 import TitleWithBg from '../TitleWithBg';
+import ServiceCard from './ServiceCard';
+import { servicesData } from '../../constants/servicesData';
+import { useLocalization } from '../../contexts/LocalizationContext';
 
 export interface MyServicesProps {
   className?: string;
@@ -13,31 +15,7 @@ export const MyServices: React.FC<MyServicesProps> = ({
   className = '',
   style = {},
 }) => {
-  const elementRef = useRef<HTMLDivElement>(null);
-
-  const [elemenWidthProc, setElementWidthProc] = useState(80);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!elementRef.current) return;
-
-      const vl = calculateScrollTransform({
-        element: elementRef.current,
-        endpoint: 0.35,
-        maxShift: 80,
-        minShift: 100,
-      });
-
-      setElementWidthProc(vl);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const { currentLanguage } = useLocalization();
 
   return (
     <div
@@ -45,12 +23,21 @@ export const MyServices: React.FC<MyServicesProps> = ({
       style={{ ...style, paddingBottom: 2000 }}
     >
       <TitleWithBg>My Services</TitleWithBg>
-      <div
-        className="mobile-service-card"
-        ref={elementRef}
-        style={{ width: `${elemenWidthProc}%` }}
-      >
-        <h1>Hello World - My Services</h1>
+      <div className="services-container">
+        {servicesData.map((service, index) => (
+          <ServiceCard
+            key={service.id}
+            title={service.title[currentLanguage]}
+            description={service.description[currentLanguage]}
+            backgroundImage={service.backgroundImage}
+            backgroundColor={service.backgroundColor}
+            imagePosition={index % 2 === 0 ? 'left' : 'right'}
+            className={service.className}
+            endpoint={service.endpoint}
+            maxShift={service.maxShift}
+            minShift={service.minShift}
+          />
+        ))}
       </div>
     </div>
   );
