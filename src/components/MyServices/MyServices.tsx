@@ -22,7 +22,7 @@ export const MyServices: React.FC<MyServicesProps> = ({
       className={`my-services ${className}`.trim()}
       style={{ ...style, paddingBottom: 2000 }}
     >
-      <TitleWithBg>My Services</TitleWithBg>
+      <TitleWithBg style={{ marginLeft: '2rem' }}>My Services</TitleWithBg>
       <div className="services-container">
         {servicesData.map((service, index) => (
           <ServiceCard
