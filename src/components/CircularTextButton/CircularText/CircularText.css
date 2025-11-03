@@ -1,0 +1,30 @@
+.circular-text-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  overflow: hidden;
+}
+
+.circular-text-svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  animation-name: rotate;
+  animation-duration: var(--rotation-speed, 5s);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: reverse;
+}
+
+.circular-text-element {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(360deg);
+  }
+}

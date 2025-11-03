@@ -1,0 +1,44 @@
+.circular-text-button {
+  position: relative;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.circular-text-button-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: none !important;
+  transition: none !important;
+}
+
+.circular-text-button-arrow {
+  width: 24px;
+  height: 24px;
+  animation: none !important;
+  transition: none !important;
+  display: block;
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
+@media (max-width: 768px) {
+  .circular-text-button {
+    max-width: 200px;
+  }
+}

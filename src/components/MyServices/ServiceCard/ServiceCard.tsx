@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import './ServiceCard.css';
 import { calculateScrollTransform } from '../../../utils/math';
+import CircularTextButton from '../../CircularTextButton';
 
 export interface ServiceCardProps {
   title: string;
@@ -82,6 +83,15 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         <div className="service-card-divider" />
         <p className="service-card-description">{description}</p>
       </div>
+      <CircularTextButton
+        text="Click me хахах"
+        textRepetitions={3}
+        rotationSpeed={5}
+        radius={60}
+        fontSize={16}
+        textColor="#000"
+        onClick={() => console.log('Clicked')}
+      />
     </div>
   );
 };
