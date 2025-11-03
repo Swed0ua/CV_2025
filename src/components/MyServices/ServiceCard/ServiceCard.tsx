@@ -84,13 +84,18 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         <p className="service-card-description">{description}</p>
       </div>
       <CircularTextButton
-        text="Click me хахах"
-        textRepetitions={3}
+        text="Click me !"
+        textRepetitions={4}
         rotationSpeed={5}
         radius={60}
-        fontSize={16}
+        fontSize={15}
         textColor="#000"
         onClick={() => console.log('Clicked')}
+        style={{
+          position: 'absolute',
+          maxWidth: '440px',
+        }}
+        className="service-card-button"
       />
     </div>
   );
