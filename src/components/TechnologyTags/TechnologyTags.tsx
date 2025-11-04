@@ -6,7 +6,7 @@ import './TechnologyTags.css';
 export interface TechnologyTagsProps {
   technologies: string[];
   title?: string;
-  mainColor?: string | null;
+  mainColor?: string;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -14,7 +14,7 @@ export interface TechnologyTagsProps {
 export const TechnologyTags: React.FC<TechnologyTagsProps> = ({
   technologies,
   title,
-  mainColor = null,
+  mainColor,
   className = '',
   style,
 }) => {

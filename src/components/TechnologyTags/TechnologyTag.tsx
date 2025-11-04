@@ -4,7 +4,7 @@ import './TechnologyTag.css';
 export interface TechnologyTagProps {
   technology: string;
   className?: string;
-  mainColor?: string | null;
+  mainColor?: string;
   style?: React.CSSProperties;
 }
 
