@@ -6,6 +6,7 @@ import './TechnologyTags.css';
 export interface TechnologyTagsProps {
   technologies: string[];
   title?: string;
+  mainColor?: string | null;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -13,6 +14,7 @@ export interface TechnologyTagsProps {
 export const TechnologyTags: React.FC<TechnologyTagsProps> = ({
   technologies,
   title,
+  mainColor = null,
   className = '',
   style,
 }) => {
@@ -32,7 +34,7 @@ export const TechnologyTags: React.FC<TechnologyTagsProps> = ({
       {!title && <h2 className="technology-tags-title">{defaultTitle}</h2>}
       <div className="technologies-list">
         {technologies.map((tech, index) => (
-          <TechnologyTag key={index} technology={tech} />
+          <TechnologyTag key={index} technology={tech} mainColor={mainColor} />
         ))}
       </div>
     </div>

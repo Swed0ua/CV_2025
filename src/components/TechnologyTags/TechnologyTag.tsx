@@ -4,14 +4,13 @@ import './TechnologyTag.css';
 export interface TechnologyTagProps {
   technology: string;
   className?: string;
-  mainColor?: string;
+  mainColor?: string | null;
   style?: React.CSSProperties;
 }
 
 export const TechnologyTag: React.FC<TechnologyTagProps> = ({
   technology,
   className = '',
-  // eslint-disable-next-line no-unused-vars
   mainColor = '#a5b4ff',
   style,
 }) => {
