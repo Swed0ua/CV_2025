@@ -87,6 +87,7 @@ export const serviceDetailsConfig: Record<string, ServiceDetailConfig> = {
       },
     ],
     technologies: ['React Native', 'Expo', 'TypeScript', 'Redux'],
+    videoUrl: '/videos/mobile-development.mp4',
   },
   '3': {
     sections: [
@@ -140,5 +141,6 @@ export const serviceDetailsConfig: Record<string, ServiceDetailConfig> = {
       },
     ],
     technologies: ['Node.js', 'Python', 'Telegram Bot API', 'OpenAI API'],
+    videoUrl: '/videos/coding.mp4',
   },
 };
