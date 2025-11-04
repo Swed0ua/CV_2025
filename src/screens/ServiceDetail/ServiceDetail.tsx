@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   ServiceDetailTemplate,
@@ -13,6 +13,10 @@ const ServiceDetail: React.FC = () => {
   const service = servicesData.find(
     (s) => s.id === serviceId || s.slug === serviceId,
   );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [serviceId]);
 
   if (!service) {
     return (
