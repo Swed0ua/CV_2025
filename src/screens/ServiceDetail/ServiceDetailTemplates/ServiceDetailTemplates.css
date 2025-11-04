@@ -1,0 +1,100 @@
+.service-template {
+  width: 100%;
+  max-width: 1200px;
+  padding: 40px 20px;
+  margin: 0 auto;
+}
+
+.service-template-header {
+  margin-bottom: 60px;
+}
+
+.service-template-header h1 {
+  color: #ffffff;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.service-template-description {
+  color: #cccccc;
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 800px;
+}
+
+.service-template-sections {
+  margin-bottom: 60px;
+}
+
+.service-template-section {
+  margin-bottom: 40px;
+}
+
+.service-template-section h2 {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.service-template-section p {
+  color: #cccccc;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.service-template-features {
+  margin-bottom: 60px;
+}
+
+.service-template-features h2 {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.service-template-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.service-template-features li {
+  color: #cccccc;
+  font-size: 16px;
+  line-height: 2;
+  padding-left: 24px;
+  position: relative;
+}
+
+.service-template-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #a5b4ff;
+  font-weight: bold;
+}
+
+.web-template .service-template-header h1 {
+  color: #ff004d;
+}
+
+.mobile-template .service-template-header h1 {
+  color: #ef9b41;
+}
+
+.automation-template .service-template-header h1 {
+  color: #973eff;
+}
+
+@media (max-width: 768px) {
+  .service-template-header h1 {
+    font-size: 36px;
+  }
+
+  .service-template-section h2,
+  .service-template-features h2 {
+    font-size: 24px;
+  }
+}

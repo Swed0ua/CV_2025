@@ -14,6 +14,7 @@ import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher';
 import { Preloader } from './components/Preloader';
 import { useScrollLock } from './hooks/useScrollLock';
 import AboutMe from './screens/AboutMe';
+import ServiceDetail from './screens/ServiceDetail';
 
 const AppContent: React.FC = () => {
   const [screenType, setScreenType] = useState<ScreenType>('large');
@@ -45,6 +46,7 @@ const AppContent: React.FC = () => {
       <Routes>
         <Route path="/" element={<MainScreen />} />
         <Route path="/about-me" element={<AboutMe />} />
+        <Route path="/service/:serviceId" element={<ServiceDetail />} />
       </Routes>
 
       {screenType !== 'large' && (

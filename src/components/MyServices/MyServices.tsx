@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './MyServices.css';
 import TitleWithBg from '../TitleWithBg';
@@ -16,6 +17,7 @@ export const MyServices: React.FC<MyServicesProps> = ({
   style = {},
 }) => {
   const { currentLanguage } = useLocalization();
+  const navigate = useNavigate();
 
   return (
     <div
@@ -36,6 +38,9 @@ export const MyServices: React.FC<MyServicesProps> = ({
             endpoint={service.endpoint}
             maxShift={service.maxShift}
             minShift={service.minShift}
+            onClickFunction={() => {
+              navigate(`/service/${service.id}`);
+            }}
           />
         ))}
       </div>

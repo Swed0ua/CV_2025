@@ -15,6 +15,7 @@ export interface ServiceCardProps {
   endpoint?: number;
   maxShift?: number;
   minShift?: number;
+  onClickFunction?: (() => void) | null;
 }
 
 export const ServiceCard: React.FC<ServiceCardProps> = ({
@@ -28,9 +29,22 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
   endpoint = 0.5,
   maxShift = 60,
   minShift = 100,
+  onClickFunction = null,
 }) => {
   const elementRef = useRef<HTMLDivElement>(null);
   const [elementWidthProc, setElementWidthProc] = useState(80);
+
+  const defaultOnClickFunction = () => {
+    console.log('No onClick function provided');
+  };
+
+  const handleClick = () => {
+    if (onClickFunction) {
+      onClickFunction();
+    } else {
+      defaultOnClickFunction();
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,6 +79,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       className={`mobile-service-card ${imagePosition === 'right' ? 'service-card-right' : 'service-card-left'} ${className}`.trim()}
       ref={elementRef}
       style={cardStyle}
+      onClick={handleClick}
     >
       {backgroundImage && (
         <>
@@ -90,7 +105,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         radius={60}
         fontSize={15}
         textColor="#000"
-        onClick={() => console.log('Clicked')}
+        onClick={handleClick}
         style={{
           position: 'absolute',
           maxWidth: '440px',

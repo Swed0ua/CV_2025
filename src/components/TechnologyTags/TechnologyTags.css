@@ -1,0 +1,22 @@
+.technology-tags-container {
+  margin-bottom: 60px;
+}
+
+.technology-tags-title {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.technologies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .technology-tags-title {
+    font-size: 24px;
+  }
+}

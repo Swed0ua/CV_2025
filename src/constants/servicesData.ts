@@ -5,8 +5,32 @@ export type ServiceDescription = {
   [K in SupportedLanguage]: string;
 };
 
+export interface ServiceSection {
+  title: ServiceDescription;
+  content: ServiceDescription;
+}
+
+export interface ServiceDetailConfig {
+  sections?: ServiceSection[];
+  features?: ServiceDescription[];
+  technologies?: string[];
+  customComponent?: string;
+}
+
+export enum ServiceDetailTemplate {
+  // eslint-disable-next-line no-unused-vars
+  WEB = 'web',
+  // eslint-disable-next-line no-unused-vars
+  MOBILE = 'mobile',
+  // eslint-disable-next-line no-unused-vars
+  AUTOMATION = 'automation',
+  // eslint-disable-next-line no-unused-vars
+  DEFAULT = 'default',
+}
+
 export interface Service {
   id: string;
+  slug: string;
   title: ServiceDescription;
   description: ServiceDescription;
   backgroundImage?: string;
@@ -15,11 +39,15 @@ export interface Service {
   endpoint?: number;
   maxShift?: number;
   minShift?: number;
+  detailTemplate?: ServiceDetailTemplate | null;
+  detailConfig?: ServiceDetailConfig;
 }
 
 export const servicesData: Service[] = [
   {
     id: '1',
+    slug: 'web-development',
+    detailTemplate: ServiceDetailTemplate.WEB,
     title: {
       uk: 'Веб-розробка',
       en: 'Web Development',
@@ -34,6 +62,8 @@ export const servicesData: Service[] = [
   },
   {
     id: '2',
+    slug: 'mobile-development',
+    detailTemplate: ServiceDetailTemplate.MOBILE,
     title: {
       uk: 'Мобільна розробка',
       en: 'Mobile Development',
@@ -48,6 +78,8 @@ export const servicesData: Service[] = [
   },
   {
     id: '3',
+    slug: 'automation-integrations',
+    detailTemplate: ServiceDetailTemplate.AUTOMATION,
     title: {
       uk: 'Автоматизація та інтеграції',
       en: 'Automation & Integrations',

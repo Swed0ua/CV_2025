@@ -1,0 +1,14 @@
+.service-detail-container {
+  min-height: 100vh;
+  background-color: #000000;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+.service-detail-content {
+  width: 100%;
+  max-width: 1400px;
+}
