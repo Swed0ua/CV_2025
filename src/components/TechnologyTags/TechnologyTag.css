@@ -1,6 +1,6 @@
 .technology-tag {
   background-color: #1a1a1a;
-  color: #a5b4ff;
+  color: var(--main-color);
   padding: 8px 16px;
   border-radius: 8px;
   font-size: 14px;
@@ -12,6 +12,5 @@
 
 .technology-tag:hover {
   background-color: #2a2a2a;
-  border-color: #a5b4ff;
-  transform: translateY(-2px);
+  border-color: var(--main-color);
 }
