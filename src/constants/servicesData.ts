@@ -15,6 +15,7 @@ export interface ServiceDetailConfig {
   features?: ServiceDescription[];
   technologies?: string[];
   customComponent?: string;
+  videoUrl?: string;
 }
 
 export enum ServiceDetailTemplate {

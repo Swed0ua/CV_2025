@@ -17,6 +17,22 @@ export const DefaultServiceTemplate: React.FC<ServiceTemplateProps> = ({
 
   return (
     <div className="service-template default-template">
+      {config?.videoUrl && (
+        <div className="service-template-video">
+          <video
+            src={config.videoUrl}
+            className="service-video-player"
+            preload="metadata"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
+
       <div className="service-template-header">
         <h1>{service.title[currentLanguage]}</h1>
         <p className="service-template-description">

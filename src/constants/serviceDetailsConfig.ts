@@ -43,6 +43,7 @@ export const serviceDetailsConfig: Record<string, ServiceDetailConfig> = {
       },
     ],
     technologies: ['React', 'Nest.js', 'TypeScript', 'Next.js', 'GraphQL'],
+    videoUrl: '/videos/web-development.mp4',
   },
   '2': {
     sections: [
