@@ -82,8 +82,8 @@ export const servicesData: Service[] = [
     slug: 'automation-integrations',
     detailTemplate: ServiceDetailTemplate.AUTOMATION,
     title: {
-      uk: 'Автоматизація та інтеграції',
-      en: 'Automation & Integrations',
+      uk: 'Автоматизація',
+      en: 'Automation',
     },
     description: {
       uk: 'Автоматизую ваші бізнес-процеси та інтегрую різні системи, щоб ваша команда працювала ефективніше. Створюю Telegram та WhatsApp боти для автоматизації комунікацій, AI-асистентів для оптимізації workflow та інтегрую будь-які API для безшовної роботи між сервісами. Це дозволяє зменшити ручну роботу, підвищити продуктивність та заощадити час та ресурси.',

@@ -26,7 +26,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
   imagePosition = 'left',
   className = '',
   style,
-  endpoint = 0.5,
+  endpoint = 0.45,
   maxShift = 60,
   minShift = 100,
   onClickFunction = null,

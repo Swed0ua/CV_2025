@@ -201,7 +201,7 @@ export const Skills: React.FC<SkillsProps> = ({
       </motion.div>
       <div style={{}} className="skills-liquid-button-container">
         <LiquidButton onClick={() => alert('Get Started clicked!')}>
-          {t('welcome.buttonText')}
+          Contact me
         </LiquidButton>
       </div>
     </div>
