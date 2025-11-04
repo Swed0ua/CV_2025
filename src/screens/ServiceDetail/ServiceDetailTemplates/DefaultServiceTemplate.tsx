@@ -14,6 +14,7 @@ export const DefaultServiceTemplate: React.FC<ServiceTemplateProps> = ({
 }) => {
   const { currentLanguage } = useLocalization();
   const config = serviceDetailsConfig[service.id];
+  const mainColor = service.backgroundColor || '#a5b4ff';
 
   return (
     <div className="service-template default-template">
@@ -34,7 +35,7 @@ export const DefaultServiceTemplate: React.FC<ServiceTemplateProps> = ({
       )}
 
       <div className="service-template-header">
-        <h1>{service.title[currentLanguage]}</h1>
+        <h1 style={{ color: mainColor }}>{service.title[currentLanguage]}</h1>
         <p className="service-template-description">
           {service.description[currentLanguage]}
         </p>
@@ -44,7 +45,9 @@ export const DefaultServiceTemplate: React.FC<ServiceTemplateProps> = ({
         <div className="service-template-sections">
           {config.sections.map((section, index) => (
             <div key={index} className="service-template-section">
-              <h2>{section.title[currentLanguage]}</h2>
+              <h2 style={{ color: mainColor }}>
+                {section.title[currentLanguage]}
+              </h2>
               <p>{section.content[currentLanguage]}</p>
             </div>
           ))}
@@ -53,7 +56,7 @@ export const DefaultServiceTemplate: React.FC<ServiceTemplateProps> = ({
 
       {config?.features && (
         <div className="service-template-features">
-          <h2>Features</h2>
+          <h2 style={{ color: mainColor }}>Features</h2>
           <ul>
             {config.features.map((feature, index) => (
               <li key={index}>{feature[currentLanguage]}</li>
@@ -63,7 +66,10 @@ export const DefaultServiceTemplate: React.FC<ServiceTemplateProps> = ({
       )}
 
       {config?.technologies && (
-        <TechnologyTags technologies={config.technologies} />
+        <TechnologyTags
+          technologies={config.technologies}
+          mainColor={mainColor}
+        />
       )}
     </div>
   );
