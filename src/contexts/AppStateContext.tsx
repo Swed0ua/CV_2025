@@ -13,6 +13,9 @@ interface AppStateContextType {
   setPreloaderVisible: (visible: boolean) => void;
   // eslint-disable-next-line no-unused-vars
   setAppReady: (ready: boolean) => void;
+  isExpandedSkills: boolean | null;
+  // eslint-disable-next-line no-unused-vars
+  setIsExpandedSkills: (expanded: boolean | null) => void;
 }
 
 const AppStateContext = createContext<AppStateContextType | undefined>(
@@ -30,6 +33,9 @@ export const AppStateProvider: React.FC<AppStateProviderProps> = ({
 }) => {
   const [isPreloaderVisible, setIsPreloaderVisible] = useState(true);
   const [isAppReady, setIsAppReady] = useState(false);
+  const [isExpandedSkills, setIsExpandedSkills] = useState<boolean | null>(
+    null,
+  );
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -56,6 +62,8 @@ export const AppStateProvider: React.FC<AppStateProviderProps> = ({
     isAppReady,
     setPreloaderVisible,
     setAppReady,
+    isExpandedSkills,
+    setIsExpandedSkills,
   };
 
   return (

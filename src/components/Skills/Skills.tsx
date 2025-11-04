@@ -20,6 +20,7 @@ import {
 import { LiquidButton } from '../LiquidButton/LiquidButton';
 import ExpandableArrow, { ExpandableArrowSize } from '../ExpandableArrow';
 import { skillsData } from '../../constants/skillsData';
+import { useAppState } from '../../contexts/AppStateContext';
 
 interface SkillsProps {
   className?: string;
@@ -30,9 +31,9 @@ export const Skills: React.FC<SkillsProps> = ({
   className = '',
   style = {},
 }) => {
+  const { isExpandedSkills, setIsExpandedSkills } = useAppState();
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
   const skillsRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -42,8 +43,13 @@ export const Skills: React.FC<SkillsProps> = ({
     // Animation for expandable block
     let timeoutAnimExpandable: ReturnType<typeof setTimeout>;
     if (shouldAnimate) {
+      // Always hide expandable block before animation
+      setIsExpandedSkills(false);
       timeoutAnimExpandable = setTimeout(() => {
-        setIsExpanded(true);
+        // Only if state in not declared yet, expand block for animation
+        if (isExpandedSkills === null) {
+          setIsExpandedSkills(true);
+        }
       }, 1000);
     }
     return () => clearTimeout(timeoutAnimExpandable);
@@ -103,7 +109,7 @@ export const Skills: React.FC<SkillsProps> = ({
 
   // eslint-disable-next-line no-unused-vars
   const toggleExpanded = () => {
-    setIsExpanded(!isExpanded);
+    setIsExpandedSkills(!isExpandedSkills);
   };
 
   return (
@@ -158,7 +164,7 @@ export const Skills: React.FC<SkillsProps> = ({
             className="skills-grid"
             variants={skillsGridContainerAnimationVariants(
               contentHeight,
-              isExpanded,
+              isExpandedSkills ?? false,
             )}
             initial="hidden"
             animate={shouldAnimate ? 'visible' : 'hidden'}
@@ -184,7 +190,7 @@ export const Skills: React.FC<SkillsProps> = ({
           </motion.div>
 
           <ExpandableArrow
-            isExpanded={isExpanded}
+            isExpanded={isExpandedSkills ?? false}
             onToggle={toggleExpanded}
             style={{ position: 'absolute', top: 12, right: 12 }}
             size={ExpandableArrowSize.VeryLarge}
