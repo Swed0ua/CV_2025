@@ -22,7 +22,7 @@ export const MyServices: React.FC<MyServicesProps> = ({
   return (
     <div
       className={`my-services ${className}`.trim()}
-      style={{ ...style, paddingBottom: 2000 }}
+      style={{ ...style, marginBottom: '2rem' }}
     >
       <TitleWithBg style={{ marginLeft: '2rem' }}>My Services</TitleWithBg>
       <div className="services-container">
