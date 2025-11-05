@@ -1,5 +1,6 @@
 import React from 'react';
 import './HeroBanner.css';
+import RotatingLogoBanner from '../RotatingLogoBanner';
 
 export interface HeroBannerProps {
   children?: React.ReactNode;
@@ -25,6 +26,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
 
   return (
     <div className={`hero-banner ${className}`.trim()} style={bannerStyle}>
+      <RotatingLogoBanner />
       <div className="hero-banner-content">
         {children || <h1>Hello World</h1>}
       </div>
