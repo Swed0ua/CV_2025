@@ -5,11 +5,55 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
   background-size: auto 100%;
   background-position: center;
   background-repeat: repeat-x;
   z-index: 2;
+}
+
+.hero-banner-images-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 400px;
+  height: 100%;
+  z-index: 2;
+}
+
+.hero-banner-person {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: auto;
+  z-index: 2;
+}
+
+.hero-banner-coffee {
+  position: absolute;
+  top: 0%;
+  left: 5%;
+  width: 100px;
+  height: auto;
+  z-index: 3;
+}
+
+.hero-banner-laptop {
+  position: absolute;
+  bottom: -20%;
+  left: -30%;
+  width: 320px;
+  height: auto;
+  z-index: 3;
+}
+
+.hero-banner-phone {
+  position: absolute;
+  top: 15%;
+  right: -10%;
+  width: 150px;
+  height: auto;
+  z-index: 3;
 }
 
 .hero-banner-content {
