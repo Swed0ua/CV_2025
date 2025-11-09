@@ -1,9 +1,6 @@
 .hero-banner {
   width: calc(100% + 40px);
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 400px;
   position: relative;
   background-size: auto 100%;
   background-position: center;
@@ -13,11 +10,28 @@
   margin-left: -20px;
 }
 
+.hero-banner-wrapper {
+  width: 100%;
+  height: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
 .hero-banner-images-container {
   position: absolute;
   bottom: 0;
   right: 0;
   width: 400px;
+  height: 100%;
+  z-index: 2;
+}
+
+.hero-banner-background-rectangle {
+  position: absolute;
   height: 100%;
   z-index: 2;
 }
@@ -59,15 +73,44 @@
 }
 
 .hero-banner-content {
-  position: relative;
+  position: absolute;
   z-index: 2;
   color: #ffffff;
   text-align: center;
-  padding: 2rem;
+  padding: 1.4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0px;
+}
+
+.hero-banner-content-text {
+  font-size: 0.7rem;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-banner-name-text {
+  position: absolute;
+  text-wrap: wrap;
+  top: 50%;
+  right: 20%;
+  font-family: 'Righteous', cursive;
+  font-size: 8rem;
+  font-weight: 900;
+  line-height: 0.85;
+  /* letter-spacing: 0.05em; */
+  color: #ffffff;
+  text-transform: uppercase;
+  text-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.7),
+    0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  white-space: nowrap;
+  margin-top: -3rem;
+  opacity: 0.4;
 }
 
 .hero-banner-content h1 {
@@ -77,6 +120,10 @@
   text-transform: uppercase;
 }
 
+.hero-banner-rotating-logo-banner {
+  margin-left: 6%;
+}
+
 @media (max-width: 768px) {
   .hero-banner {
     min-height: 400px;
@@ -84,6 +131,10 @@
 
   .hero-banner-content h1 {
     font-size: 2.5rem;
+  }
+
+  .hero-banner-name-text {
+    font-size: 3rem;
   }
 
   .hero-banner__btn {

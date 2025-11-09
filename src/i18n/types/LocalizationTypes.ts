@@ -42,6 +42,11 @@ export interface TranslationKeys {
     wisdomText: string;
     descriptionText: string;
   };
+
+  // Hero Banner
+  heroBanner: {
+    contactText: string;
+  };
 }
 
 export interface LocalizationContextType {

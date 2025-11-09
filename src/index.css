@@ -1,3 +1,7 @@
+:root {
+  --main-max-width: 1400px;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -18,7 +22,7 @@ code {
 
 .contentContainer {
   width: 100%;
-  max-width: 1400px;
+  max-width: var(--main-max-width);
 }
 
 /* language-switcher-container */

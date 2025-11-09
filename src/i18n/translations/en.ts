@@ -47,6 +47,11 @@ const enTranslations: TranslationKeys = {
     descriptionText:
       'I work with cutting-edge development tools that enable creating fast, scalable, and secure solutions. Constantly tracking industry trends and ready to integrate new technologies to enhance efficiency and product quality.',
   },
+
+  heroBanner: {
+    contactText:
+      'Contact me to discuss your project and create a solution that works for results.',
+  },
 };
 
 export default enTranslations;

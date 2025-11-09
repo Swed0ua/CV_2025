@@ -23,6 +23,8 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
 }) => {
   const bannerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const backgroundRectangleRef = useRef<HTMLImageElement>(null);
+  const nameTextRef = useRef<HTMLDivElement>(null);
   const personRef = useRef<HTMLImageElement>(null);
   const coffeeRef = useRef<HTMLImageElement>(null);
   const laptopRef = useRef<HTMLImageElement>(null);
@@ -71,9 +73,11 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
 
   // Parallax intensities for each element
   const parallaxIntensities = {
-    person: { x: 15, y: 15 },
-    coffee: { x: 25, y: 35 },
-    laptop: { x: 40, y: 30 },
+    backgroundRectangle: { x: 10, y: 10 },
+    nameText: { x: 15, y: 15 },
+    person: { x: 25, y: 25 },
+    coffee: { x: 35, y: 45 },
+    laptop: { x: 50, y: 40 },
     phone: { x: 30, y: 40 },
   };
 
@@ -91,67 +95,95 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
       className={`hero-banner ${className}`.trim()}
       style={bannerStyle}
     >
-      <RotatingLogoBanner />
+      <div className="hero-banner-wrapper">
+        <div className="hero-banner-rotating-logo-banner">
+          <RotatingLogoBanner />
+        </div>
 
-      <div ref={containerRef} className="hero-banner-images-container">
-        {/* Person - center */}
-        <img
-          ref={personRef}
-          src="/images/my_pers_1.png"
-          alt="Personal"
-          className="hero-banner-person"
-          style={{
-            transform: `translate(-50%, -55%) ${getTransform('person')}`,
-          }}
-        />
-
-        {/* Coffee Cup - top left */}
-        <img
-          ref={coffeeRef}
-          src="/images/3d_icons/ready_3d_coffe_cup.png"
-          alt="Coffee Cup"
-          className="hero-banner-coffee"
-          style={{ transform: getTransform('coffee') }}
-        />
-
-        {/* Laptop - bottom left */}
-        <img
-          ref={laptopRef}
-          src="/images/3d_icons/ready_3d_laptop.png"
-          alt="Laptop"
-          className="hero-banner-laptop"
-          style={{ transform: getTransform('laptop') }}
-        />
-
-        {/* Phone - right */}
-        <img
-          ref={phoneRef}
-          src="/images/3d_icons/ready_3d_phone.png"
-          alt="Phone"
-          className="hero-banner-phone"
-          style={{ transform: getTransform('phone') }}
-        />
-      </div>
-
-      <div className="hero-banner-content">
-        <motion.div
-          variants={buttonAnimationVariants}
-          transition={buttonTransition}
-          initial="hidden"
-          animate={shouldAnimate ? 'visible' : 'hidden'}
-        >
-          <Button
+        <div ref={containerRef} className="hero-banner-images-container">
+          {/* Back Rectangle */}
+          <img
+            ref={backgroundRectangleRef}
+            src="/images/Back_Rectangle_Banner.png"
+            alt="Background Rectangle"
+            className="hero-banner-background-rectangle"
             style={{
-              marginTop: '30px',
-              width: 'fit-content',
-              padding: '16px 70px',
+              transform: `translate(-50%, -0%) ${getTransform('backgroundRectangle')}`,
             }}
-            pulsePeriodTime={10000}
-            className="hero-banner__btn"
+          />
+          {/* Name Text */}
+          <div
+            ref={nameTextRef}
+            className="hero-banner-name-text"
+            style={{
+              transform: `translate(-0%, -50%) ${getTransform('nameText')}`,
+            }}
           >
-            {t('welcome.buttonText')}
-          </Button>
-        </motion.div>
+            SHMAGALA
+            <br /> ANDRII
+          </div>
+          {/* Person - center */}
+          <img
+            ref={personRef}
+            src="/images/my_pers_1.png"
+            alt="Personal"
+            className="hero-banner-person"
+            style={{
+              transform: `translate(-50%, -55%) ${getTransform('person')}`,
+            }}
+          />
+
+          {/* Coffee Cup - top left */}
+          <img
+            ref={coffeeRef}
+            src="/images/3d_icons/ready_3d_coffe_cup.png"
+            alt="Coffee Cup"
+            className="hero-banner-coffee"
+            style={{ transform: getTransform('coffee') }}
+          />
+
+          {/* Laptop - bottom left */}
+          <img
+            ref={laptopRef}
+            src="/images/3d_icons/ready_3d_laptop.png"
+            alt="Laptop"
+            className="hero-banner-laptop"
+            style={{ transform: getTransform('laptop') }}
+          />
+
+          {/* Phone - right */}
+          <img
+            ref={phoneRef}
+            src="/images/3d_icons/ready_3d_phone.png"
+            alt="Phone"
+            className="hero-banner-phone"
+            style={{ transform: getTransform('phone') }}
+          />
+        </div>
+
+        <div className="hero-banner-content">
+          <motion.div
+            variants={buttonAnimationVariants}
+            transition={buttonTransition}
+            initial="hidden"
+            animate={shouldAnimate ? 'visible' : 'hidden'}
+          >
+            <p className="hero-banner-content-text">
+              {t('heroBanner.contactText')}
+            </p>
+            <Button
+              style={{
+                marginTop: '20px',
+                width: 'fit-content',
+                padding: '16px 70px',
+              }}
+              pulsePeriodTime={10000}
+              className="hero-banner__btn"
+            >
+              {t('welcome.buttonText')}
+            </Button>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
