@@ -1,5 +1,5 @@
 .hero-banner {
-  width: 100%;
+  width: calc(100% + 40px);
   min-height: 400px;
   display: flex;
   align-items: center;
@@ -9,6 +9,8 @@
   background-position: center;
   background-repeat: repeat-x;
   z-index: 2;
+  /* Not bug */
+  margin-left: -20px;
 }
 
 .hero-banner-images-container {
@@ -62,6 +64,10 @@
   color: #ffffff;
   text-align: center;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-banner-content h1 {
@@ -78,5 +84,9 @@
 
   .hero-banner-content h1 {
     font-size: 2.5rem;
+  }
+
+  .hero-banner__btn {
+    padding: 12px 50px !important;
   }
 }

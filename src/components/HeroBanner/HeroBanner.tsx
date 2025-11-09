@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import './HeroBanner.css';
 import RotatingLogoBanner from '../RotatingLogoBanner';
+import Button from '../Button';
+import { useLocalization } from '../../i18n';
+import { useAppState } from '../../contexts/AppStateContext';
+import { buttonAnimationVariants, buttonTransition } from './HeroBanner.styles';
 
 export interface HeroBannerProps {
   children?: React.ReactNode;
@@ -24,6 +29,9 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
   const phoneRef = useRef<HTMLImageElement>(null);
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { t } = useLocalization();
+  const { isPreloaderVisible } = useAppState();
+  const [shouldAnimate, setShouldAnimate] = useState(false);
 
   // Mouse parallax - завжди на весь екран
   useEffect(() => {
@@ -44,6 +52,15 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isPreloaderVisible) {
+      const timer = setTimeout(() => {
+        setShouldAnimate(true);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [isPreloaderVisible]);
 
   const bannerStyle: React.CSSProperties = {
     ...style,
@@ -117,7 +134,24 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
       </div>
 
       <div className="hero-banner-content">
-        {/* {children || <h1>Hello World</h1>} */}
+        <motion.div
+          variants={buttonAnimationVariants}
+          transition={buttonTransition}
+          initial="hidden"
+          animate={shouldAnimate ? 'visible' : 'hidden'}
+        >
+          <Button
+            style={{
+              marginTop: '30px',
+              width: 'fit-content',
+              padding: '16px 70px',
+            }}
+            pulsePeriodTime={10000}
+            className="hero-banner__btn"
+          >
+            {t('welcome.buttonText')}
+          </Button>
+        </motion.div>
       </div>
     </div>
   );
