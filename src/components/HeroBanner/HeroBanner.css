@@ -88,7 +88,9 @@
 }
 
 .hero-banner-content-text {
-  font-size: 0.7rem;
+  font-weight: 300;
+  font-size: 0.5rem;
+  letter-spacing: 0.05em;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 

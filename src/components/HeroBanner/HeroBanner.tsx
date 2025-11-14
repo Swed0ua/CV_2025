@@ -173,7 +173,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
             </p>
             <Button
               style={{
-                marginTop: '20px',
+                marginTop: '16px',
                 width: 'fit-content',
                 padding: '16px 70px',
               }}
