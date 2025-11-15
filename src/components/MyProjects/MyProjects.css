@@ -1,0 +1,129 @@
+.my-projects {
+  width: 100%;
+  max-width: var(--main-max-width);
+  margin: 0 auto;
+  padding: 2rem;
+  z-index: 2;
+  position: relative;
+}
+
+.my-projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  grid-auto-rows: 10px;
+}
+
+.my-projects-container .project-item {
+  grid-row-end: span var(--row-span, 16);
+}
+
+/* Елементи 1, 11, 21, 31... */
+.my-projects-container .project-item:nth-child(10n + 1) {
+  --row-span: 18;
+}
+
+.my-projects-container
+  .project-item:nth-child(10n + 1)
+  .project-item-image-wrapper {
+  --aspect-ratio: 0.8;
+}
+
+/* Елементи 2, 12, 22, 32... */
+.my-projects-container .project-item:nth-child(10n + 2) {
+  --row-span: 14;
+}
+
+.my-projects-container
+  .project-item:nth-child(10n + 2)
+  .project-item-image-wrapper {
+  --aspect-ratio: 1.33;
+}
+
+/* Елементи 3, 13, 23, 33... */
+.my-projects-container .project-item:nth-child(10n + 3) {
+  --row-span: 19;
+}
+
+.my-projects-container
+  .project-item:nth-child(10n + 3)
+  .project-item-image-wrapper {
+  --aspect-ratio: 1;
+}
+
+/* Елементи 4, 14, 24, 34... */
+.my-projects-container .project-item:nth-child(10n + 4) {
+  --row-span: 12;
+}
+
+.my-projects-container
+  .project-item:nth-child(10n + 4)
+  .project-item-image-wrapper {
+  --aspect-ratio: 0.67;
+}
+
+/* Елементи 5, 15, 25, 35... */
+.my-projects-container .project-item:nth-child(10n + 5) {
+  --row-span: 16;
+}
+
+.my-projects-container
+  .project-item:nth-child(10n + 5)
+  .project-item-image-wrapper {
+  --aspect-ratio: 1.14;
+}
+
+/* Елементи 6, 16, 26, 36... */
+.my-projects-container .project-item:nth-child(10n + 6) {
+  --row-span: 15;
+}
+
+.my-projects-container
+  .project-item:nth-child(10n + 6)
+  .project-item-image-wrapper {
+  --aspect-ratio: 0.89;
+}
+
+/* Елементи 7, 17, 27, 37... */
+.my-projects-container .project-item:nth-child(10n + 7) {
+  --row-span: 18;
+}
+
+.my-projects-container
+  .project-item:nth-child(10n + 7)
+  .project-item-image-wrapper {
+  --aspect-ratio: 0.73;
+}
+
+/* Елементи 8, 18, 28, 38... */
+.my-projects-container .project-item:nth-child(10n + 8) {
+  --row-span: 14;
+}
+
+.my-projects-container
+  .project-item:nth-child(10n + 8)
+  .project-item-image-wrapper {
+  --aspect-ratio: 1;
+}
+
+/* Елементи 9, 19, 29, 39... */
+.my-projects-container .project-item:nth-child(10n + 9) {
+  --row-span: 17;
+}
+
+.my-projects-container
+  .project-item:nth-child(10n + 9)
+  .project-item-image-wrapper {
+  --aspect-ratio: 0.8;
+}
+
+/* Елементи 10, 20, 30, 40... */
+.my-projects-container .project-item:nth-child(10n + 10) {
+  --row-span: 15;
+}
+
+.my-projects-container
+  .project-item:nth-child(10n + 10)
+  .project-item-image-wrapper {
+  --aspect-ratio: 0.89;
+}

@@ -7,6 +7,7 @@ import TechRow from '../../components/TechRow';
 import WorkExperience from '../../components/WorkExperience';
 import MyServices from '../../components/MyServices';
 import HeroBanner from '../../components/HeroBanner';
+import MyProjects from '../../components/MyProjects';
 
 const MainContent: React.FC = () => {
   return (
@@ -35,6 +36,7 @@ const MainContent: React.FC = () => {
       <WorkExperience />
       <MyServices />
       <HeroBanner />
+      <MyProjects />
     </div>
   );
 };
